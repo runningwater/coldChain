@@ -1,0 +1,60 @@
+/* pages/index/samplePacking/scanBag/scanBag.wxss */
+.scanInput{
+  border: 1px solid #3f89ec;
+  border-radius: 10px;
+  height: 30px;
+  line-height: 30px;
+  padding: 7px 8px;
+  margin-top:30px;
+  margin-bottom:20px;
+}
+.img{
+  display: inline-block;
+}
+.img image{
+  display: inline-block;
+  width:20px;
+  height: 20px;
+  position: relative;
+  top:0px;
+}
+
+.codeList{
+  font-size:14px;
+  overflow: hidden;
+  color:#333;
+  padding:10px 8px;
+  border-bottom:1px solid #ddd; 
+  display: block;
+}
+.X2{
+  font-size: 24px;
+  position: relative;
+  top:4px;
+}
+.padding2{
+  padding:0 8px; 
+}
+.padding1{
+  padding:0 4px; 
+}
+.red{
+  color:red;
+}
+.fR{
+  float:right;
+  font-size: 12px;
+  padding-top:9px;
+}
+/*按钮*/
+.btn{
+  margin-top:30px;
+  
+}
+.btn button{
+  background: #09c;
+  color:#fff;
+  font-size: 16px;
+  font-weight: bold;
+  width: 40%;
+}

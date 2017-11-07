@@ -1,0 +1,24 @@
+<!--pages/index/jobLog/jobLog.wxml-->
+<view class="container">
+  <view class="time">
+    <picker mode="date" class="timePicker" bindchange="changeStartDate" value="{{startDate}}">{{startDate}}</picker>
+    <text class="icon1 fa fa-arrow-right"></text>
+    <picker mode="date" class="timePicker" bindchange="changeEndDate" value="{{endDate}}">{{endDate}}</picker>
+    <text class="search fa fa-search" bindtap="query"></text>
+  </view>
+  <block wx:for="{{logs}}">
+    <view class="containerList">
+      <view class="top">
+        <text>{{item.hospitalName}}</text>
+        <text class="sampleNum">接收标本：<text class="red">{{item.sampleSum}}</text>个</text>
+      </view>
+      <view class="bottom">
+        <text>进：{{item.intoHosDate}}</text>
+        <text class="sampleNum">出：{{item.leaveHosDate}}</text>
+      </view>
+    </view>
+  </block>
+
+
+
+</view>

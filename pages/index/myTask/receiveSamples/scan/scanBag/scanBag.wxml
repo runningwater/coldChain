@@ -1,0 +1,29 @@
+<!--pages/index/myTask/receiveSamples/scan/scan.wxml-->
+<view class="container">
+  <view class="scanInput">
+   
+    <input placeholder-style="font-size:12px" 
+    confirm-type="done" bindconfirm="scanBag" placeholder="请扫描条码或输入条码"
+     value="{{code}}" id="code"/>
+      <view class="img" bindtap="scanCode">
+        <image src="../../../../../images/u477.png"></image>
+      </view>
+  </view>
+  <view class="total">
+    标本箱<text>{{barcode}}</text>共扫描<text class="red">{{samplesum}}</text>个标本袋
+  </view>
+  <block wx:for="{{barCode}}">
+    <view class="codeList" bindtouchstart="mytouchstart" 
+    bindtouchmove="delBag" bindtouchend='myend' data-bagId="{{item.bagId}}"
+    data-bag="{{item.barCode}}"
+    data-recordId="{{item.recordId}}"
+      bindtap="samples1">
+      <text class="codeL">标本袋：{{item.barCode}}</text>
+      <text class="codeR">共扫描<text class="red">{{item.sampleSum}}</text>个标本</text>
+    </view>
+  </block>
+
+     <view class="btn">
+    <button bindtap="complete">返回</button>
+  </view> 
+</view>

@@ -1,0 +1,68 @@
+<!--我的任务-->
+<view class="container">
+  <view style="display:{{display1}}">
+    <view class="listTitle">
+      <text class="hosName">医院名称</text>
+      <text class="state">状态</text>
+      <text class="time">预计出发时间</text>
+    </view>
+    <block wx:for="{{lists}}">
+      <view class="listContent" data-workId="{{item.workId}}" data-status="{{item.statusName}}" data-hospitalId="{{item.hospitalId}}" data-name="{{item.hospitalName}}" bindtap="receiveSamples" bindtouchstart="mytouchstart" bindtouchmove="delMyTask" bindtouchend='myend'>
+        <text class="hosName">{{item.hospitalName}}</text>
+        <text class="state">{{item.statusName}}</text>
+        <text class="time color">{{item.goOff}}</text>
+      </view>
+    </block>
+  </view>
+  <!-- 新增任务 -->
+  <view style="display:{{display2}}">
+      <form bindsubmit="submit">
+        <view class="inputCss">  
+         <picker name="hospital" value="{{hospitalID}}" range="{{hospitalList}}" bindchange="hospitalChange">{{hospitalName}}</picker>
+      </view>
+      <view class="inputCss">
+        <picker class="gray" name="estimateTime" mode="time" bindchange="timeChange" value="{{nowtime}}" start="00:00" 
+      end="24:00">
+      {{nowtime}}
+        </picker>
+      </view>
+      <view class="inputCss"> 
+        <textarea name="remark"  placeholder="备注"/>
+      </view>
+      <view class="btn">
+        <button form-type="submit">提交</button>
+      </view>
+      </form>
+  </view>
+  <!-- 已提交任务 -->
+  <view style="display:{{display3}}">
+    <view class="listTitle">
+      <text class="hosName">医院名称</text>
+      <text class="state">状态</text>
+     
+    </view>
+    <block wx:for="{{auditTask}}">
+        <view class="listContent" bindtap='showMsg' data-index="{{index}}">
+            <text class="hosName">{{item.hospitalName}}</text>
+            <text class="state">{{item.statusName}}</text>
+            <text class="fa fa-hand-o-down icon"></text>
+        </view>
+        <view  class="{{item.show?'shows':'hides'}}">
+            <view>审核人：{{item.authUser==null?"":item.authUser}}</view>
+            <view>审核时间：{{item.authTime==null?"":item.authTime}}</view>
+            <view>审核信息：{{item.authRemark==null?"":item.authRemark}}</view>
+        </view>
+    </block>
+  </view>
+  <view class='addTask'>
+    <view class="taskTab" bindtap='myTask'>
+      我的任务
+    </view>
+    <view class="taskTab add" bindtap='addTask'>
+      <text class='fa fa-plus'></text>
+    </view>
+    <view class="taskTab" bindtap='submitTask'>
+      已提交任务
+    </view>
+  </view>
+</view>

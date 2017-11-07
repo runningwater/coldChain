@@ -1,0 +1,19 @@
+/* pages/index/querySpecimens/temperatureChange/temperatureChange.wxss */
+.list{
+  border-bottom: 1px solid #ddd;
+}
+.item1{
+  display: inline-block;
+  width:60%;
+ 
+}
+.item2{
+  display: inline-block;
+  width:20%;
+  text-align: center
+}
+.bg{
+  background: #eee;
+  text-align: center;
+  font-weight: bold;
+}

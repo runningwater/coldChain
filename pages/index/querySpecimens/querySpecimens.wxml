@@ -1,0 +1,37 @@
+<view class="container">
+  <view class="scanInput">
+
+    <input placeholder-style="font-size:12px" bindblur="querySpecimen" placeholder="请扫描条码或输入条码" value="{{code}}" id="code" />
+    <view class="img" bindtap="scanCode">
+      <image src="../../images/u477.png">
+      </image>
+    </view>
+  </view>
+
+
+  <view class="codeList" wx:if="{{barCode.barCode}}">
+
+    <view class="barcode">
+      <text>标本条码：{{barCode.barCode}}</text>
+    </view>
+    <view class="buttonWrap">
+    <button class="fffcolor" data-sampleId="{{barCode.sampleId}}" 
+      bindtap="temperatureChange">
+         <text class="fa fa-tablet"></text>
+          <view class="">温湿度</view>
+      </button>
+       <button class="fffcolor" data-sampleId="{{barCode.sampleId}}" 
+      bindtap="specimenOperationTrack">
+       <text class="fa fa-map"></text>
+       <view class="">轨迹</view>
+     </button>
+      <button class="fffcolor"  data-sampleId="{{barCode.sampleId}}" 
+      bindtap="applicationFormPhotos">
+        <text class="fa fa-photo"></text>
+         <view class="">申请单</view>
+     </button>
+      
+    </view>
+  </view>
+
+</view>

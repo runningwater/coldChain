@@ -1,0 +1,24 @@
+<!--pages/index/myWayBill/myWayBill.wxml-->
+<view class="container">
+  <block wx:for="{{billList}}">
+    <view class="wrap" data-bill="{{billList[index]}}" data-oderId = "{{item.oderId}}" bindtap="wayBill">
+      <!-- <view class="left">
+        <text class="fa fa-car"></text>
+      </view> -->
+      <view class="center">
+        <view class="top">
+          <text>{{item.fromAddress}}</text>
+          <text class="fa fa-long-arrow-right arrow"></text>
+          <text>{{item.destiation}}</text>
+        </view>
+        <view class="bottom">
+          <text>标本箱：<text class="red">{{item.barCode}}</text></text>
+          <text>预计时间：{{item.estimateTime}}</text>
+        </view>
+      </view>
+      <view class="right">
+        <text class="fa fa-angle-right"></text>
+      </view>
+    </view>
+  </block>
+</view>

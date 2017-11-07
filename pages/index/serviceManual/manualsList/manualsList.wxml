@@ -1,0 +1,10 @@
+<!--pages/index/serviceManual/manualsList/manualsList.wxml-->
+<view class="wrap">
+  <block wx:for="{{newsList}}">
+    <view class="line" data-newId="{{item.newsId}}" bindtap="detail">
+      <image class="img" src="{{item.imageSrc}}"></image>
+      <text>{{item.title}}</text>
+      <text class="date">{{item.createTime}}</text>
+    </view>
+  </block>
+</view>

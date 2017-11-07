@@ -1,0 +1,22 @@
+.scanInput{
+  border: 1px solid #3f89ec;
+  border-radius: 10px;
+  height: 30px;
+  line-height: 30px;
+  padding: 7px 8px;
+  margin-top:30px;
+  margin-bottom:20px;
+}
+.img{
+  display: inline-block;
+}
+.img image{
+  display: inline-block;
+  width:20px;
+  height: 20px;
+  position: relative;
+  top:0;
+}
+
+
+

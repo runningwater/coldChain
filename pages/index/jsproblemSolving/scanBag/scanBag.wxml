@@ -1,0 +1,33 @@
+<!--pages/index/jsproblemSolving/jsproblemSolving.wxml-->
+<!--pages/index/myTask/receiveSamples/scan/scan.wxml-->
+<view class="container">
+    <view class="scanInput">
+
+        <input placeholder-style="font-size:12px" confirm-type="done" bindconfirm="scanBag" placeholder="请扫描条码或输入条码" value="{{code}}" id="code" />
+        <view class="img" bindtap="scanBagCode">
+            <image src="../../../images/u477.png"></image>
+        </view>
+    </view>
+    <view class="center">{{hospitalName}}</view>
+    <view class="center">标本箱：{{boxCode}}</view>
+    <block wx:for="{{bagCodes}}">
+       <view class="codeList">
+         <view class="codeL width85" data-bagId="{{item.bagId}}" data-barcode="{{item.barCode}}"   data-num="{{item.sampleCount}}" bindtap="enterBag">
+            <view >
+                <text>标本袋：<text class="red">{{item.barCode}}</text></text>               
+            </view>
+            <view>
+              <text>共扫描{{item.sampleCount}}个标本</text>
+             
+            </view>
+            <view>
+            
+              <text class="ddd">{{item.inputDate}}</text>
+            </view>
+        </view>
+        <view class="codeR width15" data-bagId="{{item.bagId}}"  bindtap="delBag">
+            <image class="del" src="../../../images/u672.png"></image>
+        </view>  
+       </view>
+    </block>
+</view>

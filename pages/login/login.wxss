@@ -1,0 +1,26 @@
+/* pages/login/login.wxss */
+
+.inputUser{
+  border: 1px solid #ddd;
+  border-radius:3px; 
+  padding: 8px 7px;
+}
+.container{
+  padding: 120px 50px;
+}
+.loginInput{
+  margin-top:1rem;
+  overflow: hidden;
+}
+.forgetPwd{
+  display: inline-block;
+  padding: 5rpx 15rpx;
+  font-size: 12px;
+  float: right;
+  cursor: pointer;
+}
+.loginInput button{
+  background: #0099CC;
+  color:#FFF;
+}
+

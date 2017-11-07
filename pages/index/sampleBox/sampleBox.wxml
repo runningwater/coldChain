@@ -1,0 +1,27 @@
+<view class="container">
+  <view class="scanInput">
+    
+    <input placeholder-style="font-size:12px" 
+    placeholder="请扫描条码或输入条码" confirm-type="done" bindconfirm="barCodeScan" 
+     id="code"/>
+     <view class="img" bindtap="scanCode">
+        <image src="../../images/u477.png"></image>
+    </view>
+  </view>
+ 
+  <block wx:for="{{barCode}}">
+    <view class="codeList" bindtouchstart="mytouchstart" bindtouchmove="delMyTask" bindtouchend='myend' data-transportId="{{item.transportId}}"
+    data-barCode = "{{item.barCode}}"  data-transportId="{{item.transportId}}">
+      <text class="icon fa fa-medkit"></text> 
+      <view class="codeL">{{item.barCode}}</view>
+     
+      <view class="time">{{item.deviceName}}</view>
+      <text class="icon1 fa fa-tablet"
+       data-transportId="{{item.transportId}}" bindtap="bindDevice"></text> 
+    </view>
+  </block>
+
+  <view class="btn">
+    <button bindtap="complete">完成</button>
+  </view>
+</view>

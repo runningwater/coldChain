@@ -1,0 +1,36 @@
+/* pages/index/myWayBill/myWayBill.wxss */
+
+.wrap {
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
+  padding: 5px 0;
+}
+
+.left {
+  float: left;
+  width: 10%;
+  font-size: 30px;
+  color: #fff;
+  background:#FA940C;
+  padding: 5px;
+  text-align: center;
+  border-radius:50%;
+}
+
+.center {
+  float: left;
+  margin:0 5px;
+  font-size: 13px;
+  padding-top:8px; 
+}
+
+.right {
+  float: left;
+  width: 5%;
+  padding-left: 15px;
+  padding-top:8px; 
+}
+.arrow{
+  display: inline-block;
+  margin:0 30px;
+}

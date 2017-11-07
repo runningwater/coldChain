@@ -1,0 +1,48 @@
+<!--pages/index/audit/audit.wxml-->
+<view class='container'  style="display:{{display1}}">
+  
+   <view class="listTitle">
+      <text class="hosName">医院名称</text>
+      <text class="state">状态</text>
+     
+    </view>
+    <block wx:for="{{taskList}}">
+    <view wx:if="{{item.statusName=='待审核'}}">
+       <view class="listContent" bindtap='showMsg' data-index="{{index}}" bindtouchstart="mytouchstart" bindtouchmove="delMyTask" bindtouchend='myend' data-reqId="{{item.reqId}}">
+            <text class="hosName">{{item.hospitalName}}</text>
+            <text class="state">{{item.statusName}}</text>
+            <text class="fa fa-hand-o-down icon"></text>
+        </view>
+        <view class='msg' class="{{item.show?'shows':'hides'}}">
+            <view>申请人：{{item.nameCn==null?"":item.nameCn}}</view>
+            <view>申请时间：{{item.reqTime==null?"":item.reqTime}}</view>
+            <view>申请信息：{{item.remark==null?"":item.remark}}</view>
+        </view>
+    </view>
+    <view wx:else>
+         <view class="listContent" bindtap='showMsg' data-index="{{index}}">
+            <text class="hosName">{{item.hospitalName}}</text>
+            <text class="state">{{item.statusName}}</text>
+            <text class="fa fa-hand-o-down icon"></text>
+        </view>
+        <view class="{{item.show?'shows':'hides'}}">
+            <view>申请人：{{item.nameCn==null?"":item.nameCn}}</view>          
+            <view>申请时间：{{item.reqTime==null?"":item.reqTime}}</view>
+            <view>申请信息：{{item.remark==null?"":item.remark}}</view>
+        </view>
+    </view>
+       
+    </block>
+
+</view>
+<view style="display:{{display2}}" class='container'>
+      <form bindsubmit="submit">
+       
+      <view class="inputCss"> 
+        <textarea name="remark"  placeholder="审核通过/不通过的原因"/>
+      </view>
+      <view class="btn">
+        <button form-type="submit">提交</button>
+      </view>
+      </form>
+</view>

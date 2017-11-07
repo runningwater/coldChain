@@ -1,0 +1,13 @@
+<!--pages/index/sampleBox/bindDevice/bindDevice.wxml-->
+<view class="container">
+  <view class="scanInput">
+
+    <input placeholder-style="font-size:12px" placeholder="请扫描或输入设备条码" value="{{deviceBarcode}}" confirm-type="done" bindconfirm="codeValue" id="code" />
+    <view class="img" bindtap="scanCode">
+      <image src="../../../images/u477.png"></image>
+    </view>
+  </view>
+  <view class="btn">
+    <button bindtap="barCodeScan">绑定设备</button>
+  </view>
+</view>

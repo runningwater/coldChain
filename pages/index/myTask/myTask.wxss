@@ -1,0 +1,93 @@
+/* pages/index/myTask/myTask.wxss */
+.listTitle{
+  margin-top:15px;
+  background: #eee;
+  padding:15px 10px;
+  font-size: 14px;
+}
+ text{
+  display: inline-block;
+}
+.hosName{
+  width:55%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+.state{
+  width:15%;
+  text-align:center;
+}
+.time{
+  width:30%;
+  text-align:center;
+}
+.color{
+  color:#7ddaff;
+}
+.listContent{
+   font-size: 14px;
+   padding: 35rpx 10rpx;
+   border-bottom: 1px solid #ddd;
+   position: relative
+}
+
+.icon{
+  position: absolute;
+  right:55rpx;
+  top:55rpx;
+}
+
+.hides{
+  display: none
+}
+.shows{
+  display: block;
+  font-size: 14px;
+  background: #f0f0f0;
+  padding: 20rpx;
+}
+.addTask{
+  border: 1px solid #ddd;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  color: #fff;
+  background: #ddd;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.taskTab{
+  width: 33%;
+  float: left;
+  background: #7ddaff;
+  padding: 15rpx 0;
+}
+.add{
+  background: #ff9999;
+}
+.fa-plus{
+ font-size: 30rpx;
+}
+.inputCss{
+  border:1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 20px 0;
+}
+.gray{
+  color:gray;
+}
+.btn{
+  margin-top:30px;
+  
+}
+.btn button{
+  background: #09c;
+  color:#fff;
+  font-size: 16px;
+  font-weight: bold;
+  width: 40%;
+}

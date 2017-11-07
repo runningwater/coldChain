@@ -1,0 +1,8 @@
+<view class="container">
+  <view class="scanInput">   
+    <input placeholder-style="font-size:12px" placeholder="请扫描条码或输入条码" bindblur="blurBox" id="code" value="{{code}}" />
+     <view class="img" bindtap="scanCode">
+      <image src="../../images/u477.png"></image>
+    </view>
+  </view>  
+</view>

@@ -1,0 +1,63 @@
+
+.scanInput{
+  border: 1px solid #3f89ec;
+  border-radius: 10px;
+  height: 30px;
+  line-height: 30px;
+  padding: 7px 8px;
+  margin-top:30px;
+  margin-bottom:20px;
+}
+.img{
+  display: inline-block;
+}
+.img image{
+  display: inline-block;
+  width:20px;
+  height: 20px;
+  position: relative;
+  top:0; 
+}
+
+.codeList{ 
+  overflow: hidden;
+  color:#333;
+  padding:10px 8px;
+  border-bottom:1px solid #ddd; 
+}
+.codeL{
+  float: left;
+  color: #555;
+}
+.codeR{
+  float: right
+}
+.red{
+  color: red;
+}
+.overflow{
+  overflow:hidden;
+  font-size: 16px;
+}
+.ddd{
+  color:#ddd;
+}
+.font16{
+  font-size:16px;
+}
+.center{
+  text-align:center
+}
+.width85{
+  display: inline-block;
+  width: 80%;
+}
+.width15{
+  display: inline-block;
+  width: 20%;
+  margin-top: 15px;
+}
+.del{
+  width: 40px;
+  height: 40px;
+}

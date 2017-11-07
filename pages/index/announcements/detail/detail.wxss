@@ -1,0 +1,15 @@
+/* pages/index/announcements/detail/detail.wxss */
+.img{
+  width: 80%;
+  margin:0 auto;
+}
+.content{
+  padding: 5px;
+  color: #666;
+}
+.keyAndTime{
+  overflow: hidden;  
+}
+.keyAndTime text{
+  display: inline-block
+}

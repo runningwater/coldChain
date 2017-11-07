@@ -1,0 +1,8 @@
+<!--pages/index/dbproblemSolving/scanBag/delBag/delBag.wxml-->
+<view class="container">
+    <form bindsubmit="delBag">
+        <textarea placeholder="输入删除此标本袋的原因" name="del"> </textarea>
+
+        <button type="primary" form-type="submit">确定删除</button>
+    </form>
+</view>

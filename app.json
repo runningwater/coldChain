@@ -1,0 +1,52 @@
+{
+  "pages": [
+    
+    "pages/login/login",
+    "pages/index/index",
+    "pages/index/myTask/myTask",
+    "pages/index/audit/audit",
+    "pages/index/myTask/receiveSamples/receiveSamples",
+    "pages/index/myTask/receiveSamples/tackPic/tackPic",
+    "pages/index/myTask/receiveSamples/scan/scan",
+    "pages/index/myTask/receiveSamples/scan/scanBag/scanBag",
+    "pages/index/myTask/receiveSamples/scan/scanBag/samples/samples",
+    "pages/index/sampleBox/sampleBox",
+    "pages/index/sampleBox/bindDevice/bindDevice",
+    "pages/index/querySpecimens/querySpecimens",
+    "pages/index/querySpecimens/applicationFormPhotos/applicationFormPhotos",
+    "pages/index/querySpecimens/specimenOperationTrack/specimenOperationTrack",
+    "pages/index/querySpecimens/temperatureChange/temperatureChange",
+    "pages/index/samplePacking/samplePacking",
+    "pages/index/samplePacking/waybill/waybill",
+    "pages/index/samplePacking/bindDevice/bindDevice",
+    "pages/index/samplePacking/scanBag/scanBag",
+    "pages/index/jobLog/jobLog",
+    "pages/index/specimensSplit/specimensSplit",
+    "pages/index/specimensSplit/scanSpecimens/scanSpecimens",
+    "pages/index/myWayBill/myWayBill",
+    "pages/index/myWayBill/wayBill/wayBill",
+    "pages/index/billOfLoding/billOfLoding",
+    "pages/index/billOfLoding/waybill/waybill",
+    "pages/index/announcements/announcements",
+    "pages/index/announcements/detail/detail",
+    "pages/index/feedBack/feedBack",
+    "pages/index/serviceManual/serviceManual",
+    "pages/index/serviceManual/manualsList/manualsList",
+    "pages/index/serviceManual/manualsList/mauanlsDetail/mauanlsDetail",
+    "pages/index/jsproblemSolving/jsproblemSolving",
+    "pages/index/jsproblemSolving/scanBag/scanBag",
+    "pages/index/jsproblemSolving/scanBag/scanSpecimens/scanSpecimens",
+    "pages/index/jsproblemSolving/scanBag/delBag/delBag",
+    "pages/index/jsproblemSolving/scanBag/scanSpecimens/delSpecimens/delSpecimens",
+    "pages/index/dbproblemSolving/dbproblemSolving",
+    "pages/index/dbproblemSolving/scanBag/scanBag",
+    "pages/index/dbproblemSolving/scanBag/delBag/delBag"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0099CC",
+    "navigationBarTitleText": "用户登录",
+    "navigationBarTextStyle": "#fff"
+  }
+
+}

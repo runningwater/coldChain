@@ -1,0 +1,8 @@
+/* pages/index/myTask/receiveSamples/tackPic/tackPic.wxss */
+.pic{
+  text-align: center;
+
+}
+.btn{
+  margin-top: 30rpx;
+}

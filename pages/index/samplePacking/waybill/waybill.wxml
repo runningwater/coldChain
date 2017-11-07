@@ -1,0 +1,51 @@
+<view class="container">
+<form bindsubmit="submit">
+<!-- 运输方式transportType -->
+<view class="inputCss">  
+  <picker name="transportType" value="{{transportId}}" range="{{transport}}" bindchange="transportTypeChange">{{transportType}}</picker>
+</view>
+<view class="inputCss">
+  <input name="fromAddress" placeholder="出发地"/>
+</view>
+<view class="inputCss">
+  <input name="destiation" placeholder="到达地"/>
+</view>
+<view class="inputCss">
+  <input name="contact" placeholder="联系方式"/>
+</view>
+<!-- 预计达到时间 -->
+<view class="inputCss">
+ <picker class="gray" name="estimateTime" mode="time" bindchange="timeChange" value="{{nowtime}}" start="00:00" 
+ end="24:00">
+ {{nowtime}}
+ </picker>
+</view>
+<!-- -->
+<view class="inputCss"  wx:if="{{flag1}}">
+  <input name="carSN" placeholder="车牌号"/>
+</view>
+  <!--  -->
+<view class="inputCss" wx:if="{{flag2}}">
+  <input name="flightSN" placeholder="航班号\火车班次"/>
+</view>
+<!-- 接收地 -->
+<!-- wx:if="{{flag2}}" -->
+<view class="inputCss" wx:if="{{flag2}}">  
+  <picker name="receiveId" value="{{receiveId}}" range="{{range}}" bindchange="addrChange">{{addr}}</picker>
+</view>
+<!-- wx:if="{{flag3}}" -->
+<view class="inputCss" wx:if="{{flag3}}">
+  <input name="expressCompany" placeholder="快递公司"/>
+</view>
+<!-- <view class="inputCss"> 
+  <textarea name="transportId"  placeholder="标本箱条码" value="{{boxCode}}" disabled/>
+</view> -->
+<view class="inputCss"> 
+  <textarea name="remark"  placeholder="备注"/>
+</view>
+
+<view class="btn">
+  <button form-type="submit">提交</button>
+</view>
+</form>
+</view>

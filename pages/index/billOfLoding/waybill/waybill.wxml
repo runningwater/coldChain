@@ -1,0 +1,44 @@
+<view class="container">
+<form bindsubmit="submit">
+<!-- 运输方式transportType -->
+<!-- <view class="inputCss">  
+ <input  value="{{transportType}}"  placeholder="运输方式" disabled/>
+</view> -->
+<view class="inputCss">
+  <input  value="{{fromAddress}}" disabled placeholder="出发地"/>
+</view>
+<view class="inputCss">
+  <input  value="{{destiation}}" disabled placeholder="目的地"/>
+</view>
+<view class="inputCss">
+  <input value="{{contact}}" disabled placeholder="联系方式"/>
+</view>
+<!-- 预计达到时间 -->
+<view class="inputCss">
+ <input type="text" value="{{nowtime}}" disabled placeholder="预计到达时间"/>
+</view>
+<!-- -->
+<view class="inputCss"  wx:if="{{flag1}}">
+  <input  value="{{carSN}}"  placeholder="车牌号" disabled/>
+</view>
+  <!--  -->
+<view class="inputCss" wx:if="{{flag2}}" >
+  <input  value="{{flightSN}}" placeholder="航班号" disabled/>
+</view>
+<!-- 接收地 -->
+<!-- wx:if="{{flag2}}" -->
+<view class="inputCss" wx:if="{{flag2}}" >   
+   <input  value="{{addr}}" placeholder="接收地" disabled/>
+</view>
+<!-- wx:if="{{flag3}}" -->
+<view class="inputCss" wx:if="{{flag3}}">
+  <input  value="{{expressCompany}}" placeholder="快递公司" disabled/>
+</view>
+<!-- <view class="inputCss"> 
+  <textarea name="transportId"  placeholder="标本箱条码" value="{{boxCode}}" disabled/>
+</view> -->
+<view class="inputCss"> 
+  <textarea  value="{{remark}}" disabled placeholder="备注"/>
+</view>
+</form>
+</view>

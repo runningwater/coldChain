@@ -1,0 +1,16 @@
+<!--pages/index/myTask/receiveSamples/tackPic/tackPic.wxml-->
+<view class="container">
+  
+  <block wx:for="{{filePaths}}">
+     <image bindtap="prePic" bindtouchend="end" data-file="{{filePaths}}"
+     data-current="{{item.imgURL}}"
+      bindlongtap="delPic"
+     data-attachId="{{item.attachId}}"
+      data-deliveryId="{{item.deliveryId}}"
+     style="width:{{x}}px;height:{{x}}px;margin:2px"  src="{{item.thumbUrl}}"></image>
+     
+  </block>
+  <view class="btn">
+    <button type="default" bindtap="takePic">交接单拍照</button>
+  </view>
+</view>

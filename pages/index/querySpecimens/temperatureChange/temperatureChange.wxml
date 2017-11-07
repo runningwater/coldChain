@@ -1,0 +1,21 @@
+
+    
+    
+
+
+<view class="container">
+ <canvas canvas-id="lineCanvas"
+     disable-scroll="true" 
+     bindtouchstart="touchHandler"
+     style="width:450px;height:300px"></canvas> 
+<view class="list bg">
+  <text class="item1">时间</text>
+  <text class="item2">温度</text>
+  <text class="item2">湿度</text>
+</view>
+<view class="list" wx:for="{{lists}}">
+  <text class="item1">{{item.createTime}}</text>
+  <text class="item2">{{item.temperature}}</text>
+  <text class="item2">{{item.humidity}}</text>
+</view>
+</view>

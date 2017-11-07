@@ -1,0 +1,6 @@
+<!--pages/index/querySpecimens/specimenOperationTrack/specimenOperationTrack.wxml-->
+
+   <map id="maps" 
+ 
+   scale="10" show-location latitude="{{latitude}}" longitude="{{longitude}}"  
+  polyline="{{polyline}}" style="width:100%;height:300px"></map>

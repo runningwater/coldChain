@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="scanInput">
+    <input placeholder-style="font-size:12px" confirm-type="done" bindconfirm="scanBag" placeholder="请扫描条码或输入条码" value="{{code}}" id="code" />
+    <view class="img" bindtap="scanCode">
+      <image src="../../../images/u477.png"></image>
+    </view>
+  </view>
+    <view class="codeList" wx:for="{{barCode}}" data-bagid="{{item.bagId}}" bindtouchstart="mytouchstart" bindtouchmove="delBag" bindtouchend='myend'>
+      <text class="fa fa-medkit X2"></text>
+      <text class="padding2" >{{item.barCode}}</text>
+      <text class="fR">共<text class="red">{{item.sampleCount}}</text>个标本</text>
+    </view>
+
+  <view class="btn">
+    <button bindtap="packing">完成</button>
+  </view>
+</view>

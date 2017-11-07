@@ -1,0 +1,15 @@
+/*盖全局样式*/
+.container{
+  padding: 10px 15px;
+}
+
+
+.inputCss{
+  border:1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 20px 0;
+}
+.gray{
+  color:gray;
+}

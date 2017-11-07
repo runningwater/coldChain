@@ -1,0 +1,63 @@
+/* pages/index/myWayBill/myWayBill.wxss */
+
+.wrap {
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
+  padding: 5px 0;
+}
+
+.left {
+  float: left;
+  width: 10%;
+  font-size: 30px;
+  color: #fff;
+  background:#FA940C;
+  padding: 5px;
+  text-align: center;
+  border-radius:50%;
+}
+
+.center {
+  float: left;
+  margin:0 5px;
+  font-size: 13px;
+  padding-top:8px; 
+}
+
+.right {
+  float: left;
+  width: 12%;
+  padding-left: 15px;
+ 
+}
+.receive{
+    display: block;
+    background: #0099CC;
+    border-radius:50%;
+    color: #fff;
+    font-weight: bold;
+    height: 30px; 
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+}
+.arrow{
+  display: inline-block;
+  margin:0 30px;
+}
+
+.tab text{
+    display: inline-block;
+    padding: 15px 0;
+    width: 47%;
+    font-weight: bold;
+    font-size: 24px;
+    text-align:center; 
+    background: #0099CC;
+    color: #fff;
+    margin: 5px;
+    border-radius: 5px;
+}
+.tab .c{
+    background: #ddd
+}

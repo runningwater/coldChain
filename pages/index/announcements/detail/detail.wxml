@@ -1,0 +1,12 @@
+<view class="container">
+  <!-- <view class="img">  
+    <image src="{{imageSrc}}"/> 
+  </view>  -->
+  <view class="content">
+    {{content}}
+  </view>  
+  <view class="keyAndTime">
+   <text>{{keyword}}</text>
+   <text>{{createTime}}</text>
+  </view>  
+</view>  

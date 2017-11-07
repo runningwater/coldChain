@@ -1,0 +1,7 @@
+<!--pages/index/jsproblemSolving/scanBag/scanSpecimens/delSpecimens/delSpecimens.wxml-->
+<view class="container">
+    <form bindsubmit="delSpecimens">
+        <textarea placeholder="输入删除此标本的原因" name="del"> </textarea>
+        <button type="primary" form-type="submit">确定删除</button>
+    </form>
+</view>

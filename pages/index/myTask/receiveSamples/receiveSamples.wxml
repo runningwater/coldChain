@@ -1,0 +1,19 @@
+<!--pages/index/myTask/receiveSamples/receiveSamples.wxml-->
+<view class="container">
+  <view class="pic">
+    <image src="../../../images/u377.png"></image>
+  </view>
+  <view class="scan">
+    <text class="scanS">扫描到：</text>
+    <text class="scanHos">{{hosName}}</text>
+  </view>
+  <view class="btn">
+     <button bindtap="applySamples">申请标本</button>
+  </view>
+   <view class="btn">
+     <button bindtap="scanReceipt">扫描交接单</button>
+  </view>
+   <view class="btn">
+     <button bindtap="leaveHospital">离开医院</button>
+  </view>
+</view>
