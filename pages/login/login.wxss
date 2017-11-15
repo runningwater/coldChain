@@ -5,8 +5,8 @@
 }
 .inputUser{
   border: 1px solid #ddd;
-  border-radius:3px; 
-  padding: 8px 7px;
+  border-radius:5rpx; 
+  padding: 16rpx 14rpx;
 }
 .container{
   padding: 120rpx 100rpx;
@@ -23,5 +23,6 @@
   cursor: pointer;
   color:#009BE2;
 }
+
 
 
