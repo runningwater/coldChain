@@ -4,6 +4,7 @@ Page({
     userName: "",
     pwd: "",
     remeberPwd: false
+  
   },
   //事件处理函数
   bindName: function (e) {
@@ -39,7 +40,7 @@ Page({
       success: function (e) {
         wx.getUserInfo({
           success: function (msg) {
-           // console.log(msg);
+            // console.log(msg);
             wx.request({
               url: getApp().globalData.url + '/wxApp/getUser',
               data: {

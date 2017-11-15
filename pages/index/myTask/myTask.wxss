@@ -1,4 +1,5 @@
 /* pages/index/myTask/myTask.wxss */
+@import '../../../utils/icon.wxss';
 .listTitle{
   margin-top:15px;
   background: #eee;
@@ -62,12 +63,10 @@
 .taskTab{
   width: 33%;
   float: left;
-  background: #7ddaff;
+  
   padding: 15rpx 0;
 }
-.add{
-  background: #ff9999;
-}
+
 .fa-plus{
  font-size: 30rpx;
 }

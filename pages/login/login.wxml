@@ -1,6 +1,8 @@
 <!--pages/login/login.wxml-->
 <view class="container">
-
+  <view class='icon_img'>
+    <image style="width: 300rpx; height: 300rpx;"  src='../images/icon.png'></image>
+  </view>
   <view>
     <view class="loginInput">
       <input type="text" class="inputUser" placeholder="用户名" value="{{userName}}"  bindinput="bindName"/>
@@ -12,10 +14,11 @@
      <switch type="switch" bindchange="select"/>记住密码
     </view> -->
     <view class="loginInput">
-      <button bindtap="login">登录</button>
+      <button class='btn' bindtap="login">登录</button>
     </view>    
-    <view class="loginInput">
+     <view class="loginInput">
       <text class="forgetPwd" bindtap="forgetPwd">忘记密码？</text>
-    </view> 
+    </view>  
+
   </view> 
 </view>

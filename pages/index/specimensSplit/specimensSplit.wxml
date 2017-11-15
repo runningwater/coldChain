@@ -5,4 +5,16 @@
       <image src="../../images/u477.png"></image>
     </view>
   </view>  
+  
+
+
+  <checkbox-group bindchange="checkboxChange">
+  <label class="checkbox" wx:for="{{listSp}}">
+    <view><checkbox value="{{item.sampleId}}" checked="{{item.status==1?true:false}}"/>{{item.barCode}}</view>
+  </label>
+</checkbox-group>
+<view>
+  此箱子共有<text class='red'>{{total}}</text>个标本，<button class='btn' data-transportid="{{listSp[0].transportId}}" bindtap='submit'>提交<text  class='red'>{{num}}</text></button>
+</view>
+
 </view>

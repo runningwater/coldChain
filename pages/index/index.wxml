@@ -1,247 +1,248 @@
 <view class="section">
   <view class="flex-wrap" wx:if="{{type1}}">
     <view class="flex-item" bindtap="myTask">
-      <view class="icon">
-        <image src="../images/p0.png"></image>
+      <view class="icon myTask">
+       <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>我的任务</text>
+      <view>我的任务</view>
     </view>
-    <view class="flex-item background" bindtap="sampleBox">
-      <view class="icon">
-        <image src="../images/p1.png"></image>
+    <view class="flex-item" bindtap="sampleBox">
+      <view class="icon sampleBox">
+         <text class="iconfont icon-lingqubiaobenxiang" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>领取标本箱</text>
+      <view>领取标本箱</view>
     </view>
-    <view class="flex-item background" bindtap="querySpecimens">
-      <view class="icon">
-        <image src="../images/p0.png"></image>
+    <view class="flex-item" bindtap="querySpecimens">
+      <view class="icon querySpecimens">
+        <text class="iconfont icon-biaobenchaxun" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>标本查询</text>
+      <view>标本查询</view>
+    </view>
+     <view class="flex-item" bindtap="jsproblemSolving">
+      <view class="icon jsproblemSolving">
+         <text class="iconfont icon-wentichuli" style="font-size:60px;color:#fff"></text>
+      </view>
+      <view>问题处理</view>
     </view>
     <view class="flex-item" bindtap="jobLog">
-      <view class="icon">
-        <image src="../images/p3.png"></image>
+      <view class="icon jobLog">
+         <text class="iconfont icon-gongzuorizhi" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>工作日志</text>
+      <view>工作日志</view>
     </view>
     <view class="flex-item " bindtap="announcements">
-      <view class="icon">
-        <image src="../images/p8.png"></image>
+      <view class="icon announcements">
+         <text class="iconfont icon-tongzhigonggao" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>通知公告</text>
+      <view>通知公告</view>
     </view>
-    <view class="flex-item background" bindtap="feedBack">
-      <view class="icon">
-        <image src="../images/p9.png"></image>
+    <view class="flex-item" bindtap="feedBack">
+      <view class="icon feedBack">
+         <text class="iconfont icon-yijianfankui" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>意见反馈</text>
+      <view>意见反馈</view>
     </view>
-    <view class="flex-item background" bindtap="serviceManual">
-      <view class="icon">
-        <image src="../images/p0.png"></image>
+    <view class="flex-item" bindtap="serviceManual">
+      <view class="icon serviceManual">
+         <text class="iconfont icon-fuwushouce" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>服务手册</text>
+      <view>服务手册</view>
     </view>
-    <view class="flex-item" bindtap="jsproblemSolving">
-      <view class="icon">
-        <image src="../images/p10.png"></image>
-      </view>
-      <text>问题处理</text>
-    </view>
+   
   </view>
 
   <!-- 司机 -->
   <view class="flex-wrap" wx:if="{{type2}}">
     <view class="flex-item" bindtap="billOfLoding">
-      <view class="icon">
-        <image src="../images/p7.png"></image>
+      <view class="icon myTask billOfLoding">
+         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>提货单</text>
+      <view>提货单</view>
     </view>
-    <view class="flex-item background" bindtap="announcements">
-      <view class="icon">
-        <image src="../images/p8.png"></image>
+    <view class="flex-item" bindtap="announcements">
+      <view class="icon announcements">
+         <text class="iconfont icon-tongzhigonggao" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>通知公告</text>
+      <view>通知公告</view>
     </view>
-    <view class="flex-item background" bindtap="feedBack">
-      <view class="icon">
-        <image src="../images/p9.png"></image>
+    <view class="flex-item" bindtap="feedBack">
+      <view class="icon feedBack">
+         <text class="iconfont icon-yijianfankui" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>意见反馈</text>
+      <view>意见反馈</view>
     </view>
     <view class="flex-item" bindtap="serviceManual">
-      <view class="icon">
-        <image src="../images/p0.png"></image>
+      <view class="icon serviceManual">
+         <text class="iconfont icon-fuwushouce" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>服务手册</text>
+      <view>服务手册</view>
     </view>
   </view>
 
   <!-- 系统管理员 -->
   <view class="flex-wrap" wx:if="{{type3}}">
     <view class="flex-item" bindtap="myTask">
-      <view class="icon">
-        <image src="../images/p0.png"></image>
+      <view class="icon myTask">
+         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>我的任务</text>
+      <view>我的任务</view>
     </view>
-    <view class="flex-item background" bindtap="sampleBox">
-      <view class="icon">
-        <image src="../images/p1.png"></image>
+    <view class="flex-item" bindtap="sampleBox">
+      <view class="icon sampleBox">
+         <text class="iconfont icon-lingqubiaobenxiang" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>领取标本箱</text>
+      <view>领取标本箱</view>
     </view>
-    <view class="flex-item background" bindtap="querySpecimens">
-      <view class="icon">
-        <image src="../images/p0.png"></image>
+    <view class="flex-item" bindtap="querySpecimens">
+      <view class="icon querySpecimens">
+         <text class="iconfont icon-biaobenchaxun" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>标本查询</text>
+      <view>标本查询</view>
     </view>
     <view class="flex-item" bindtap="jobLog">
-      <view class="icon">
-        <image src="../images/p3.png"></image>
+      <view class="icon jobLog">
+        <text class="iconfont icon-gongzuorizhi" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>工作日志</text>
+      <view>工作日志</view>
     </view>
     <view class="flex-item " bindtap="samplePacking">
-      <view class="icon">
-        <image src="../images/p2.png"></image>
+      <view class="icon myTask samplePacking">
+         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>标本打包</text>
+      <view>标本打包</view>
     </view>
-    <view class="flex-item background" bindtap="myWayBill">
-      <view class="icon">
-        <image src="../images/p6.png"></image>
+    <view class="flex-item" bindtap="myWayBill">
+      <view class="icon myTask myWayBill" >
+         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>我的运单</text>
+      <view>我的运单</view>
     </view>
-    <view class="flex-item background" bindtap="specimensSplit">
-      <view class="icon">
-        <image src="../images/p4.png"></image>
+    <view class="flex-item" bindtap="specimensSplit">
+      <view class="icon myTask specimensSplit">
+         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>标本拆箱</text>
+      <view>标本拆箱</view>
     </view>
     <view class="flex-item" bindtap="billOfLoding">
-      <view class="icon">
-        <image src="../images/p7.png"></image>
+      <view class="icon myTask billOfLoding">
+         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>提货单</text>
+      <view>提货单</view>
     </view>
     <view class="flex-item " bindtap="announcements">
-      <view class="icon">
-        <image src="../images/p8.png"></image>
+      <view class="icon announcements">
+         <text class="iconfont icon-tongzhigonggao" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>通知公告</text>
+      <view>通知公告</view>
     </view>
-    <view class="flex-item background" bindtap="feedBack">
-      <view class="icon">
-        <image src="../images/p9.png"></image>
+    <view class="flex-item" bindtap="feedBack">
+      <view class="icon feedBack">
+         <text class="iconfont icon-yijianfankui" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>意见反馈</text>
+      <view>意见反馈</view>
     </view>
-    <view class="flex-item background" bindtap="serviceManual">
-      <view class="icon">
-        <image src="../images/p0.png"></image>
+    <view class="flex-item" bindtap="serviceManual">
+      <view class="icon serviceManual">
+         <text class="iconfont icon-fuwushouce" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>服务手册</text>
+      <view>服务手册</view>
     </view>
   </view>
 
   <!-- 打包员 -->
   <view class="flex-wrap" wx:if="{{type4}}">
     <view class="flex-item " bindtap="samplePacking">
-      <view class="icon">
-        <image src="../images/p2.png"></image>
+      <view class="icon myTask samplePacking">
+         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>标本打包</text>
+      <view>标本打包</view>
     </view>
-    <view class="flex-item background" bindtap="myWayBill">
-      <view class="icon">
-        <image src="../images/p6.png"></image>
+    <view class="flex-item" bindtap="myWayBill">
+      <view class="icon myTask myWayBill">
+         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>我的运单</text>
+      <view>我的运单</view>
     </view>
 
-    <view class="flex-item background" bindtap="announcements">
-      <view class="icon">
-        <image src="../images/p8.png"></image>
+    <view class="flex-item" bindtap="announcements">
+      <view class="icon announcements">
+        <text class="iconfont icon-tongzhigonggao" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>通知公告</text>
+      <view>通知公告</view>
     </view>
     <view class="flex-item" bindtap="feedBack">
-      <view class="icon">
-        <image src="../images/p9.png"></image>
+      <view class="icon feedBack">
+         <text class="iconfont icon-yijianfankui" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>意见反馈</text>
+      <view>意见反馈</view>
     </view>
     <view class="flex-item " bindtap="serviceManual">
-      <view class="icon">
-        <image src="../images/p0.png"></image>
+      <view class="icon serviceManual">
+         <text class="iconfont icon-fuwushouce" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>服务手册</text>
+      <view>服务手册</view>
     </view>
-    <view class="flex-item background" bindtap="dbproblemSolving">
-      <view class="icon">
-        <image src="../images/p11.png"></image>
+    <view class="flex-item" bindtap="dbproblemSolving">
+      <view class="icon myTask dbproblemSolving">
+         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>问题处理</text>
+      <view>问题处理</view>
     </view>
   </view>
 
   <!-- 实验室人员 -->
   <view class="flex-wrap" wx:if="{{type5}}">
     <view class="flex-item " bindtap="specimensSplit">
-      <view class="icon">
-        <image src="../images/p4.png"></image>
+      <view class="icon myTask specimensSplit">
+         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>标本拆箱</text>
+      <view>标本拆箱</view>
     </view>
-    <view class="flex-item background" bindtap="announcements">
-      <view class="icon">
-        <image src="../images/p8.png"></image>
+    <view class="flex-item" bindtap="announcements">
+      <view class="icon announcements">
+         <text class="iconfont icon-tongzhigonggao" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>通知公告</text>
+      <view>通知公告</view>
     </view>
-    <view class="flex-item background" bindtap="feedBack">
-      <view class="icon">
-        <image src="../images/p9.png"></image>
+    <view class="flex-item" bindtap="feedBack">
+      <view class="icon feedBack">
+         <text class="iconfont icon-yijianfankui" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>意见反馈</text>
+      <view>意见反馈</view>
     </view>
     <view class="flex-item" bindtap="serviceManual">
-      <view class="icon">
-        <image src="../images/p0.png"></image>
+      <view class="icon serviceManual">
+         <text class="iconfont icon-fuwushouce" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>服务手册</text>
+      <view>服务手册</view>
     </view>
   </view>
 
   <!-- 审核员 -->
   <view class="flex-wrap" wx:if="{{type6}}">
     <view class="flex-item" bindtap="audit">
-      <view class="icon">
-        <image src="../images/p0.png"></image>
+      <view class="icon myTask audit">
+         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>审核</text>
+      <view>审核</view>
     </view>
-    <view class="flex-item background" bindtap="announcements">
-      <view class="icon">
-        <image src="../images/p8.png"></image>
+    <view class="flex-item" bindtap="announcements">
+      <view class="icon announcements">
+         <text class="iconfont icon-tongzhigonggao" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>通知公告</text>
+      <view>通知公告</view>
     </view>
-    <view class="flex-item background" bindtap="feedBack">
-      <view class="icon">
-        <image src="../images/p9.png"></image>
+    <view class="flex-item" bindtap="feedBack">
+      <view class="icon feedBack">
+         <text class="iconfont icon-yijianfankui" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>意见反馈</text>
+      <view>意见反馈</view>
     </view>
     <view class="flex-item" bindtap="serviceManual">
-      <view class="icon">
-        <image src="../images/p0.png"></image>
+      <view class="icon serviceManual">
+         <text class="iconfont icon-fuwushouce" style="font-size:60px;color:#fff"></text>
       </view>
-      <text>服务手册</text>
+      <view>服务手册</view>
     </view>
   </view>
 </view>

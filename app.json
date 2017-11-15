@@ -1,6 +1,6 @@
 {
   "pages": [
-    
+  
     "pages/login/login",
     "pages/index/index",
     "pages/index/myTask/myTask",
@@ -44,8 +44,8 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#0099CC",
-    "navigationBarTitleText": "用户登录",
+    "navigationBarBackgroundColor": "#009BE2",
+    "navigationBarTitleText": "禾诺冷链物流",
     "navigationBarTextStyle": "#fff"
   }
 

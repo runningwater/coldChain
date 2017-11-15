@@ -56,13 +56,15 @@
   </view>
   <view class='addTask'>
     <view class="taskTab" bindtap='myTask'>
-      我的任务
+        <text class='iconfont icon-woderenwu1'></text>
+        <view>我的任务</view>
     </view>
     <view class="taskTab add" bindtap='addTask'>
       <text class='fa fa-plus'></text>
     </view>
     <view class="taskTab" bindtap='submitTask'>
-      已提交任务
+      <text class='iconfont icon-yitijiao'></text>
+      <view>已提交任务</view>
     </view>
   </view>
 </view>

@@ -199,7 +199,7 @@ Page({
             token: res.data
           },
           success: function (res) {
-            //console.log(res);
+            console.log(res);
             This.setData({
               lists: res.data.data
             });
