@@ -1,9 +1,9 @@
 {
   "pages": [
-  
+  "pages/index/myTask/myTask",
     "pages/login/login",
     "pages/index/index",
-    "pages/index/myTask/myTask",
+   
     "pages/index/audit/audit",
     "pages/index/myTask/receiveSamples/receiveSamples",
     "pages/index/myTask/receiveSamples/tackPic/tackPic",
