@@ -14,7 +14,7 @@ Page({
     display1:"block",//我的任务列表是否显示
     display2: "none",//新增任务 是否显示
     display3: "none",//已提交任务列表是否显示
-   
+    
     hospitalID:"",//医院ID
     hospitalIDList:[],
     hospitalList:[],//医院列表
@@ -22,7 +22,7 @@ Page({
     auditTask:[]//提交后的任务列表
   },
   receiveSamples: function (event) {
-   var This = this;
+    var This = this;
     var hosName = event.currentTarget.dataset.name;
     var statusName = event.currentTarget.dataset.status;
     var workId = event.currentTarget.dataset.workid;
@@ -32,6 +32,7 @@ Page({
    
 
     if (statusName=="已接收"){
+       
       if (This.data.location!=""){
         wx.request({
           url: getApp().globalData.url + '/task/intoHospital',

@@ -1,34 +1,67 @@
 /* pages/index/myTask/myTask.wxss */
 @import '../../../utils/icon.wxss';
 .listTitle{
-  margin-top:15px;
-  background: #eee;
+  /* margin-top:15px; */
+  background: #f3f3f3;
   padding:15px 10px;
-  font-size: 14px;
+  font-size: 15px;
+  color:#666;
 }
  text{
   display: inline-block;
 }
 .hosName{
-  width:55%;
+  width:44%;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis
+  text-overflow: ellipsis;
+  font-size: 16px;
+  color:#333;
+}
+/* 不同状态 */
+.NOT{
+  width:15%;
+  margin:0 1rem;
+  text-align:center;
+  display: inline-block;
+  border-radius: 11.5px;
+  color:#ee750a;
+  background-color: #fdf0e4;
+}
+.YET{
+  width:15%;
+  margin:0 1rem;
+  text-align:center;
+  display: inline-block;
+  border-radius: 11.5px;
+  color:#1ccaa3;
+  background-color: #e8f8f7;
+}
+.END{
+  width:15%;
+  margin:0 1rem;
+  text-align:center;
+  display: inline-block;
+  border-radius: 11.5px;
+  color:#888;
+  background-color: #F3F3F3;
 }
 .state{
-  width:15%;
+  width:25%;
   text-align:center;
+  display: inline-block;
+  border-radius: 11.5px;
 }
 .time{
   width:30%;
   text-align:center;
 }
 .color{
-  color:#7ddaff;
+  color:#666;
 }
 .listContent{
    font-size: 14px;
-   padding: 35rpx 10rpx;
+   padding: 35rpx 20rpx;
    border-bottom: 1px solid #ddd;
    position: relative
 }
@@ -49,26 +82,42 @@
   padding: 20rpx;
 }
 .addTask{
-  border: 1px solid #ddd;
   position: fixed;
   bottom: 0;
   right: 0;
-  color: #fff;
-  background: #ddd;
+  color: #666;
+  background: #fff;
   text-align: center;
+  font-size: 10px;
   width: 100%;
-  overflow: hidden;
+  height:44px;
 }
-
+.active{
+  color: #009be2;
+}
+.iconfont{
+  font-size:44rpx;
+}
 .taskTab{
-  width: 33%;
+  border-top: 1px solid #ddd; 
   float: left;
-  
-  padding: 15rpx 0;
+  width:8.5rem;
+  padding:4px 0;
 }
-
-.fa-plus{
- font-size: 30rpx;
+.add{
+  /* border-top:1px solid #ddd; */
+  border-radius: 43%;
+  float:left;
+  padding:6rpx 0;
+  width:112rpx;
+  height:112rpx;
+  margin-top:-35rpx;
+}
+.icon-newlyadded{
+  font-size: 112rpx;
+  color:#009be2;
+  line-height:50px;
+  
 }
 .inputCss{
   border:1px solid #ddd;

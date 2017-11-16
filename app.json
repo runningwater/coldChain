@@ -1,9 +1,8 @@
 {
   "pages": [
-  "pages/index/myTask/myTask",
     "pages/login/login",
     "pages/index/index",
-   
+    "pages/index/myTask/myTask",
     "pages/index/audit/audit",
     "pages/index/myTask/receiveSamples/receiveSamples",
     "pages/index/myTask/receiveSamples/tackPic/tackPic",
@@ -31,7 +30,7 @@
     "pages/index/announcements/detail/detail",
     "pages/index/feedBack/feedBack",
     "pages/index/serviceManual/serviceManual",
-    "pages/index/serviceManual/manualsList/manualsList",
+    "pages/index/serviceManual/manualsList/manualsList",                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
     "pages/index/serviceManual/manualsList/mauanlsDetail/mauanlsDetail",
     "pages/index/jsproblemSolving/jsproblemSolving",
     "pages/index/jsproblemSolving/scanBag/scanBag",
