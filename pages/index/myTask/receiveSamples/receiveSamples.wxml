@@ -1,19 +1,38 @@
 <!--pages/index/myTask/receiveSamples/receiveSamples.wxml-->
-<view class="container">
-  <view class="pic">
-    <image src="../../../images/u377.png"></image>
-  </view>
+<view class="">
   <view class="scan">
-    <text class="scanS">扫描到：</text>
+    <!-- <text class="scanS">扫描到：</text> -->
     <text class="scanHos">{{hosName}}</text>
   </view>
-  <view class="btn">
-     <button bindtap="applySamples">申请标本</button>
+  <view class="btnWrap">
+    <view class='number'>
+      <view class='num'>1</view>
+      <view class='line'></view>
+      <view class='num'>2</view>
+      <view class='line'></view>
+      <view class='num'>3</view>
+    </view>
+    <view  class="btnGroup">
+      <view class="btn">
+        <button class='apply' bindtap="applySamples">
+          <text class='iconfont icon-shenqingbiaoben'></text>
+          申请标本
+        </button>
+      </view>
+      <view class="btn">
+        <button class='scanSheet' bindtap="scanReceipt">
+          <text class='iconfont icon-shangchuanjiaojiedan'></text>
+          扫描交接单
+        </button>
+      </view>
+      <view class="btn">
+        <button class='leave' bindtap="leaveHospital">
+          <text class="iconfont icon-likaiyiyuan"></text>
+          离开医院
+        </button>
+      </view>
+    </view>
+    
   </view>
-   <view class="btn">
-     <button bindtap="scanReceipt">扫描交接单</button>
-  </view>
-   <view class="btn">
-     <button bindtap="leaveHospital">离开医院</button>
-  </view>
+  
 </view>

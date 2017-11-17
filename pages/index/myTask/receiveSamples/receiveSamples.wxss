@@ -1,27 +1,67 @@
 /* pages/index/myTask/receiveSamples/receiveSamples.wxss */
-.pic  image{
-  width:100%;
-  height: 73px;
-}
+@import '../../../../utils/icon.wxss';
+
 .scan{
-  font-size: 14px;
-  text-align: center;
-  margin:15px 0 25px 0;
-}
-.scanS{
-  font-weight: bold;
+  padding:0.746rem 1.06rem;
+  background:#f3f3f3;
+  line-height:0.907rem;
 }
 .scanHos{
-  color: #6cf;
+  color: #333;
+  font-size:0.907rem;
+}
+.btnWrap{
+  position: relative;
+  overflow: hidden;
+  margin:5.27rem auto;
+  padding:0 1.06rem;
+}
+.number{
+  float:left;
+  margin-right:0.8rem;
+}
+.btnGroup{
+  float: left;
+}
+.num{
+  width:1.2rem;
+  height:1.2rem;
+  border-radius: 50%;
+  background-color: #cecece;
+  color:#fff;
+  font-size: 0.8rem;
+  text-align: center;
+}
+.line{
+  width:1px;
+  height:5.3rem;
+  border-right:1px dotted #cecece;
+  padding-left:0.5rem;
+}
+.btn{
+  width:14.4rem; 
+  border-radius: 5px;
+}
+.btn .iconfont{
+  display: inline-block;
+  font-size:1.547rem;
+  vertical-align: middle;
 }
 .btn button{
   color:#fff;
-  font-size: 16px;
-  font-weight: bold;
-  background: #09c;
-  width:70%;
+  font-size: 1.013rem;
   margin:0 auto;
-  padding: 5px;
-  margin-bottom:50px; 
-  border-radius: 15px;
+  padding:0.48rem 0; 
+  margin-bottom:3.73rem;
+  line-height:1.547rem;
+  vertical-align: bottom;
+}
+.apply{
+  background-color: #1bc8a5;
+}
+.scanSheet{
+  background-color: #4d94ec;
+}
+.leave{
+  background-color: #f0a735;
 }

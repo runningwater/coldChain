@@ -19,47 +19,59 @@
         <block wx:else>
             <text class="END">{{item.statusName}}</text>
         </block>
-        <text class="time color">{{item.goOff}}</text>
+        <text class="time size">{{item.goOff}}</text>
       </view>
     </block>
   </view>
   <!-- 新增任务 -->
-  <view style="display:{{display2}}">
-      <form bindsubmit="submit">
-        <view class="inputCss">  
-         <picker name="hospital" value="{{hospitalID}}" range="{{hospitalList}}" bindchange="hospitalChange">{{hospitalName}}</picker>
+  <view class='addTasks' style="display:{{display2}}">
+    <form bindsubmit="submit">
+      <view class="inputCss ">  
+        <text class='iconfont icon-down'></text>
+        <picker name="hospital" value="{{hospitalID}}" range="{{hospitalList}}" bindchange="hospitalChange">{{hospitalName}}</picker>
       </view>
       <view class="inputCss">
+      <text class='iconfont icon-down'></text>
         <picker class="gray" name="estimateTime" mode="time" bindchange="timeChange" value="{{nowtime}}" start="00:00" 
       end="24:00">
       {{nowtime}}
         </picker>
       </view>
       <view class="inputCss"> 
-        <textarea name="remark"  placeholder="备注"/>
+        <textarea name="remark"  placeholder="请描述任务详情"/>
       </view>
       <view class="btn">
         <button form-type="submit">提交</button>
       </view>
-      </form>
+    </form>
   </view>
   <!-- 已提交任务 -->
   <view style="display:{{display3}}">
     <view class="listTitle">
       <text class="hosName">医院名称</text>
-      <text class="state">状态</text>
+      <text class="status">状态</text>
      
     </view>
     <block wx:for="{{auditTask}}">
-        <view class="listContent" bindtap='showMsg' data-index="{{index}}">
-            <text class="hosName">{{item.hospitalName}}</text>
-            <text class="state">{{item.statusName}}</text>
-            <text class="fa fa-hand-o-down icon"></text>
+        <view class="listContentBox" bindtap='showMsg' data-index="{{index}}">
+          <text class="hospitalName">{{item.hospitalName}}</text>
+          <!-- <text class="state">{{item.statusName}}</text> -->
+          <block wx:if="{{item.statusName=='已通过'}}">
+          <text class="SUCCESS">{{item.statusName}}</text>
+          </block>
+          <block wx:elif="{{item.statusName=='待审核'}}">
+            <text class="WAIT">{{item.statusName}}</text>
+          </block>
+          <block wx:else>
+              <text class="FAIL">{{item.statusName}}</text>
+          </block>
+          <text class="iconfont icon-shrink"></text>
         </view>
         <view  class="{{item.show?'shows':'hides'}}">
-            <view>审核人：{{item.authUser==null?"":item.authUser}}</view>
-            <view>审核时间：{{item.authTime==null?"":item.authTime}}</view>
-            <view>审核信息：{{item.authRemark==null?"":item.authRemark}}</view>
+          <view>{{item.hospitalName}}</view>
+          <view>审核人：{{item.authUser==null?"":item.authUser}}</view>
+          <view>审核时间：{{item.authTime==null?"":item.authTime}}</view>
+          <view>审核信息：{{item.authRemark==null?"":item.authRemark}}</view>
         </view>
     </block>
   </view>

@@ -6,64 +6,74 @@
   padding:15px 10px;
   font-size: 15px;
   color:#666;
+  line-height:16px;
 }
  text{
   display: inline-block;
 }
 .hosName{
-  width:44%;
+  width:8rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 16px;
-  color:#333;
 }
 /* 不同状态 */
 .NOT{
-  width:15%;
+  width:2.88rem;
   margin:0 1rem;
   text-align:center;
   display: inline-block;
+  vertical-align: top;
   border-radius: 11.5px;
   color:#ee750a;
   background-color: #fdf0e4;
+  font-size:0.746rem;
 }
 .YET{
-  width:15%;
+  width:2.88rem;
   margin:0 1rem;
   text-align:center;
   display: inline-block;
+  vertical-align: top;
   border-radius: 11.5px;
   color:#1ccaa3;
   background-color: #e8f8f7;
+  font-size:0.746rem;
 }
 .END{
-  width:15%;
+  width:2.88rem;
   margin:0 1rem;
   text-align:center;
   display: inline-block;
+  vertical-align: top;
   border-radius: 11.5px;
   color:#888;
   background-color: #F3F3F3;
+  font-size:0.746rem;
 }
 .state{
   width:25%;
   text-align:center;
   display: inline-block;
   border-radius: 11.5px;
+  vertical-align: top;
 }
 .time{
   width:30%;
   text-align:center;
-}
-.color{
   color:#666;
+  vertical-align: top;
+}
+.size{
+  font-size:0.746rem;
 }
 .listContent{
-   font-size: 14px;
-   padding: 35rpx 20rpx;
-   border-bottom: 1px solid #ddd;
-   position: relative
+  padding: 35rpx 20rpx;
+  border-bottom: 1px solid #cecece;
+  position: relative;
+  line-height:0.853rem;
+  font-size: 0.853rem;
+  color:#666; 
 }
 
 .icon{
@@ -99,43 +109,120 @@
   font-size:44rpx;
 }
 .taskTab{
-  border-top: 1px solid #ddd; 
+  border-top: 1px solid #cecece; 
   float: left;
-  width:8.5rem;
+  width:8.2rem;
   padding:4px 0;
 }
 .add{
-  /* border-top:1px solid #ddd; */
-  border-radius: 43%;
+  border-top:1px solid #cecece; 
+  border-radius: 50%;
   float:left;
-  padding:6rpx 0;
-  width:112rpx;
-  height:112rpx;
-  margin-top:-35rpx;
+  width:3.6rem;
+  height:3.6rem;
+  margin-top:-1.56rem;
 }
 .icon-newlyadded{
-  font-size: 112rpx;
+  font-size: 3.6rem;
   color:#009be2;
-  line-height:50px;
+  line-height:3.6rem;
   
+}
+/* 新增任务模块 */
+.addTasks{
+  margin:0 0.53rem;
+}
+.icon-down{
+  position:absolute;
+  right:0.64rem;
+  top:0.867rem;
+  color:#bebebe;
+  font-size:0.746rem;
 }
 .inputCss{
-  border:1px solid #ddd;
+  position:relative;
+  border:1px solid #cecece;
   border-radius: 5px;
-  padding: 10px 20px;
-  margin: 20px 0;
+  padding: 0.53rem;
+  margin: 1.07rem 0;
+  color:#888;
+  font-size:0.853rem;
 }
 .gray{
-  color:gray;
+  color:#888;
 }
 .btn{
-  margin-top:30px;
-  
+  margin-top:1.6rem;
+  border-radius:5px;
 }
 .btn button{
-  background: #09c;
+  background: #009be2;
   color:#fff;
-  font-size: 16px;
+  font-size: 1.013rem;
   font-weight: bold;
-  width: 40%;
+}
+/* 已提交任务模块 */
+.listContentBox{
+  padding: 35rpx 20rpx;
+  border-bottom: 1px solid #cecece;
+  /* border-radius: 5px; */
+  position: relative;
+  line-height:0.853rem;
+  font-size: 0.853rem;
+  color:#666;
+  /* margin-bottom:0.533rem; */
+}
+.status{
+  text-align:center;
+  display: inline-block;
+  margin-left:3.06rem;
+  width:4.2rem;
+  vertical-align: top;
+}
+.hospitalName{
+  font-size: 0.906rem;
+  color:#333;
+  width:8rem;
+  height:0.853rem;
+  line-height:0.853rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.icon-shrink{
+  transform:rotate(180deg);
+  position:absolute;
+  right:20px;
+  color:#bebebe;
+  font-size:0.746rem;
+}
+.FAIL{
+  margin:0 1rem;
+  width:4.2rem;
+  text-align:center;
+  display: inline-block;
+  vertical-align: top;
+  font-size:0.746rem;
+  margin-left:3.06rem;
+  color:#ee750a;
+}
+.SUCCESS{
+  margin:0 1rem;
+  width:4.2rem;
+  text-align:center;
+  display: inline-block;
+  vertical-align: top;
+  font-size:0.746rem;
+  margin-left:3.06rem;
+  color:#888;
+}
+.WAIT{
+  margin:0 1rem;
+  width:4.2rem;
+  text-align:center;
+  display: inline-block;
+  vertical-align: top;
+  font-size:0.746rem;
+  margin-left:3.06rem;
+  color:#1ccaa3;
 }

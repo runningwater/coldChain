@@ -42,13 +42,12 @@
 
 /*按钮*/
 .btn{
-  margin-top:30px;
-  
+  margin-top:1.6rem;
+  border-radius:5px;
 }
 .btn button{
-  background: #09c;
+  background: #009be2;
   color:#fff;
-  font-size: 16px;
+  font-size: 1.013rem;
   font-weight: bold;
-  width: 40%;
 }
