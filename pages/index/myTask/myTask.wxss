@@ -87,9 +87,8 @@
 }
 .shows{
   display: block;
-  font-size: 14px;
-  background: #f0f0f0;
-  padding: 20rpx;
+  background: #f3f3f3;
+  padding: 30rpx 20rpx;
 }
 .addTask{
   position: fixed;
@@ -161,11 +160,11 @@
   font-size: 1.013rem;
   font-weight: bold;
 }
+/**************************/
 /* 已提交任务模块 */
 .listContentBox{
   padding: 35rpx 20rpx;
   border-bottom: 1px solid #cecece;
-  /* border-radius: 5px; */
   position: relative;
   line-height:0.853rem;
   font-size: 0.853rem;
@@ -225,4 +224,27 @@
   font-size:0.746rem;
   margin-left:3.06rem;
   color:#1ccaa3;
+}
+/* 展开详情部分 */
+.titleHospital{
+  font-size:0.906rem;
+  color:#333;
+  padding-bottom:0.8rem;
+  border-bottom:1px solid #bebebe;
+}
+.detail1,.detail2{
+  border-bottom:1px dotted #bebebe;
+  padding:0.533rem 0;
+  font-size: 0.853rem;
+  color:#434343;
+}
+.detail3{
+  padding-top:0.533rem;
+  font-size: 0.853rem;
+  color:#434343;
+}
+.detail1 text,
+.detail2 text,
+.detail3 text{
+  color:#666;
 }

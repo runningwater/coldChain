@@ -1,32 +1,35 @@
 <!--pages/index/jsproblemSolving/scanBag/scanSpecimens/scanSpecimens.wxml-->
 
+<view class="">
+  <block wx:if="{{item.sampleCount==0}}">
+    <view class="header">标本袋：{{code}} 共扫描<text class='yellow'>{{num}}</text>个标本</view>
+  </block>
+  <block wx:if="{{item.sampleCount!=0}}">
+    <view class="header">标本袋：{{code}} 共扫描<text class='green'>{{num}}</text>个标本</view>
+  </block> 
+  <!-- <view class="header">标本袋：{{code}} 共扫描<text class='green'>{{num}}</text>个标本</view> -->
+  <view class="scanInput">
 
-<view class="container">
-    <view class="scanInput">
-
-        <input placeholder-style="font-size:12px" confirm-type="done" bindconfirm="scanSpecimens" placeholder="请扫描条码或输入条码" value="{{barcode}}" id="code" />
-        <view class="img" bindtap="scanSpecimensCode">
-            <image src="../../../../images/u477.png"></image>
+    <input placeholder-style="font-size:0.853rem" confirm-type="done" bindconfirm="scanSpecimens" placeholder="扫描或手动输入条形码" value="{{barcode}}" id="code" />
+    <text class='iconfont icon-saoma'></text>
+  </view>
+    
+  <block wx:for="{{codes}}">
+    <view class="codeList">
+      <view class="codeL width85">
+        <view >
+            <text>标本：<text class="red">{{item.barCode}}</text></text>               
+        </view>           
+        <view>
+          <text class="ddd">{{item.scanningDate}}</text>
         </view>
     </view>
-  
-    <view class="center">标本袋：{{code}} 共扫描{{num}}个标本</view>
-    <block wx:for="{{codes}}">
-       <view class="codeList">
-         <view class="codeL width85">
-            <view >
-                <text>标本：<text class="red">{{item.barCode}}</text></text>               
-            </view>           
-            <view>
-              <text class="ddd">{{item.scanningDate}}</text>
-            </view>
-        </view>
-        <view class="codeR width15" data-sampleId="{{item.sampleId}}"  bindtap="delSpecimens">
-            <image class="del" src="../../../../images/u672.png"></image>
-        </view>  
-        <view class="codeR width15" data-sampleId="{{item.sampleId}}"  bindtap="takePic">
-            <text class="fa fa-camera"></text>
-        </view>  
-       </view>
-    </block>
+    <view class="codeR width15" data-sampleId="{{item.sampleId}}"  bindtap="delSpecimens">
+        <image class="del" src="../../../../images/u672.png"></image>
+    </view>  
+    <view class="codeR width15" data-sampleId="{{item.sampleId}}"  bindtap="takePic">
+        <text class="iconfont icon-camera"></text>
+    </view>  
+    </view>
+  </block>
 </view>

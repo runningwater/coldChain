@@ -1,33 +1,31 @@
 <!--pages/index/jsproblemSolving/jsproblemSolving.wxml-->
 <!--pages/index/myTask/receiveSamples/scan/scan.wxml-->
-<view class="container">
-    <view class="scanInput">
-
-        <input placeholder-style="font-size:12px" confirm-type="done" bindconfirm="scanBag" placeholder="请扫描条码或输入条码" value="{{code}}" id="code" />
-        <view class="img" bindtap="scanBagCode">
-            <image src="../../../images/u477.png"></image>
-        </view>
+<view class="">
+  <view class='headerWrap'>
+    <view class="hospitalName">{{hospitalName}}</view>
+    <view class="">标本箱：<text class='blue'>{{boxCode}}</text></view>
+  </view>
+    
+  <view class="scanInput">
+    <input placeholder-style="font-size:0.853rem" confirm-type="done" bindconfirm="scanBag" placeholder="扫描或手动输入条形码" value="{{code}}" id="code" />
+    <text class='iconfont icon-saoma'></text>
+  </view>
+    
+  <block wx:for="{{bagCodes}}">
+    <view class="codeList">
+      <view class="title" data-bagId="{{item.bagId}}" data-barcode="{{item.barCode}}"   data-num="{{item.sampleCount}}" bindtap="enterBag">
+        <text class='scanBag'>标本袋：{{item.barCode}}</text>
+        <block wx:if="{{item.sampleCount==0}}">
+          <text class='codeR'>共扫描 <text class='yellow'>{{item.sampleCount}}</text>个标本</text>
+        </block>
+        <block wx:if="{{item.sampleCount!=0}}">
+          <text class='codeR'>共扫描 <text class='green'>{{item.sampleCount}}</text>个标本</text>
+        </block>               
+        
+      </view>
+      <view class="inputDate">{{item.inputDate}}</view>
     </view>
-    <view class="center">{{hospitalName}}</view>
-    <view class="center">标本箱：{{boxCode}}</view>
-    <block wx:for="{{bagCodes}}">
-       <view class="codeList">
-         <view class="codeL width85" data-bagId="{{item.bagId}}" data-barcode="{{item.barCode}}"   data-num="{{item.sampleCount}}" bindtap="enterBag">
-            <view >
-                <text>标本袋：<text class="red">{{item.barCode}}</text></text>               
-            </view>
-            <view>
-              <text>共扫描{{item.sampleCount}}个标本</text>
-             
-            </view>
-            <view>
-            
-              <text class="ddd">{{item.inputDate}}</text>
-            </view>
-        </view>
-        <view class="codeR width15" data-bagId="{{item.bagId}}"  bindtap="delBag">
-            <image class="del" src="../../../images/u672.png"></image>
-        </view>  
-       </view>
-    </block>
+    <!-- <view class="codeR width15" data-bagId="{{item.bagId}}"  bindtap="delBag"></view>   -->
+    
+  </block>
 </view>

@@ -68,10 +68,10 @@
           <text class="iconfont icon-shrink"></text>
         </view>
         <view  class="{{item.show?'shows':'hides'}}">
-          <view>{{item.hospitalName}}</view>
-          <view>审核人：{{item.authUser==null?"":item.authUser}}</view>
-          <view>审核时间：{{item.authTime==null?"":item.authTime}}</view>
-          <view>审核信息：{{item.authRemark==null?"":item.authRemark}}</view>
+          <view class='titleHospital'><text>{{item.hospitalName}}</text></view>
+          <view class='detail1'>审核人：<text>{{item.authUser==null?"":item.authUser}}</text></view>
+          <view class='detail2'>审核时间：<text>{{item.authTime==null?"":item.authTime}}</text></view>
+          <view class='detail3'>审核信息：<text>{{item.authRemark==null?"":item.authRemark}}</text></view>
         </view>
     </block>
   </view>

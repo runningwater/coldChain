@@ -1,58 +1,71 @@
 /* pages/index/jsproblemSolving/scanBag/scanBag.wxss */
 /* pages/index/jsproblemSolving/jsproblemSolving.wxss */
-.scanInput{
-  border: 1px solid #3f89ec;
-  border-radius: 10px;
-  height: 30px;
-  line-height: 30px;
-  padding: 7px 8px;
-  margin-top:30px;
-  margin-bottom:20px;
+@import '../../../../utils/icon.wxss';
+.headerWrap{
+  background-color: #f3f3f3;
+  padding:0.8rem 0.53rem;
 }
-.img{
-  display: inline-block;
-}
-.img image{
-  display: inline-block;
-  width:20px;
-  height: 20px;
-  position: relative;
-  top:0; 
+.hospitalName{
+  padding-bottom: 0.53rem;
+  color:#333;
+  font-size: 0.907rem;
 }
 
+.scanInput{
+  position: relative;
+  border: 1px solid #bebebe;
+  border-radius: 5px;
+  color:#888;
+  margin:1.33rem 0.53rem;  
+  padding: 7px 8px;
+}
+.icon-saoma{
+  position: absolute;
+  display: inline-block;
+  font-size:1.387rem;
+  line-height: 1rem;
+  right:0.53rem;
+  top:0.747rem;
+}
+.blue{
+  color:#009be2;
+}
+.yellow{
+  color:#ee750a;
+}
+.green{
+  color:#1ccaa3;
+}
 .codeList{ 
   overflow: hidden;
   color:#333;
-  padding:10px 8px;
-  border-bottom:1px solid #ddd; 
+  margin:0 0.53rem 0.8rem;
+  border-bottom:1px solid #bebebe; 
 }
-.codeL{
-  float: left;
-  color: #555;
+.scanBag{
+  color:#333;
+  font-size: 0.907rem;
+  float:left;
 }
+
 .codeR{
-  float: right
+  float: right;
+  color:#666;
+  font-size: 0.747rem;
 }
-.red{
-  color: red;
+.inputDate{
+  color:#888;
+  font-size: 0.693rem;
+  margin:0.8rem 0;
 }
-.overflow{
-  overflow:hidden;
-  font-size: 16px;
-}
-.ddd{
-  color:#ddd;
+.title{
+  width:100%;
+  overflow: hidden;
 }
 .font16{
   font-size:16px;
 }
-.center{
-  text-align:center
-}
-.width85{
-  display: inline-block;
-  width: 80%;
-}
+
 .width15{
   display: inline-block;
   width: 20%;

@@ -1,30 +1,33 @@
 /* pages/index/jsproblemSolving/scanBag/scanSpecimens/scanSpecimens.wxss */
-
+@import '../../../../../utils/icon.wxss';
+.header{
+  background-color: #f3f3f3;
+  padding:0.8rem 0.53rem;
+  font-size:0.907rem;
+  color:#333;
+}
 .scanInput{
-  border: 1px solid #3f89ec;
-  border-radius: 10px;
-  height: 30px;
-  line-height: 30px;
-  padding: 7px 8px;
-  margin-top:30px;
-  margin-bottom:20px;
-}
-.img{
-  display: inline-block;
-}
-.img image{
-  display: inline-block;
-  width:20px;
-  height: 20px;
   position: relative;
-  top:0; 
+  border: 1px solid #bebebe;
+  border-radius: 5px;
+  color:#888;
+  margin:1.33rem 0.53rem;  
+  padding: 7px 8px;
+}
+.icon-saoma{
+  position: absolute;
+  display: inline-block;
+  font-size:1.387rem;
+  line-height: 1rem;
+  right:0.53rem;
+  top:0.747rem;
 }
 
 .codeList{ 
   overflow: hidden;
   color:#333;
-  padding:10px 8px;
-  border-bottom:1px solid #ddd; 
+  margin:0 0.53rem 0.8rem;
+  border-bottom:1px solid #bebebe; 
 }
 .codeL{
   float: left;
@@ -33,8 +36,11 @@
 .codeR{
   float: right
 }
-.red{
-  color: red;
+.yellow{
+  color:#ee750a;
+}
+.green{
+  color:#1ccaa3;
 }
 .overflow{
   overflow:hidden;

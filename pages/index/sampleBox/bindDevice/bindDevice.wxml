@@ -2,10 +2,8 @@
 <view class="container">
   <view class="scanInput">
 
-    <input placeholder-style="font-size:12px" placeholder="请扫描或输入设备条码" value="{{deviceBarcode}}" bindinput="codeValue" id="code" />
-    <view class="img" bindtap="scanCode">
-      <image src="../../../images/u477.png"></image>
-    </view>
+    <input placeholder-style="font-size:0.853rem" placeholder="扫描或手动输入条形码" value="{{deviceBarcode}}" bindinput="codeValue" id="code" />
+    <text class='iconfont icon-saoma'></text>
   </view>
   <view class="btn">
     <button bindtap="barCodeScan">绑定设备</button>

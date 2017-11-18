@@ -250,7 +250,7 @@ Page({
   },
   //绑定设备
   bindDevice: function (e) {
-  // console.log(e.target.dataset);
+    //console.log(e.target.dataset);
     wx.navigateTo({
       url: 'bindDevice/bindDevice?transportid=' + e.target.dataset.transportid
     })
