@@ -29,42 +29,50 @@ Page({
   //离开医院
   leaveHospital:function(){
     var This = this;
-   
-    var leaveHosDate =  getApp().getTime();
-    wx.getLocation({
-      success: function(res) {
-       This.setData({
-         latitude: res.latitude,
-         longitude: res.longitude
-       })
-       wx.request({
-         url: getApp().globalData.url + '/task/leaveHospital',
-         method: "POST",
-         header: {
-           "Content-Type": "application/x-www-form-urlencoded"
-         },
-         data: {
-           token: This.data.token,
-           workId: This.data.workId,
-          // leaveHosDate: leaveHosDate,
-           location: This.data.longitude + "," + This.data.latitude
-         },
-         success: function (msg) {
-         
-           if (msg.data.success){
-             wx.navigateBack({
-               delta:1
-             })
-           }else{
-             wx.showToast({
-               title: msg.data.message,
-             })
-           }
-          
-         }
-       })
-      },
-    })
+   wx.showModal({
+     title: '离开医院',
+     content: '确认离开医院吗？',
+     success:function(confirm){
+        if(confirm.confirm){
+          var leaveHosDate = getApp().getTime();
+          wx.getLocation({
+            success: function (res) {
+              This.setData({
+                latitude: res.latitude,
+                longitude: res.longitude
+              })
+              wx.request({
+                url: getApp().globalData.url + '/task/leaveHospital',
+                method: "POST",
+                header: {
+                  "Content-Type": "application/x-www-form-urlencoded"
+                },
+                data: {
+                  token: This.data.token,
+                  workId: This.data.workId,
+                  // leaveHosDate: leaveHosDate,
+                  location: This.data.longitude + "," + This.data.latitude
+                },
+                success: function (msg) {
+
+                  if (msg.data.success) {
+                    wx.navigateBack({
+                      delta: 1
+                    })
+                  } else {
+                    wx.showToast({
+                      title: msg.data.message,
+                    })
+                  }
+
+                }
+              })
+            },
+          })
+        }
+     }
+   })
+  
  
    
   },
