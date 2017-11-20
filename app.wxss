@@ -37,3 +37,74 @@
   background: #009BE2;
   color:#FFF;
 }
+
+
+/* ******************左滑删除 ***********************/
+.hang{
+ 
+   position: relative; 
+  border-bottom:1px solid #ddd; 
+  color:#333;
+  padding:10px 8px;
+  font-size:0.853rem;
+}
+.w801{
+
+  /* clear: both; */
+  padding: 10px 0;
+  position: relative;
+  left:-22%;
+  animation:left 1s;
+
+}
+
+.w800{
+  width: 100%;
+  padding: 10px 0;
+  position: relative;
+  left:0; 
+  animation:left1 1s;
+  
+}
+.w20{
+  width: 20%;
+  text-align: center;
+  background: red;
+  color:#fff;
+  float: right;
+
+  padding: 10px 0;
+  position: relative;
+  top:-2.2rem;
+} 
+
+
+@keyframes left
+{
+  from {left:0%;}
+  to {left:-20%;}
+}
+
+@keyframes left1
+{
+  from {left:-20%;}
+  to {left:0%;}
+}
+
+
+
+.box{
+  font-weight: bold;
+}
+.codeL{
+  margin-left:10rpx;
+}
+.icon{
+  position: absolute; 
+  font-size: 1.6rem;
+  color:#bebebe;
+  right:0; 
+  top:0.213rem;  
+}
+
+/* ******************左滑删除end ***********************/
