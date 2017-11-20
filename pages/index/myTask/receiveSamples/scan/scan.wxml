@@ -1,14 +1,15 @@
 <!--pages/index/myTask/receiveSamples/scan/scan.wxml-->
-<view class="container">
+<view class="">
+  <view class='headerWrap'>
+    <view class="hospitalName">{{hosName}}</view>
+  </view>
   <view class="scanInput">
-    
     <input placeholder-style="font-size:12px" confirm-type="done" bindconfirm="scanBox" 
     placeholder="请扫描条码或输入条码" value="{{code}}" 
     id="code"/>
-    <view class="img" bindtap="scanCode">
-      <image src="../../../../images/u477.png"></image>
-    </view>
+    <text class='iconfont icon-saoma'></text>
   </view>
+  
   <block wx:for="{{barCode}}">
     <view class="codeList" bindtouchstart="mytouchstart" 
     bindtouchmove="delBox" bindtouchend='myend' data-barCode="{{item.barCode}}"

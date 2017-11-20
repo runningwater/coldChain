@@ -16,7 +16,7 @@ Page({
   applySamples:function(){
     wx.navigateTo({
       url: 'scan/scan?hospitalId=' + this.data.hospitalId + 
-      "&workId=" +this.data.workId,
+      "&workId=" + this.data.workId + "&hosName=" + this.data.hosName,
     })
   },
   //扫描交接单

@@ -22,7 +22,7 @@
       <view class="btn">
         <button class='scanSheet' bindtap="scanReceipt">
           <text class='iconfont icon-shangchuanjiaojiedan'></text>
-          扫描交接单
+          上传交接单
         </button>
       </view>
       <view class="btn">

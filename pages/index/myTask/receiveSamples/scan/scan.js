@@ -11,7 +11,8 @@ Page({
     workId: "",
     location: "",//经纬度
     barCode: [],
-    flag: false
+    flag: false,
+    hosName:""
   },
   mytouchstart: function (e) {
     //开始触摸，获取触摸点坐标并放入数组中
@@ -231,7 +232,8 @@ Page({
     })
     this.setData({
       hospitalId: options.hospitalId,
-      workId: options.workId
+      workId: options.workId,
+      hosName:options.hosName
     })
 
     wx.getStorage({
