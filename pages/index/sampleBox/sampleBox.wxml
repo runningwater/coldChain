@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container" catchtap='cancel'>
   <view class="scanInput">
     <input placeholder-style="font-size:0.853rem" 
     placeholder="扫描或手动输入条形码" confirm-type="done" bindconfirm="barCodeScan" 
@@ -7,18 +7,20 @@
   </view>
  
   <block wx:for="{{barCode}}">
-    <view class="codeList" bindtouchstart="mytouchstart" bindtouchmove="delMyTask" bindtouchend='myend' data-transportId="{{item.transportId}}"
-    data-barCode = "{{item.barCode}}"  data-transportId="{{item.transportId}}">
-      <text class="box">标本箱: </text> 
-      <view class="codeL">{{item.barCode}}</view>
-     
-      <view class="time">{{item.deviceName}}</view>
-      <text class="iconfont icon-bangdingshebei"
+    <view class='hang'>
+    <view class='{{l==item.boxId?"w801":"w800"}}'  data-id="{{item.boxId}}"  bindtouchstart="mytouchstart" 
+    bindtouchmove="mymove" bindtouchend='myend'>
+     <text class="">标本箱: </text> 
+      <text class="codeL box">{{item.barCode}}</text>     
+      <text class="codeL">{{item.deviceName}}</text>
+      <text class="iconfont icon-bangdingshebei icon1"
        data-transportId="{{item.transportId}}" bindtap="bindDevice"></text> 
-    </view>
+    </view><view class='w20' wx:if="{{l==item.boxId?true:false}}" bindtap='delBox' data-transportid="{{item.transportId}}">删除</view>    
+</view> 
   </block>
 
   <view class="btn">
     <button bindtap="complete">完成</button>
   </view>
 </view>
+

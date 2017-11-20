@@ -23,19 +23,7 @@
   margin: 15px auto;
   font-size: 14px;
 }
-.codeList{
-  font-size:14px;
-  overflow: hidden;
-  color:#333;
-  padding:10px 8px;
-  border-bottom:1px solid #ddd; 
-}
-.codeL{
-  float: left
-}
-.codeR{
-  float: right
-}
+
 .red{
   color: red;
 }

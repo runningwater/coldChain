@@ -12,7 +12,13 @@ Page({
     location: "",//经纬度
     barCode: [],
     flag: false,
-    hosName:""
+    hosName:"",
+    l:""
+  },
+  cancel: function () {
+    this.setData({
+      l: ""
+    })
   },
   mytouchstart: function (e) {
     //开始触摸，获取触摸点坐标并放入数组中
@@ -22,7 +28,7 @@ Page({
     });
   },
   //触摸点移动 
-  delBox: function (e) {
+  mymove: function (e) {
     
     var This = this;
 
@@ -42,11 +48,17 @@ Page({
 
   },
   myend: function (e) {
+    this.setData({
+      flag: false,
+      l: e.currentTarget.dataset.id
+    })
+  },
+  delBox:function(e){
     var boxId = e.currentTarget.dataset.boxid;
     var recordId = e.currentTarget.dataset.recordid;
     var barCode = e.currentTarget.dataset.barcode;
     var This = this;
-    if (This.data.flag) {
+    
       wx.showModal({
         title: '确认删除？',
         content: '确定要删除此标本箱吗？',
@@ -83,7 +95,7 @@ Page({
           }
         }
       })
-    }
+    
   },
   //扫码
   scanCode: function () {
@@ -202,7 +214,7 @@ Page({
   samplesBag: function (e) {
 
     var barcode = e.currentTarget.dataset.barcode;
-    var boxid = e.currentTarget.dataset.boxid;
+    var boxid = e.currentTarget.dataset.id;
     var recordid = e.currentTarget.dataset.recordid;
     var transportid = e.currentTarget.dataset.transportid;
     var samplesum = e.currentTarget.dataset.samplesum;

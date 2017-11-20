@@ -25,27 +25,6 @@
   top:0.747rem;
 }
 
-.codeList{
-  overflow: hidden;
-  color:#333;
-  margin:0 0.53rem 0.8rem;
-  border-bottom:1px solid #bebebe;
-}
-.codeL{
-  float: left
-}
-.codeR{
-  float: right
-}
-.blue{
-  color:#009be2;
-}
-.yellow{
-  color:#ee750a;
-}
-.green{
-  color:#1ccaa3;
-}
 /*按钮*/
 .btn{
   margin-top:1.33rem;

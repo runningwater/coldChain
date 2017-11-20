@@ -15,39 +15,11 @@
   right:0.53rem;
   top:0.747rem;
 }
-.codeList{
-  position: relative;
-  font-size:0.853rem;
-  overflow: hidden;
-  color:#333;
-  padding:10px 8px;
-  border-bottom:1px solid #ddd; 
-}
-.codeList view{
-  display: inline-block;
-}
-.codeList text{
-  display: inline-block;
-}
-.box{
-  font-weight: bold;
-}
-.codeL{
-  margin-left:0.53rem;
-}
-.icon-bangdingshebei{
-  position: absolute;
-  font-size: 1.6rem;
-  color:#bebebe;
-  right:0;
-  top:0.213rem;
-}
-.ok{
-  color:#1ccaa3;
-}
-.time{
-  float: right
-}
+
+
+
+
+ 
 
 /*按钮*/
 .btn{

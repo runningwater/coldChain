@@ -1,26 +1,39 @@
 <!--pages/index/myTask/receiveSamples/scan/scan.wxml-->
-<view class="container">
+<view class="container" catchtap='cancel'>
   <view class="scanInput">
   
     <input placeholder-style="font-size:12px" 
     confirm-type="done" bindconfirm="scanSimple" placeholder="请扫描条码或输入条码" 
     value="{{code}}" id="code"/>
       <view class="img" bindtap="scanCode">
-        <image src="../../../../../../images/u477.png"></image>
+        <!-- <image src="../../../../../../images/u477.png"></image> -->
       </view>
   </view>
   <view class="total">
     标本袋<text>{{bag}}</text>共扫描<text class="red">{{bagNum}}</text>个标本
   </view>
   <block wx:for="{{barCode}}">
-    <view class="codeList"  bindtouchstart="mytouchstart" 
-    bindtouchmove="delSample" bindtouchend='myend' data-sampleId="{{item.sampleId}}">
-      <text class="codeL">标本条码：{{item.barCode}}</text>
-      <view class="codeR" data-sampleIdone="{{item.sampleId}}"
-       bindtap="takePhoto">
+   
+    <!-- <view class="codeList"  
+    bindtouchmove="delSample" >
+      <text class="codeL"></text>
+      <view class="codeR" 
+      >
         <text class="{{item.apply?'fa fa-check':'fa fa-camera'}}"></text>
       </view>
-    </view>
+    </view> -->
+
+
+     <view class='hang'>
+    <view class='{{l==item.sampleId?"w801":"w800"}}'  data-sampleId="{{item.sampleId}}"  bindtouchstart="mytouchstart" 
+    bindtouchmove="mymove" bindtouchend='myend'>
+    
+      <text class="codeL box">标本条码：{{item.barCode}}</text>     
+      <!-- <text class="codeL">{{item.deviceName}}</text> -->
+      <text class="iconfont icon-bangdingshebei icon1"
+        data-sampleIdone="{{item.sampleId}}"  bindtap="takePhoto"></text> 
+    </view><view class='w20' wx:if="{{l==item.sampleId?true:false}}" bindtap='delSample' data-sampleId="{{item.sampleId}}">删除</view>    
+</view> 
   </block>
 
    <view class="btn">

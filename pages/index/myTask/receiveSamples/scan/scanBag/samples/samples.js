@@ -18,6 +18,11 @@ Page({
     startPoint: [0, 0],//初始化touchstart坐标
     flag: false
   },
+  cancel: function () {
+    this.setData({
+      l: ""
+    })
+  },
   mytouchstart: function (e) {
    
 
@@ -28,7 +33,7 @@ Page({
     });
   },
   //触摸点移动 
-  delSample: function (e) {
+  mymove: function (e) {
    
     var This = this;
     var curPoint = [e.touches[0].pageX, e.touches[0].pageY];
@@ -47,9 +52,19 @@ Page({
 
   },
   myend: function (e) {
-    
+   
     var This = this;
     if (This.data.flag) {
+      This.setData({
+        l: e.currentTarget.dataset.sampleid,
+        flag: false
+      })
+    }
+
+  },
+  delSample:function(e){
+    var This = this;
+   
       var sampleId = e.currentTarget.dataset.sampleid;
       wx.showModal({
         title: '确认删除？',
@@ -99,9 +114,8 @@ Page({
         }
       })
 
-
-    }
   },
+
   takePhoto: function (e) {
 
     var This = this;
