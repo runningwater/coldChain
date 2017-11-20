@@ -13,7 +13,7 @@
      <text class="">标本箱: </text> 
       <text class="codeL box">{{item.barCode}}</text>     
       <text class="codeL">{{item.deviceName}}</text>
-      <text class="iconfont icon-bangdingshebei icon"
+      <text class="iconfont icon-bangdingshebei icon1"
        data-transportId="{{item.transportId}}" bindtap="bindDevice"></text> 
     </view><view class='w20' wx:if="{{l==item.boxId?true:false}}" bindtap='delBox' data-transportid="{{item.transportId}}">删除</view>    
 </view> 

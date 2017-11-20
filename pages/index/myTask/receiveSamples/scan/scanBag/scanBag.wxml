@@ -1,5 +1,5 @@
 <!--pages/index/myTask/receiveSamples/scan/scan.wxml-->
-<view class="container">
+<view class="container" catchtap='cancel'>
   <view class="scanInput">
    
     <input placeholder-style="font-size:12px" 
@@ -13,14 +13,24 @@
     标本箱<text>{{barcode}}</text>共扫描<text class="red">{{samplesum}}</text>个标本袋
   </view>
   <block wx:for="{{barCode}}">
-    <view class="codeList" bindtouchstart="mytouchstart" 
-    bindtouchmove="delBag" bindtouchend='myend' data-bagId="{{item.bagId}}"
+    <!-- <view 
+     bindtouchend='myend' data-bagId="{{item.bagId}}"
     data-bag="{{item.barCode}}"
     data-recordId="{{item.recordId}}"
       bindtap="samples1">
-      <text class="codeL">标本袋：{{item.barCode}}</text>
-      <text class="codeR">共扫描<text class="red">{{item.sampleSum}}</text>个标本</text>
-    </view>
+      <text class="codeL"></text>
+      
+    </view> -->
+
+       <view class='hang'>
+    <view class='{{l==item.bagId?"w801":"w800"}}'  data-id="{{item.bagId}}"  bindtouchstart="mytouchstart"  data-recordId="{{item.recordId}}" data-bag="{{item.barCode}}"
+    bindtouchmove="mymove" bindtouchend='myend'  bindtap="samples1">
+     
+      <text class="codeL box">标本袋：{{item.barCode}}</text>     
+      <!-- <text class="codeL">{{item.deviceName}}</text> -->
+     <text class="">共扫描<text class="red">{{item.sampleSum}}</text>个标本</text>
+    </view><view class='w20' wx:if="{{l==item.bagId?true:false}}" bindtap='delBag' data-bagId="{{item.bagId}}">删除</view>    
+</view> 
   </block>
 
      <view class="btn">

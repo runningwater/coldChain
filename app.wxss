@@ -99,7 +99,7 @@
 .codeL{
   margin-left:10rpx;
 }
-.icon{
+.icon1{
   position: absolute; 
   font-size: 1.6rem;
   color:#bebebe;

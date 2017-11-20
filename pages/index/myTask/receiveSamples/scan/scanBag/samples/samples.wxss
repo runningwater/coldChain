@@ -1,3 +1,4 @@
+@import '../../../../../../../utils/icon.wxss';
 .scanInput{
   border: 1px solid #3f89ec;
   border-radius: 10px;
@@ -24,29 +25,8 @@
   margin: 15px auto;
   font-size: 14px;
 }
-.codeList{
-  font-size:14px;
-  overflow: hidden;
-  color:#333;
-  padding:10px 8px;
-  border-bottom:1px solid #ddd; 
-}
-.codeL{
-  float: left
-}
-.codeR{
-  float: right;
-  display: inline-block;
-  padding: 2px 20px;
-}
-.codeR image{
-   display: inline-block;
-  width:20px;
-  height: 20px;
-}
-.red{
-  color: red;
-}
+
+
 
 /*按钮*/
 .btn{
