@@ -12,7 +12,13 @@ Page({
     token: "",
     location: "",//经纬度
     startPoint: [0, 0],//初始化touchstart坐标
-    flag: false
+    flag: false,
+    l:""
+  },
+  cancel: function () {
+    this.setData({
+      l: ""
+    })
   },
   mytouchstart: function (e) {
     //开始触摸，获取触摸点坐标并放入数组中
@@ -22,7 +28,7 @@ Page({
     });
   },
   //触摸点移动 
-  delBox: function (e) {
+  mymove: function (e) {
     var transportId = e.currentTarget.dataset.transportid;
     var This = this;
 
@@ -44,6 +50,15 @@ Page({
   myend: function (e) {
     var This = this;
     if (This.data.flag) {
+      This.setData({
+        l: e.currentTarget.dataset.transportid,
+        flag: false
+      })
+    }
+  },
+  delBox:function(e){
+    var This = this;
+    
       wx.showModal({
         title: '确认删除？',
         content: '确定要删除此箱子吗？',
@@ -57,7 +72,7 @@ Page({
               },
               data: {
                 token: This.data.token,
-                transportId: transportId
+                transportId: e.currentTarget.dataset.transportid
               },
               success: function (msg) {
                 //   console.log(msg)
@@ -86,7 +101,6 @@ Page({
           }
         }
       })
-    }
   },
   waybill: function () {
     var boxCode = "";

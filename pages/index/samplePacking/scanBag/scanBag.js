@@ -13,6 +13,11 @@ Page({
       startPoint: [0, 0],//初始化touchstart坐标
       flag: false
   },
+  cancel: function () {
+    this.setData({
+      l: ""
+    })
+  },
   mytouchstart: function (e) {
       //开始触摸，获取触摸点坐标并放入数组中
       this.setData({
@@ -21,7 +26,7 @@ Page({
       });
   },
   //触摸点移动 
-  delBag: function (e) {
+  mymove: function (e) {
       var bagId = e.currentTarget.dataset.bagid;   
       var This = this;
 
@@ -43,6 +48,15 @@ Page({
   myend: function (e) {
     var This = this;
     if (This.data.flag) {
+      This.setData({
+        l: e.currentTarget.dataset.bagid,
+        flag: false
+      })
+    }
+  },
+  delBag:function(e){
+    var This = this;
+   
       wx.showModal({
         title: '确认删除？',
         content: '确定要删除此标本袋吗？',
@@ -56,7 +70,7 @@ Page({
               },
               data: {
                 token: This.data.token,
-                bagId: bagId,
+                bagId: e.currentTarget.dataset.bagid,
                 transportId: This.data.transportid
               },
               success: function (msg) {
@@ -92,7 +106,7 @@ Page({
           }
         }
       })
-    }
+  
   },
   //扫描标本袋
   scanCode: function () {
