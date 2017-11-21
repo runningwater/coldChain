@@ -38,7 +38,7 @@
     </view>
     <view class="flex-item" bindtap="feedBack">
       <view class="icon feedBack">
-         <text class="iconfont icon-yijianfankui" style="font-size:60px;color:#fff"></text>
+         <text class="iconfont icon-fankui" style="font-size:60px;color:#fff"></text>
       </view>
       <view>意见反馈</view>
     </view>
@@ -55,7 +55,7 @@
   <view class="flex-wrap" wx:if="{{type2}}">
     <view class="flex-item" bindtap="billOfLoding">
       <view class="icon myTask billOfLoding">
-         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
+         <text class="iconfont icon-tihuodan" style="font-size:60px;color:#fff"></text>
       </view>
       <view>提货单</view>
     </view>
@@ -67,7 +67,7 @@
     </view>
     <view class="flex-item" bindtap="feedBack">
       <view class="icon feedBack">
-         <text class="iconfont icon-yijianfankui" style="font-size:60px;color:#fff"></text>
+         <text class="iconfont icon-fankui" style="font-size:60px;color:#fff"></text>
       </view>
       <view>意见反馈</view>
     </view>
@@ -107,25 +107,25 @@
     </view>
     <view class="flex-item " bindtap="samplePacking">
       <view class="icon myTask samplePacking">
-         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
+         <text class="iconfont icon-biaobendabao" style="font-size:60px;color:#fff"></text>
       </view>
       <view>标本打包</view>
     </view>
     <view class="flex-item" bindtap="myWayBill">
       <view class="icon myTask myWayBill" >
-         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
+         <text class="iconfont icon-wodeyundan" style="font-size:60px;color:#fff"></text>
       </view>
       <view>我的运单</view>
     </view>
     <view class="flex-item" bindtap="specimensSplit">
       <view class="icon myTask specimensSplit">
-         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
+         <text class="iconfont icon-biaobenchaixiang" style="font-size:60px;color:#fff"></text>
       </view>
       <view>标本拆箱</view>
     </view>
     <view class="flex-item" bindtap="billOfLoding">
       <view class="icon myTask billOfLoding">
-         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
+         <text class="iconfont icon-tihuodan" style="font-size:60px;color:#fff"></text>
       </view>
       <view>提货单</view>
     </view>
@@ -137,7 +137,7 @@
     </view>
     <view class="flex-item" bindtap="feedBack">
       <view class="icon feedBack">
-         <text class="iconfont icon-yijianfankui" style="font-size:60px;color:#fff"></text>
+         <text class="iconfont icon-fankui" style="font-size:60px;color:#fff"></text>
       </view>
       <view>意见反馈</view>
     </view>
@@ -153,13 +153,13 @@
   <view class="flex-wrap" wx:if="{{type4}}">
     <view class="flex-item " bindtap="samplePacking">
       <view class="icon myTask samplePacking">
-         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
+         <text class="iconfont icon-biaobendabao" style="font-size:60px;color:#fff"></text>
       </view>
       <view>标本打包</view>
     </view>
     <view class="flex-item" bindtap="myWayBill">
       <view class="icon myTask myWayBill">
-         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
+         <text class="iconfont icon-wodeyundan" style="font-size:60px;color:#fff"></text>
       </view>
       <view>我的运单</view>
     </view>
@@ -172,7 +172,7 @@
     </view>
     <view class="flex-item" bindtap="feedBack">
       <view class="icon feedBack">
-         <text class="iconfont icon-yijianfankui" style="font-size:60px;color:#fff"></text>
+         <text class="iconfont icon-fankui" style="font-size:60px;color:#fff"></text>
       </view>
       <view>意见反馈</view>
     </view>
@@ -184,7 +184,7 @@
     </view>
     <view class="flex-item" bindtap="dbproblemSolving">
       <view class="icon myTask dbproblemSolving">
-         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
+         <text class="iconfont icon-wentichuli" style="font-size:60px;color:#fff"></text>
       </view>
       <view>问题处理</view>
     </view>
@@ -194,7 +194,7 @@
   <view class="flex-wrap" wx:if="{{type5}}">
     <view class="flex-item " bindtap="specimensSplit">
       <view class="icon myTask specimensSplit">
-         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
+         <text class="iconfont icon-biaobenchaixiang" style="font-size:60px;color:#fff"></text>
       </view>
       <view>标本拆箱</view>
     </view>
@@ -206,7 +206,7 @@
     </view>
     <view class="flex-item" bindtap="feedBack">
       <view class="icon feedBack">
-         <text class="iconfont icon-yijianfankui" style="font-size:60px;color:#fff"></text>
+         <text class="iconfont icon-fankui" style="font-size:60px;color:#fff"></text>
       </view>
       <view>意见反馈</view>
     </view>
@@ -222,7 +222,7 @@
   <view class="flex-wrap" wx:if="{{type6}}">
     <view class="flex-item" bindtap="audit">
       <view class="icon myTask audit">
-         <text class="iconfont icon-woderenwu" style="font-size:60px;color:#fff"></text>
+         <text class="iconfont icon-shenhe" style="font-size:60px;color:#fff"></text>
       </view>
       <view>审核</view>
     </view>
@@ -234,7 +234,7 @@
     </view>
     <view class="flex-item" bindtap="feedBack">
       <view class="icon feedBack">
-         <text class="iconfont icon-yijianfankui" style="font-size:60px;color:#fff"></text>
+         <text class="iconfont icon-fankui" style="font-size:60px;color:#fff"></text>
       </view>
       <view>意见反馈</view>
     </view>
