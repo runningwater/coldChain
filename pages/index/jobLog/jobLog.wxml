@@ -2,23 +2,23 @@
 <view class="container">
   <view class="time">
     <picker mode="date" class="timePicker" bindchange="changeStartDate" value="{{startDate}}">{{startDate}}</picker>
-    <text class="iconfont icon-down"></text> 
+    <text class="iconfont icon-zhankai"></text> 
   </view>
   <view class="time">
     <picker mode="date" class="timePicker" bindchange="changeEndDate" value="{{endDate}}">{{endDate}}</picker>
-    <text class="iconfont icon-down"></text>
+    <text class="iconfont icon-zhankai"></text>
   </view>
   <text class="search" bindtap="query">搜索</text>
   
   <block wx:for="{{logs}}">
     <view class="containerList">
       <view class="top">
-        <text>{{item.hospitalName}}</text>
-        <text class="sampleNum">接收标本：<text class="red">{{item.sampleSum}}</text>个</text>
+        <view class='hospitalName'>{{item.hospitalName}}</view>
+        <view class="sampleNum">接收标本：<text class='{{item.sampleSum==0?"yellow":"green"}}'>{{item.sampleSum}}</text>个</view>
       </view>
       <view class="bottom">
         <text>进：{{item.intoHosDate}}</text>
-        <text class="sampleNum">出：{{item.leaveHosDate}}</text>
+        <text class="outDate">出：{{item.leaveHosDate}}</text>
       </view>
     </view>
   </block>

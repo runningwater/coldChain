@@ -27,11 +27,11 @@
   <view class='addTasks' style="display:{{display2}}">
     <form bindsubmit="submit">
       <view class="inputCss ">  
-        <text class='iconfont icon-down'></text>
+        <text class='iconfont icon-zhankai'></text>
         <picker name="hospital" value="{{hospitalID}}" range="{{hospitalList}}" bindchange="hospitalChange">{{hospitalName}}</picker>
       </view>
       <view class="inputCss">
-      <text class='iconfont icon-down'></text>
+      <text class='iconfont icon-zhankai'></text>
         <picker class="gray" name="estimateTime" mode="time" bindchange="timeChange" value="{{nowtime}}" start="00:00" 
       end="24:00">
       {{nowtime}}
@@ -81,7 +81,7 @@
         <view>我的任务</view>
     </view>
     <view class="add" bindtap='addTask'>
-      <text class='iconfont icon-newlyadded'style="transform:{{transform1?'rotate(45deg)':''}}"></text>
+      <text class='iconfont icon-xinzeng1'style="transform:{{transform1?'rotate(45deg)':''}}"></text>
     </view>
     <view class="taskTab" style="color:{{active=='already'?'#009be2':''}}" bindtap='submitTask'>
       <text class='iconfont icon-yitijiao'></text>

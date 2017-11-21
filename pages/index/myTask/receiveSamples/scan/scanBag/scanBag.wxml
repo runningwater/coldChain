@@ -23,10 +23,10 @@
       bindtouchmove="mymove" bindtouchend='myend'  bindtap="samples1">
       
         <text class="codeL">标本袋：<text class="barcode">{{item.barCode}}</text></text>     
-        <block wx:if="{{sampleSum==0}}">
+        <block wx:if="{{item.sampleSum==0}}">
           <text class='scanNumber'>共扫描 <text class='yellow'>{{item.sampleSum}}</text>个标本</text>
         </block>
-        <block wx:if="{{sampleSum!=0}}">
+        <block wx:if="{{item.sampleSum!=0}}">
           <text class='scanNumber'>共扫描 <text class='green'>{{item.sampleSum}}</text>个标本</text>
         </block>
       

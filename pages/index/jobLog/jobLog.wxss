@@ -13,18 +13,18 @@
   overflow: hidden;
 }
 .bottom{
- font-size: 12px;
+ font-size: 26rpx;
+ color:#888;
+ margin-bottom:25rpx;
 }
-.sampleNum{
-  float: right;  
-}
+
 .timePicker{
   display: inline-block;
   font-size: 34rpx;
   color: #888;
   width:245rpx;
 }
-.icon-down{
+.icon-zhankai{
   position:absolute;
   right:24rpx;
   top:20rpx;
@@ -43,3 +43,23 @@
   font-size:14px;
   color: #666;
 }
+.hospitalName{
+  color:#333;
+  font-size:34rpx;
+  margin-bottom:25rpx;
+}
+.sampleNum{
+  font-size: 28rpx;
+  color:#666;
+  margin-bottom:15rpx;
+}
+.outDate{
+  float:right;
+}
+.yellow{
+  color:#ee750a;
+}
+.green{
+  color:#1ccaa3;
+}
+

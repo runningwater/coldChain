@@ -23,10 +23,10 @@
       <text class="codeL">标本箱:<text class="barcode">{{item.barCode}}</text></text>     
       <!-- <text class="codeL">{{item.deviceName}}</text> -->
       <!-- <text class="scanNumber">共扫描<text class="red">{{item.sampleSum}}</text>个标本</text> -->
-      <block wx:if="{{sampleSum==0}}">
+      <block wx:if="{{item.sampleSum==0}}">
         <text class='scanNumber'>共扫描 <text class='yellow'>{{item.sampleSum}}</text>个标本</text>
       </block>
-      <block wx:if="{{sampleSum!=0}}">
+      <block wx:if="{{item.sampleSum!=0}}">
         <text class='scanNumber'>共扫描 <text class='green'>{{item.sampleSum}}</text>个标本</text>
       </block>
     </view>

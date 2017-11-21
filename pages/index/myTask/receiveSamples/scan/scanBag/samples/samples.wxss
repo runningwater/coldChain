@@ -36,11 +36,11 @@
 .green{
   color:#1ccaa3;
 }
-.icon-camera{
+.icon-xiangji{
   font-size: 52rpx;
   color:#009BE2;
 }
-.icon-photo {
+.icon-xiangce {
   font-size: 52rpx;
   right: 9%;
   color:#1ccaa3;

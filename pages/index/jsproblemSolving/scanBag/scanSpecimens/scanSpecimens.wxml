@@ -28,7 +28,7 @@
         <image class="del" src="../../../../images/u672.png"></image>
     </view>   -->
     <view class="codeR" data-sampleId="{{item.sampleId}}"  bindtap="takePic">
-      <text class="iconfont icon-camera icon1"
+      <text class="iconfont icon-xiangji icon1"
         data-sampleIdone="{{item.sampleId}}"  bindtap="takePhoto"></text>
         
       <block wx:if="{{item.apply}}">

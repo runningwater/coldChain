@@ -119,7 +119,7 @@
   height:135rpx;
   margin-top:-58.5rpx;
 }
-.icon-newlyadded{
+.icon-xinzeng1{
   font-size: 135rpx;
   color:#009be2;
   line-height:135rpx;
@@ -129,7 +129,7 @@
 .addTasks{
   margin:0 0.53rem;
 }
-.icon-down{
+.icon-zhankai{
   position:absolute;
   right:24rpx;
   top:32.5rpx;
@@ -156,7 +156,6 @@
   background: #009be2;
   color:#fff;
   font-size: 38rpx;
-  font-weight: bold;
 }
 /**************************/
 /* 已提交任务模块 */
@@ -180,7 +179,7 @@
   font-size: 34rpx;
   color:#333;
   width:300rpx;
-  height:32rpx;
+  height:36rpx;
   line-height:32rpx;
   white-space: nowrap;
   overflow: hidden;

@@ -56,7 +56,7 @@
   text-align:center
 }
 
-.icon-camera{
+.icon-xiangji{
   font-size: 52rpx;
   color:#009BE2;
 }

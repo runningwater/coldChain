@@ -1,26 +1,28 @@
 /* pages/index/feedBack/feedBack.wxss */
 
 input{
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  margin-top:15px;
-  padding: 10px 8px;
+  border: 1px solid #bebebe;
+  border-radius: 10rpx;
+  padding: 20rpx 16rpx;
+  font-size: 32rpx;
+  color:#888;
 }
 textarea{
-   border: 1px solid #ddd;
-   width: 95%;
-   border-radius: 10px;
-   margin-top:20px;
-   padding: 10px 8px;
+  border: 1px solid #bebebe;
+  width: 95%;
+  border-radius: 10rpx;
+  margin-top:30rpx;
+  padding: 20rpx 16rpx;
+  font-size: 32rpx;
+  color:#888;
 }
 
 /*按钮*/
 .btn{
-  margin-top:20px;
+  margin-top:50rpx;
   
-  background: #09c;
+  background: #009be2;
   color:#fff;
   font-size: 16px;
   font-weight: bold;
-  width: 50%;
 }

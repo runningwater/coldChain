@@ -24,11 +24,11 @@
     
       <text class="codeL">标本条码：<text class="barcode">{{item.barCode}}</text></text>     
       <!-- <text class="codeL">{{item.deviceName}}</text> -->
-      <text class="iconfont icon-camera icon1"
+      <text class="iconfont icon-xiangji icon1"
         data-sampleIdone="{{item.sampleId}}"  bindtap="takePhoto"></text>
       
       <block wx:if="{{item.apply}}">
-        <text class="iconfont icon-photo icon1"
+        <text class="iconfont icon-xiangce icon1"
         data-sampleIdone="{{item.sampleId}}"></text>
       </block> 
     </view><view class='w20' wx:if="{{l==item.sampleId?true:false}}" bindtap='delSample' data-sampleId="{{item.sampleId}}">删除</view>    
