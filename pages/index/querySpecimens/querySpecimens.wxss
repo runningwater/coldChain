@@ -3,9 +3,9 @@
   position: relative;
   border: 1px solid #bebebe;
   border-radius: 5px;
-  color:#888;  
+  color:#333;  
   padding: 7px 8px;
-  margin-bottom:0.8rem;
+  margin-bottom:30rpx;
 }
 .icon-saoma{
   position: absolute;
@@ -16,29 +16,48 @@
   top:0.747rem;
 }
 .barcode{
-  text-align: center;
-  font-size: 60rpx;
-  font-weight: bold
+  font-size: 32rpx;
+  color:#666;
+  padding:20rpx;
 }
 
 .codeList{
+  border:1px solid #bebebe;
+  border-radius: 10rpx;
   font-size:14px;
   overflow: hidden;
   color:#333;
-  padding:10px 8px 5px;
-
-}
-.fffcolor{
-  color: #fff;
-  margin-top: 15rpx;
-  background: #0099CC;
-  width: 30%;
-  margin: 0 1.6%;
-  float: left;
 }
 .buttonWrap{
   overflow: hidden;
-  margin-top: 50px;
+  padding-top: 50rpx;
+  border-top:1px solid #bebebe;
+}
+.iconButton{
+  float:left;
+  line-height:80rpx;
+  text-align: center;
+  height:190rpx;
+  margin:20rpx 30rpx 0;
+  width:24.4%;
+}
+.iconButton .iconfont{
+  font-size:136rpx;
+}
+.iconButton view{
+  font-size:28rpx;
+  color:#333;
+  line-height:28rpx;
+
+}
+.icon-wenshidu{
+  color:#009BE2;
+}
+.icon-guiji{
+  color:#ef7faf;
+}
+.icon-shenqingdan{
+  color:#26d1a3;
 }
 .show{
   display: block

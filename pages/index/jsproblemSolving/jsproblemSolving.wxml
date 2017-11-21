@@ -3,17 +3,17 @@
 <view class="">
     <view class="scanInput">
 
-        <input placeholder-style="font-size:0.853rem" confirm-type="done" bindconfirm="scanBox" placeholder="扫描或手动输入条形码" value="{{code}}" id="code" />
-        <text class='iconfont icon-saoma'></text>
+        <input placeholder-style="font-size:32rpx" confirm-type="done" bindconfirm="scanBox" placeholder="扫描或手动输入条形码" value="{{code}}" id="code" />
+        <text class='iconfont icon-saoma' bindtap="scanCode"></text>
     </view>
      <block wx:for="{{barCode}}"> 
     <view class="codeList" data-boxid="{{item.boxId}}" data-recordId="{{item.recordId}}" data-hospitalId="{{item.hospitalId}}" data-transportId="{{item.transportId}}"  data-boxCode="{{item.barCode}}" data-hospitalName="{{item.hospitalName}}" bindtap="enterBox">
         <view class="listTitle">
             <text class="codeL">标本箱：<text>{{item.barCode}}</text></text>
-            <block wx:if="{{item.bagCount==0}}">
+            <block wx:if="{{bagCount==0}}">
               <text class='codeR'>共扫描 <text class='yellow'>{{item.sampleCount}}</text>个标本袋</text>
             </block>
-            <block wx:if="{{item.sampleCount!=0}}">
+            <block wx:if="{{sampleCount!=0}}">
               <text class='codeR'>共扫描 <text class='green'>{{item.bagCount}}</text>个标本袋</text>
             </block> 
         </view>

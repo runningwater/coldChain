@@ -8,17 +8,17 @@
     
   <view class="scanInput">
     <input placeholder-style="font-size:0.853rem" confirm-type="done" bindconfirm="scanBag" placeholder="扫描或手动输入条形码" value="{{code}}" id="code" />
-    <text class='iconfont icon-saoma'></text>
+    <text class='iconfont icon-saoma' bindtap="scanCode"></text>
   </view>
     
   <block wx:for="{{bagCodes}}">
     <view class="codeList">
       <view class="title" data-bagId="{{item.bagId}}" data-barcode="{{item.barCode}}"   data-num="{{item.sampleCount}}" bindtap="enterBag">
         <text class='scanBag'>标本袋：{{item.barCode}}</text>
-        <block wx:if="{{item.sampleCount==0}}">
+        <block wx:if="{{sampleCount==0}}">
           <text class='codeR'>共扫描 <text class='yellow'>{{item.sampleCount}}</text>个标本</text>
         </block>
-        <block wx:if="{{item.sampleCount!=0}}">
+        <block wx:if="{{sampleCount!=0}}">
           <text class='codeR'>共扫描 <text class='green'>{{item.sampleCount}}</text>个标本</text>
         </block>               
         

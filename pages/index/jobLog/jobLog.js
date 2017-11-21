@@ -6,7 +6,7 @@ Page({
    */
   data: {
     startDate:"年-月-日",
-    endDate:"年-月-日",
+    endDate: "年-月-日",
     token:"",
     logs:[] 
   },

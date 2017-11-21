@@ -2,10 +2,14 @@
 <view class="container">
   <view class="time">
     <picker mode="date" class="timePicker" bindchange="changeStartDate" value="{{startDate}}">{{startDate}}</picker>
-    <text class="icon1 fa fa-arrow-right"></text>
-    <picker mode="date" class="timePicker" bindchange="changeEndDate" value="{{endDate}}">{{endDate}}</picker>
-    <text class="search fa fa-search" bindtap="query"></text>
+    <text class="iconfont icon-down"></text> 
   </view>
+  <view class="time">
+    <picker mode="date" class="timePicker" bindchange="changeEndDate" value="{{endDate}}">{{endDate}}</picker>
+    <text class="iconfont icon-down"></text>
+  </view>
+  <text class="search" bindtap="query">搜索</text>
+  
   <block wx:for="{{logs}}">
     <view class="containerList">
       <view class="top">

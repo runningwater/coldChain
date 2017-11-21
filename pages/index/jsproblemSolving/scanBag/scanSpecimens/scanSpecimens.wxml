@@ -1,35 +1,43 @@
 <!--pages/index/jsproblemSolving/scanBag/scanSpecimens/scanSpecimens.wxml-->
 
 <view class="">
-  <block wx:if="{{item.sampleCount==0}}">
+  <block wx:if="{{sampleCount==0}}">
     <view class="header">标本袋：{{code}} 共扫描<text class='yellow'>{{num}}</text>个标本</view>
   </block>
-  <block wx:if="{{item.sampleCount!=0}}">
+  <block wx:if="{{sampleCount!=0}}">
     <view class="header">标本袋：{{code}} 共扫描<text class='green'>{{num}}</text>个标本</view>
   </block> 
   <!-- <view class="header">标本袋：{{code}} 共扫描<text class='green'>{{num}}</text>个标本</view> -->
   <view class="scanInput">
 
     <input placeholder-style="font-size:0.853rem" confirm-type="done" bindconfirm="scanSpecimens" placeholder="扫描或手动输入条形码" value="{{barcode}}" id="code" />
-    <text class='iconfont icon-saoma'></text>
+    <text class='iconfont icon-saoma' bindtap="scanCode"></text>
   </view>
     
   <block wx:for="{{codes}}">
     <view class="codeList">
-      <view class="codeL width85">
+      <view class="codeL">
         <view >
-            <text>标本：<text class="red">{{item.barCode}}</text></text>               
+            <text>标本：{{item.barCode}}</text>               
         </view>           
         <view>
-          <text class="ddd">{{item.scanningDate}}</text>
+          <text class="scanDate">{{item.scanningDate}}</text>
         </view>
     </view>
-    <view class="codeR width15" data-sampleId="{{item.sampleId}}"  bindtap="delSpecimens">
+    <!-- <view class="codeR" data-sampleId="{{item.sampleId}}"  bindtap="delSpecimens">
         <image class="del" src="../../../../images/u672.png"></image>
-    </view>  
-    <view class="codeR width15" data-sampleId="{{item.sampleId}}"  bindtap="takePic">
-        <text class="iconfont icon-camera"></text>
-    </view>  
+    </view>   -->
+    <view class="codeR" data-sampleId="{{item.sampleId}}"  bindtap="takePic">
+      <text class="iconfont icon-camera icon1"
+        data-sampleIdone="{{item.sampleId}}"  bindtap="takePhoto"></text>
+        
+      <block wx:if="{{item.apply}}">
+        <text class="iconfont icon-photo icon1"
+        data-sampleIdone="{{item.sampleId}}"></text>
+      </block>
+
+    </view>   
+      
     </view>
   </block>
 </view>

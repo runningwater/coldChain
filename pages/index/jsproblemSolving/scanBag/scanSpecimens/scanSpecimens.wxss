@@ -31,10 +31,15 @@
 }
 .codeL{
   float: left;
-  color: #555;
+  padding-bottom:20rpx;
 }
 .codeR{
-  float: right
+  float: right;
+  position:relative;
+}
+.scanDate{
+  font-size:26rpx;
+  color:#888;
 }
 .yellow{
   color:#ee750a;
@@ -46,23 +51,19 @@
   overflow:hidden;
   font-size: 16px;
 }
-.ddd{
-  color:#ddd;
-}
-.font16{
-  font-size:16px;
-}
+
 .center{
   text-align:center
 }
-.width85{
-  display: inline-block;
-  width: 70%;
+
+.icon-camera{
+  font-size: 52rpx;
+  color:#009BE2;
 }
-.width15{
-  display: inline-block;
-  width: 15%;
-  margin-top: 15px;
+.icon-photo {
+  font-size: 52rpx;
+  right: 30%;
+  color:#1ccaa3;
 }
 .del{
   width: 40px;
