@@ -1,37 +1,36 @@
 <!--pages/index/myTask/receiveSamples/scan/scan.wxml-->
-<view class="container" catchtap='cancel'>
+<view class="" catchtap='cancel'>
+  <view class="total">
+    <block wx:if="{{bagNum==0}}">
+      标本袋<text>{{bag}}</text>共扫描<text class="yellow">{{bagNum}}</text>个标本
+    </block>
+    <block wx:if="{{bagNum!=0}}">
+      标本袋<text>{{bag}}</text>共扫描<text class="green">{{bagNum}}</text>个标本
+    </block>
+  </view>
   <view class="scanInput">
   
-    <input placeholder-style="font-size:12px" 
-    confirm-type="done" bindconfirm="scanSimple" placeholder="请扫描条码或输入条码" 
+    <input placeholder-style="font-size:32rpx" 
+    confirm-type="done" bindconfirm="scanSimple" placeholder="扫描或手动输入条形码" 
     value="{{code}}" id="code"/>
-      <view class="img" bindtap="scanCode">
-        <!-- <image src="../../../../../../images/u477.png"></image> -->
-      </view>
+    <text class='iconfont icon-saoma'  bindtap="scanCode"></text>
   </view>
-  <view class="total">
-    标本袋<text>{{bag}}</text>共扫描<text class="red">{{bagNum}}</text>个标本
-  </view>
+  
   <block wx:for="{{barCode}}">
-   
-    <!-- <view class="codeList"  
-    bindtouchmove="delSample" >
-      <text class="codeL"></text>
-      <view class="codeR" 
-      >
-        <text class="{{item.apply?'fa fa-check':'fa fa-camera'}}"></text>
-      </view>
-    </view> -->
 
-
-     <view class='hang'>
+     <view class='hang scanLists'>
     <view class='{{l==item.sampleId?"w801":"w800"}}'  data-sampleId="{{item.sampleId}}"  bindtouchstart="mytouchstart" 
     bindtouchmove="mymove" bindtouchend='myend'>
     
-      <text class="codeL box">标本条码：{{item.barCode}}</text>     
+      <text class="codeL">标本条码：<text class="barcode">{{item.barCode}}</text></text>     
       <!-- <text class="codeL">{{item.deviceName}}</text> -->
-      <text class="iconfont icon-bangdingshebei icon1"
-        data-sampleIdone="{{item.sampleId}}"  bindtap="takePhoto"></text> 
+      <text class="iconfont icon-camera icon1"
+        data-sampleIdone="{{item.sampleId}}"  bindtap="takePhoto"></text>
+      
+      <block wx:if="{{item.apply}}">
+        <text class="iconfont icon-photo icon1"
+        data-sampleIdone="{{item.sampleId}}"></text>
+      </block> 
     </view><view class='w20' wx:if="{{l==item.sampleId?true:false}}" bindtap='delSample' data-sampleId="{{item.sampleId}}">删除</view>    
 </view> 
   </block>

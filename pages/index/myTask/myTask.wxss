@@ -110,21 +110,21 @@
 .taskTab{
   border-top: 1px solid #cecece; 
   float: left;
-  width:8.2rem;
+  width:307.5rpx;
   padding:4px 0;
 }
 .add{
   border-top:1px solid #cecece; 
   border-radius: 50%;
   float:left;
-  width:3.6rem;
-  height:3.6rem;
-  margin-top:-1.56rem;
+  width:135rpx;
+  height:135rpx;
+  margin-top:-58.5rpx;
 }
 .icon-newlyadded{
-  font-size: 3.6rem;
+  font-size: 135rpx;
   color:#009be2;
-  line-height:3.6rem;
+  line-height:135rpx;
   
 }
 /* 新增任务模块 */

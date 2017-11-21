@@ -1,36 +1,37 @@
 <!--pages/index/myTask/receiveSamples/scan/scan.wxml-->
-<view class="container" catchtap='cancel'>
+<view class="" catchtap='cancel'>
+  <view class="total">
+    <block wx:if="{{sampleSum==0}}">
+      标本箱<text>{{barcode}}</text>共扫描<text class="yellow">{{samplesum}}</text>个标本袋
+    </block>
+    <block wx:if="{{sampleSum!=0}}">
+      标本箱<text>{{barcode}}</text>共扫描<text class="green">{{samplesum}}</text>个标本袋
+    </block>
+  </view>
   <view class="scanInput">
    
-    <input placeholder-style="font-size:12px" 
-    confirm-type="done" bindconfirm="scanBag" placeholder="请扫描条码或输入条码"
+    <input placeholder-style="font-size:32rpx" 
+    confirm-type="done" bindconfirm="scanBag" placeholder="扫描或手动输入条形码"
      value="{{code}}" id="code"/>
-      <view class="img" bindtap="scanCode">
-        <image src="../../../../../images/u477.png"></image>
-      </view>
+    <text class='iconfont icon-saoma'  bindtap="scanCode"></text>
   </view>
-  <view class="total">
-    标本箱<text>{{barcode}}</text>共扫描<text class="red">{{samplesum}}</text>个标本袋
-  </view>
+  
   <block wx:for="{{barCode}}">
-    <!-- <view 
-     bindtouchend='myend' data-bagId="{{item.bagId}}"
-    data-bag="{{item.barCode}}"
-    data-recordId="{{item.recordId}}"
-      bindtap="samples1">
-      <text class="codeL"></text>
+    
+    <view class='hang scanLists'>
+      <view class='{{l==item.bagId?"w801":"w800"}}'  data-id="{{item.bagId}}"  bindtouchstart="mytouchstart"  data-recordId="{{item.recordId}}" data-bag="{{item.barCode}}"
+      bindtouchmove="mymove" bindtouchend='myend'  bindtap="samples1">
       
-    </view> -->
-
-       <view class='hang'>
-    <view class='{{l==item.bagId?"w801":"w800"}}'  data-id="{{item.bagId}}"  bindtouchstart="mytouchstart"  data-recordId="{{item.recordId}}" data-bag="{{item.barCode}}"
-    bindtouchmove="mymove" bindtouchend='myend'  bindtap="samples1">
-     
-      <text class="codeL box">标本袋：{{item.barCode}}</text>     
-      <!-- <text class="codeL">{{item.deviceName}}</text> -->
-     <text class="">共扫描<text class="red">{{item.sampleSum}}</text>个标本</text>
-    </view><view class='w20' wx:if="{{l==item.bagId?true:false}}" bindtap='delBag' data-bagId="{{item.bagId}}">删除</view>    
-</view> 
+        <text class="codeL">标本袋：<text class="barcode">{{item.barCode}}</text></text>     
+        <block wx:if="{{item.sampleSum==0}}">
+          <text class='scanNumber'>共扫描 <text class='yellow'>{{item.sampleSum}}</text>个标本</text>
+        </block>
+        <block wx:if="{{item.sampleSum!=0}}">
+          <text class='scanNumber'>共扫描 <text class='green'>{{item.sampleSum}}</text>个标本</text>
+        </block>
+      
+      </view><view class='w20' wx:if="{{l==item.bagId?true:false}}" bindtap='delBag' data-bagId="{{item.bagId}}">删除</view>    
+    </view> 
   </block>
 
      <view class="btn">

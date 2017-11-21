@@ -41,17 +41,16 @@
 
 /* ******************左滑删除 ***********************/
 .hang{
- 
-   position: relative; 
-  border-bottom:1px solid #ddd; 
+  position: relative; 
+  border-bottom:1px solid #bebebe; 
   color:#333;
-  padding:10px 8px;
-  font-size:0.853rem;
+  /* padding:10px 8px; */
+  font-size:32rpx;
 }
 .w801{
 
   /* clear: both; */
-  padding: 10px 0;
+  padding: 20rpx 0;
   position: relative;
   left:-22%;
   animation:left 1s;
@@ -60,7 +59,7 @@
 
 .w800{
   width: 100%;
-  padding: 10px 0;
+  padding: 20rpx 0;
   position: relative;
   left:0; 
   animation:left1 1s;
@@ -73,11 +72,40 @@
   color:#fff;
   float: right;
 
-  padding: 10px 0;
+  padding: 20rpx 0;
   position: relative;
   top:-2.2rem;
 } 
+/* 扫描或手动输入条形码 */
+.scanInput{
+  position: relative;
+  border: 1px solid #bebebe;
+  border-radius: 10rpx;
+  color:#888;  
+  padding: 14rpx 16rpx;
+  margin-bottom:30rpx;
+}
+.icon-saoma{
+  position: absolute;
+  display: inline-block;
+  font-size:52rpx;
+  line-height: 37.5rpx;
+  right:20rpx;
+  top:28rpx;
+}
+/*按钮*/
+.btn{
+  /* margin:1.33rem 0.53rem 0; */
+  margin-top:20rpx;
+  border-radius:10rpx;
 
+}
+.btn button{
+  background: #009BE2;
+  color:#fff;
+  font-size: 32rpx;
+  font-weight: bold;
+}
 
 @keyframes left
 {
@@ -92,19 +120,21 @@
 }
 
 
-
 .box{
   font-weight: bold;
+}
+.barcode{
+  color:#666;
 }
 .codeL{
   margin-left:10rpx;
 }
 .icon1{
   position: absolute; 
-  font-size: 1.6rem;
+  font-size: 52rpx;
   color:#bebebe;
   right:0; 
-  top:0.213rem;  
+  top:8rpx;  
 }
 
 /* ******************左滑删除end ***********************/

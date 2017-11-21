@@ -3,7 +3,7 @@
   <view class="scanInput">
 
     <input placeholder-style="font-size:0.853rem" placeholder="扫描或手动输入条形码" value="{{deviceBarcode}}" bindinput="codeValue" id="code" />
-    <text class='iconfont icon-saoma'></text>
+    <text class='iconfont icon-saoma' bindtap="scanCode"></text>
   </view>
   <view class="btn">
     <button bindtap="barCodeScan">绑定设备</button>

@@ -13,19 +13,19 @@
       <view class='num'>3</view>
     </view>
     <view  class="btnGroup">
-      <view class="btn">
+      <view class="button">
         <button class='apply' bindtap="applySamples">
           <text class='iconfont icon-shenqingbiaoben'></text>
           申请标本
         </button>
       </view>
-      <view class="btn">
+      <view class="button">
         <button class='scanSheet' bindtap="scanReceipt">
           <text class='iconfont icon-shangchuanjiaojiedan'></text>
           上传交接单
         </button>
       </view>
-      <view class="btn">
+      <view class="button">
         <button class='leave' bindtap="leaveHospital">
           <text class="iconfont icon-likaiyiyuan"></text>
           离开医院

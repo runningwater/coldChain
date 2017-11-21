@@ -3,7 +3,7 @@
     <input placeholder-style="font-size:0.853rem" 
     placeholder="扫描或手动输入条形码" confirm-type="done" bindconfirm="barCodeScan" 
      id="code"/>
-     <text class='iconfont icon-saoma'></text>
+     <text class='iconfont icon-saoma'  bindtap="scanCode"></text>
   </view>
  
   <block wx:for="{{barCode}}">
@@ -11,9 +11,9 @@
     <view class='{{l==item.boxId?"w801":"w800"}}'  data-id="{{item.boxId}}"  bindtouchstart="mytouchstart" 
     bindtouchmove="mymove" bindtouchend='myend'>
      <text class="">标本箱: </text> 
-      <text class="codeL box">{{item.barCode}}</text>     
-      <text class="codeL">{{item.deviceName}}</text>
-      <text class="iconfont icon-bangdingshebei icon1"
+      <text class="codeL barcode">{{item.barCode}}</text>     
+      <!-- <text class="codeL">{{item.deviceName}}</text> -->
+      <text class="iconfont icon-bangdingshebei icon1" style='color:{{item.deviceName==""?"":"#1ccaa3"}}'
        data-transportId="{{item.transportId}}" bindtap="bindDevice"></text> 
     </view><view class='w20' wx:if="{{l==item.boxId?true:false}}" bindtap='delBox' data-transportid="{{item.transportId}}">删除</view>    
 </view> 

@@ -1,19 +1,11 @@
 @import '../../../../utils/icon.wxss';
-.scanInput{
-  position: relative;
-  border: 1px solid #bebebe;
-  border-radius: 5px;
-  color:#888;  
-  padding: 7px 8px;
-  margin-bottom:0.8rem;
-}
 .icon-saoma{
   position: absolute;
   display: inline-block;
-  font-size:1.387rem;
-  line-height: 1rem;
-  right:0.53rem;
-  top:0.747rem;
+  font-size:52rpx;
+  line-height: 37.5rpx;
+  right:20rpx;
+  top:28rpx;
 }
 .btn{
   border-radius: 5px;

@@ -38,16 +38,16 @@
   border-right:1px dotted #cecece;
   padding-left:0.5rem;
 }
-.btn{
+.button{
   width:14.4rem; 
   border-radius: 5px;
 }
-.btn .iconfont{
+.button .iconfont{
   display: inline-block;
   font-size:1.547rem;
   vertical-align: middle;
 }
-.btn button{
+.button button{
   color:#fff;
   font-size: 1.013rem;
   margin:0 auto;
