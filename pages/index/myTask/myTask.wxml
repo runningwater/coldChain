@@ -76,14 +76,14 @@
     </block>
   </view>
   <view class='addTask'>
-    <view class="taskTab active" bindtap='myTask'>
-        <text class='iconfont icon-woderenwu1'></text>
+    <view class="taskTab" style="color:{{active=='my'?'#009be2':''}}" bindtap='myTask'>
+        <text class='iconfont icon-woderenwu1' ></text>
         <view>我的任务</view>
     </view>
     <view class="add" bindtap='addTask'>
-      <text class='iconfont icon-newlyadded'></text>
+      <text class='iconfont icon-newlyadded'style="transform:{{transform1?'rotate(45deg)':''}}"></text>
     </view>
-    <view class="taskTab" bindtap='submitTask'>
+    <view class="taskTab" style="color:{{active=='already'?'#009be2':''}}" bindtap='submitTask'>
       <text class='iconfont icon-yitijiao'></text>
       <view>已提交任务</view>
     </view>

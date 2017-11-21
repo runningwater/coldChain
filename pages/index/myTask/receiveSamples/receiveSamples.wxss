@@ -2,58 +2,58 @@
 @import '../../../../utils/icon.wxss';
 
 .scan{
-  padding:0.746rem 1.06rem;
+  padding:28rpx 40rpx;
   background:#f3f3f3;
-  line-height:0.907rem;
+  line-height:34rpx;
 }
 .scanHos{
   color: #333;
-  font-size:0.907rem;
+  font-size:34rpx;
 }
 .btnWrap{
   position: relative;
   overflow: hidden;
-  margin:5.27rem auto;
-  padding:0 1.06rem;
+  margin:197.6rpx auto;
+  padding:0 40rpx;
 }
 .number{
   float:left;
-  margin-right:0.8rem;
+  margin-right:30rpx;
 }
 .btnGroup{
   float: left;
 }
 .num{
-  width:1.2rem;
-  height:1.2rem;
+  width:45rpx;
+  height:45rpx;
   border-radius: 50%;
   background-color: #cecece;
   color:#fff;
-  font-size: 0.8rem;
+  font-size: 30rpx;
   text-align: center;
 }
 .line{
   width:1px;
-  height:5.3rem;
+  height:198rpx;
   border-right:1px dotted #cecece;
-  padding-left:0.5rem;
+  padding-left:18.75rpx;
 }
 .button{
-  width:14.4rem; 
+  width:540rpx; 
   border-radius: 5px;
 }
 .button .iconfont{
   display: inline-block;
-  font-size:1.547rem;
+  font-size:58rpx;
   vertical-align: middle;
 }
 .button button{
   color:#fff;
-  font-size: 1.013rem;
+  font-size: 38rpx;
   margin:0 auto;
-  padding:0.48rem 0; 
-  margin-bottom:3.73rem;
-  line-height:1.547rem;
+  padding:18rpx 0; 
+  margin-bottom:140rpx;
+  line-height:58rpx;
   vertical-align: bottom;
 }
 .apply{

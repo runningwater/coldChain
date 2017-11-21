@@ -12,44 +12,44 @@
   display: inline-block;
 }
 .hosName{
-  width:8rem;
+  width:300rpx;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 /* 不同状态 */
 .NOT{
-  width:2.88rem;
-  margin:0 1rem;
+  width:108rpx;
+  margin:0 37.5rpx;
   text-align:center;
   display: inline-block;
   vertical-align: top;
   border-radius: 11.5px;
   color:#ee750a;
   background-color: #fdf0e4;
-  font-size:0.746rem;
+  font-size:28rpx;
 }
 .YET{
-  width:2.88rem;
-  margin:0 1rem;
+  width:108rpx;
+  margin:0 37.5rpx;
   text-align:center;
   display: inline-block;
   vertical-align: top;
   border-radius: 11.5px;
   color:#1ccaa3;
   background-color: #e8f8f7;
-  font-size:0.746rem;
+  font-size:28rpx;
 }
 .END{
-  width:2.88rem;
-  margin:0 1rem;
+  width:108rpx;
+  margin:0 37.5rpx;
   text-align:center;
   display: inline-block;
   vertical-align: top;
   border-radius: 11.5px;
   color:#888;
   background-color: #F3F3F3;
-  font-size:0.746rem;
+  font-size:28rpx;
 }
 .state{
   width:25%;
@@ -65,14 +65,14 @@
   vertical-align: top;
 }
 .size{
-  font-size:0.746rem;
+  font-size:28rpx;
 }
 .listContent{
   padding: 35rpx 20rpx;
   border-bottom: 1px solid #cecece;
   position: relative;
-  line-height:0.853rem;
-  font-size: 0.853rem;
+  line-height:32rpx;
+  font-size: 32rpx;
   color:#666; 
 }
 
@@ -101,9 +101,7 @@
   width: 100%;
   height:44px;
 }
-.active{
-  color: #009be2;
-}
+
 .iconfont{
   font-size:44rpx;
 }
@@ -133,31 +131,31 @@
 }
 .icon-down{
   position:absolute;
-  right:0.64rem;
-  top:0.867rem;
+  right:24rpx;
+  top:32.5rpx;
   color:#bebebe;
-  font-size:0.746rem;
+  font-size:28rpx;
 }
 .inputCss{
   position:relative;
   border:1px solid #cecece;
   border-radius: 5px;
-  padding: 0.53rem;
-  margin: 1.07rem 0;
+  padding: 20rpx;
+  margin: 40rpx 0;
   color:#888;
-  font-size:0.853rem;
+  font-size:32rpx;
 }
 .gray{
   color:#888;
 }
 .btn{
-  margin-top:1.6rem;
+  margin-top:60rpx;
   border-radius:5px;
 }
 .btn button{
   background: #009be2;
   color:#fff;
-  font-size: 1.013rem;
+  font-size: 38rpx;
   font-weight: bold;
 }
 /**************************/
@@ -166,8 +164,8 @@
   padding: 35rpx 20rpx;
   border-bottom: 1px solid #cecece;
   position: relative;
-  line-height:0.853rem;
-  font-size: 0.853rem;
+  line-height:32rpx;
+  font-size:32rpx;
   color:#666;
   /* margin-bottom:0.533rem; */
 }
@@ -179,11 +177,11 @@
   vertical-align: top;
 }
 .hospitalName{
-  font-size: 0.906rem;
+  font-size: 34rpx;
   color:#333;
-  width:8rem;
-  height:0.853rem;
-  line-height:0.853rem;
+  width:300rpx;
+  height:32rpx;
+  line-height:32rpx;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -196,51 +194,51 @@
   font-size:0.746rem;
 }
 .FAIL{
-  margin:0 1rem;
-  width:4.2rem;
+  margin:0 37.5rpx;
+  width:157.5rpx;
   text-align:center;
   display: inline-block;
   vertical-align: top;
-  font-size:0.746rem;
-  margin-left:3.06rem;
+  font-size:28rpx;
+  margin-left:114.75rpx;
   color:#ee750a;
 }
 .SUCCESS{
-  margin:0 1rem;
-  width:4.2rem;
+  margin:0 37.5rpx;
+  width:157.5rpx;
   text-align:center;
   display: inline-block;
   vertical-align: top;
-  font-size:0.746rem;
-  margin-left:3.06rem;
+  font-size:28rpx;
+  margin-left:114.75rpx;
   color:#888;
 }
 .WAIT{
-  margin:0 1rem;
-  width:4.2rem;
+  margin:0 37.5rpx;
+  width:157.5rpx;
   text-align:center;
   display: inline-block;
   vertical-align: top;
-  font-size:0.746rem;
-  margin-left:3.06rem;
+  font-size:28rpx;
+  margin-left:114.75rpx;
   color:#1ccaa3;
 }
 /* 展开详情部分 */
 .titleHospital{
-  font-size:0.906rem;
+  font-size:34rpx;
   color:#333;
-  padding-bottom:0.8rem;
+  padding-bottom:30rpx;
   border-bottom:1px solid #bebebe;
 }
 .detail1,.detail2{
   border-bottom:1px dotted #bebebe;
-  padding:0.533rem 0;
-  font-size: 0.853rem;
+  padding:20rpx 0;
+  font-size: 32rpx;
   color:#434343;
 }
 .detail3{
-  padding-top:0.533rem;
-  font-size: 0.853rem;
+  padding-top:20rpx;
+  font-size: 32rpx;
   color:#434343;
 }
 .detail1 text,

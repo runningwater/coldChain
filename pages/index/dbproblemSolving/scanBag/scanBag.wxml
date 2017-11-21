@@ -5,12 +5,12 @@
 
         <input placeholder-style="font-size:12px" confirm-type="done" bindconfirm="scanBag" placeholder="请扫描条码或输入条码" value="{{barcode}}" id="code" />
         <view class="img" bindtap="scanBagCode">
-            <image src="../../../images/u477.png"></image>
+            <!-- <image src="../../../images/u477.png"></image> -->
         </view>
     </view>
   
     <!-- <view class="center">标本袋：{{code}} 共扫描{{num}}个标本</view> -->
-    <block wx:for="{{bags}}">
+    <!-- <block wx:for="{{bags}}">
        <view class="codeList">
          <view class="codeL width85">
             <view >
@@ -21,5 +21,18 @@
             <image class="del" src="../../../images/u672.png"></image>
         </view>  
        </view>
-    </block>
+    </block> -->
+
+
+   <block wx:for="{{bags}}">
+
+     <view class='hang'>
+        <view class='{{l==item.bagId?"w801":"w800"}}'  data-bagid="{{item.bagId}}"  bindtouchstart="mytouchstart" 
+        bindtouchmove="mymove" bindtouchend='myend'>
+        
+          <text class="codeL">标本袋：<text class="barcode">{{item.bagBarCode}}</text></text>     
+        
+        </view><view class='w20' wx:if="{{l==item.bagId?true:false}}" bindtap='delBag' data-bagid="{{item.bagId}}">删除</view>    
+    </view> 
+  </block>
 </view>

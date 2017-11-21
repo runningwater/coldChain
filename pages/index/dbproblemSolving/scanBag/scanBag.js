@@ -6,7 +6,53 @@ Page({
    */
   data: {
     token:"",
-    bags:[]
+    bags:[],
+    flag: false,
+    l:''
+  },
+  cancel: function () {
+    this.setData({
+      l: ""
+    })
+  },
+  mytouchstart: function (e) {
+
+
+    //开始触摸，获取触摸点坐标并放入数组中
+    this.setData({
+      startPoint: [e.touches[0].pageX, e.touches[0].pageY],
+      flag: false
+    });
+  },
+  //触摸点移动 
+  mymove: function (e) {
+
+    var This = this;
+    var curPoint = [e.touches[0].pageX, e.touches[0].pageY];
+    var startPoint = This.data.startPoint;
+    //比较pageX值
+    if (curPoint[0] <= startPoint[0]) {
+      if (Math.abs(curPoint[0] - startPoint[0]) >= Math.abs(curPoint[1] - startPoint[1])) {
+        //左滑 
+        This.setData({
+          flag: true
+        })
+
+      }
+    }
+
+
+  },
+  myend: function (e) {
+
+    var This = this;
+    if (This.data.flag) {
+      This.setData({
+        l: e.currentTarget.dataset.bagid,
+        flag: false
+      })
+    }
+
   },
   scanBag: function (e) {
     var barcode = e.detail.value;
