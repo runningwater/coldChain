@@ -17,16 +17,15 @@ Page({
     barCode: [],
     startPoint: [0, 0],//初始化touchstart坐标
     flag: false,
-    applyItems:[]
+    applyItems:[],//项目列表
+    isitem:true
   },
   cancel: function () {
     this.setData({
       l: ""
     })
   },
-  mytouchstart: function (e) {
-   
-
+  mytouchstart: function (e) {  
     //开始触摸，获取触摸点坐标并放入数组中
     this.setData({
       startPoint: [e.touches[0].pageX, e.touches[0].pageY],
@@ -34,8 +33,7 @@ Page({
     });
   },
   //触摸点移动 
-  mymove: function (e) {
-   
+  mymove: function (e) {   
     var This = this;
     var curPoint = [e.touches[0].pageX, e.touches[0].pageY];
     var startPoint = This.data.startPoint;
@@ -46,10 +44,8 @@ Page({
         This.setData({
           flag: true
         })
-
       }
     }
-
 
   },
   myend: function (e) {
@@ -206,7 +202,11 @@ Page({
                             // console.log(msg)
                             This.setData({
                               barCode: msg.data.data,
-                              bagNum: msg.data.data.length
+                              bagNum: msg.data.data.length,
+                              isitem:false
+                            })
+                            wx.setNavigationBarTitle({
+                              title: '项目录入',
                             })
                           },
                           fail: function (err) {
@@ -257,7 +257,7 @@ Page({
               transportId: This.data.transportid
             },
             success: function (msg) {
-
+              console.log(msg)
               if (msg.data.success) {
                 This.setData({
                   barCode: msg.data.data
@@ -278,10 +278,15 @@ Page({
                           hospitalId: This.data.hospitalId
                         },
                         success: function (msg) {
-                          console.log(msg)
+                         
                           This.setData({
                             barCode: msg.data.data,
-                            bagNum: msg.data.data.length
+                            bagNum: msg.data.data.length,
+                            isitem: false
+                          })
+                          wx.setNavigationBarTitle({
+                          
+                            title: '项目录入',
                           })
                         },
                         fail: function (err) {
@@ -423,6 +428,20 @@ Page({
   },
   selectApplyItems:function(e){
     console.log(e.detail.value)
+  },
+
+  // 暂不录入
+  noinput:function(){
+    this.setData({
+      isitem: true
+    })
+    wx.setNavigationBarTitle({
+      title: '扫描标本',
+    })
+  },
+  // 确认录入
+  confirminput:function(){
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

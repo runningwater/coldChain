@@ -1,5 +1,5 @@
 <!--pages/index/myTask/receiveSamples/scan/scan.wxml-->
-<view  catchtap='cancel'>
+<view  catchtap='cancel' wx:if="{{isitem}}">
   <view class="total">
     <block wx:if="{{bagNum==0}}">
       标本袋<text>{{bag}}</text>共扫描<text class="yellow">{{bagNum}}</text>个标本
@@ -23,7 +23,6 @@
     bindtouchmove="mymove" bindtouchend='myend'>
     
       <text class="codeL">标本条码：<text class="barcode">{{item.barCode}}</text></text>     
-      <!-- <text class="codeL">{{item.deviceName}}</text> -->
       <text class="iconfont icon-xiangji icon1"
         data-sampleIdone="{{item.sampleId}}"  bindtap="takePhoto"></text>
       
@@ -41,7 +40,7 @@
 </view>
 
 
-<view>
+<view wx:else>
     <view class="scanInput">  
         <input placeholder-style="font-size:32rpx"  confirm-type="search" bindconfirm="search" placeholder="搜索项目" />    
     </view>
@@ -50,4 +49,8 @@
         <view> <checkbox value="{{item.applyItemId}}" />{{item.applyItemName}}</view>       
      </label>
     </checkbox-group>
+  <view class="btn">
+    <button size='mini' bindtap='noinput'>暂不录入</button>
+    <button size='mini' bindtap="confirminput">确认录入</button>
+  </view> 
 </view>
