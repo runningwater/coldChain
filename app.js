@@ -41,6 +41,30 @@ App({
          title: msg,
      })
  },
+ snGet:function(url,data,successFun){
+   wx.request({
+     url: getApp().globalData.url + url,
+     data:data,
+     success:successFun,
+     fail:function(){
+       getApp().hnToast("无法获取数据，请检查网络");
+     }
+   })
+ },
+ snPost: function (url, data, successFun){
+    wx.request({
+      url: getApp().globalData.url + url,
+      data: data,
+      method:"POST",
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      success: successFun,
+      fail: function () {
+        getApp().hnToast("无法获取数据，请检查网络");
+      }
+    })
+ },
 
   globalData: {
     // url: "https://wl.ailabcare.com/framework-web/api/v1" //正式库
