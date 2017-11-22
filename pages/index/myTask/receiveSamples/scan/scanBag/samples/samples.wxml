@@ -1,5 +1,5 @@
 <!--pages/index/myTask/receiveSamples/scan/scan.wxml-->
-<view class="" catchtap='cancel'>
+<view  catchtap='cancel'>
   <view class="total">
     <block wx:if="{{bagNum==0}}">
       标本袋<text>{{bag}}</text>共扫描<text class="yellow">{{bagNum}}</text>个标本
@@ -38,4 +38,16 @@
    <view class="btn">
     <button bindtap="complete">返回</button>
   </view> 
+</view>
+
+
+<view>
+    <view class="scanInput">  
+        <input placeholder-style="font-size:32rpx"  confirm-type="search" bindconfirm="search" placeholder="搜索项目" />    
+    </view>
+    <checkbox-group bindchange="selectApplyItems">
+      <label class="checkbox" wx:for="{{applyItems}}">
+        <view> <checkbox value="{{item.applyItemId}}" />{{item.applyItemName}}</view>       
+     </label>
+    </checkbox-group>
 </view>

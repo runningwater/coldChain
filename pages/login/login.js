@@ -35,6 +35,12 @@ Page({
               function (e) {
                 //登录成功的回调            
                 if (e.data.success) {
+                  getApp().snGet('/item/getApplyItem', { token: e.data.data.token }, function (res) {
+                    wx.setStorage({
+                      key: 'item',
+                      data: res.data.data,
+                    })
+                  });
                   wx.setStorage({
                     key: 'token',
                     data: e.data.data.token,

@@ -16,7 +16,8 @@ Page({
     bagNum: 0,
     barCode: [],
     startPoint: [0, 0],//初始化touchstart坐标
-    flag: false
+    flag: false,
+    applyItems:[]
   },
   cancel: function () {
     this.setData({
@@ -277,7 +278,7 @@ Page({
                           hospitalId: This.data.hospitalId
                         },
                         success: function (msg) {
-                          // console.log(msg)
+                          console.log(msg)
                           This.setData({
                             barCode: msg.data.data,
                             bagNum: msg.data.data.length
@@ -344,6 +345,16 @@ Page({
         }
       },
     })
+    wx.getStorage({
+      key: 'item',
+      success: function(res) {
+        console.log(res)
+        This.setData({
+          applyItems: res.data
+        })
+        
+      },
+    })
 
   },
   init: function () {
@@ -372,6 +383,46 @@ Page({
         console.log(err)
       }
     })
+  },
+  search:function(e){
+    var This = this;
+
+  wx.getStorage({
+      key: 'item',
+      success: function (res) {
+        if (e.detail.value == "") {
+          This.setData({
+            applyItems: res.data
+          })
+          return;
+        }
+
+        var arr = [];
+        for (let i in res.data) {
+          //console.log(this.data.hosList[i])
+          res.data[i].show = false;
+
+          if (res.data[i].search.indexOf(e.detail.value) >= 0) {
+
+            res.data[i].show = true;
+            arr.push(res.data[i])
+          }
+        }
+        if (arr.length == 0) {
+          This.setData({
+            applyItems: [{ show: true, name: '无相关数据' }]
+          })
+        } else {
+          This.setData({
+            applyItems: arr
+          })
+        }
+
+      },
+    })
+  },
+  selectApplyItems:function(e){
+    console.log(e.detail.value)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
