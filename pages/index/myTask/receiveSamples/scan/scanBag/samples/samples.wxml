@@ -12,7 +12,7 @@
   
     <input placeholder-style="font-size:32rpx" 
     confirm-type="done" bindconfirm="scanSimple" placeholder="扫描或手动输入条形码" 
-    value="{{code}}" id="code"/>
+     id="code"/>
     <text class='iconfont icon-saoma'  bindtap="scanCode"></text>
   </view>
   

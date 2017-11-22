@@ -11,14 +11,15 @@ Page({
     hospitalId: "",//医院id
     recordid: "",//标本箱记录id
     transportid: "",//运输表id
-    code: "",
     location: "",//经纬度
     bagNum: 0,
+    code:"",
     barCode: [],
     startPoint: [0, 0],//初始化touchstart坐标
     flag: false,
     applyItems:[],//项目列表
-    isitem:true
+    isitem:true,   
+    applyItemId:[]//项目id
   },
   cancel: function () {
     this.setData({
@@ -181,7 +182,7 @@ Page({
                 success: function (msg) {
                   // console.log(msg)
                   This.setData({
-                    barCode: msg.data.data
+                    code: msg.data.data
                   });
                   wx.getStorage({
                     key: 'token',
@@ -200,11 +201,18 @@ Page({
                           },
                           success: function (msg) {
                             // console.log(msg)
-                            This.setData({
-                              barCode: msg.data.data,
-                              bagNum: msg.data.data.length,
-                              isitem:false
+                            wx.getStorage({
+                              key: 'item',
+                              success: function(res) {
+                                This.setData({
+                                  barCode: msg.data.data,
+                                  bagNum: msg.data.data.length,
+                                  isitem: false,
+                                  applyItems: res.data
+                                })
+                              },
                             })
+                            
                             wx.setNavigationBarTitle({
                               title: '项目录入',
                             })
@@ -260,7 +268,8 @@ Page({
               console.log(msg)
               if (msg.data.success) {
                 This.setData({
-                  barCode: msg.data.data
+                  code: msg.data.data
+                
                 });
                 wx.getStorage({
                   key: 'token',
@@ -278,12 +287,18 @@ Page({
                           hospitalId: This.data.hospitalId
                         },
                         success: function (msg) {
-                         
-                          This.setData({
-                            barCode: msg.data.data,
-                            bagNum: msg.data.data.length,
-                            isitem: false
+                          wx.getStorage({
+                            key: 'item',
+                            success: function (res) {
+                              This.setData({
+                                barCode: msg.data.data,
+                                bagNum: msg.data.data.length,
+                                isitem: false,
+                                applyItems: res.data
+                              })
+                            },
                           })
+                        
                           wx.setNavigationBarTitle({
                           
                             title: '项目录入',
@@ -350,6 +365,7 @@ Page({
         }
       },
     })
+
     wx.getStorage({
       key: 'item',
       success: function(res) {
@@ -415,7 +431,7 @@ Page({
         }
         if (arr.length == 0) {
           This.setData({
-            applyItems: [{ show: true, name: '无相关数据' }]
+            applyItems: [{ show: true, applyItemName: '无相关数据' }]
           })
         } else {
           This.setData({
@@ -428,6 +444,9 @@ Page({
   },
   selectApplyItems:function(e){
     console.log(e.detail.value)
+    this.setData({
+      applyItemId: e.detail.value
+    })
   },
 
   // 暂不录入
@@ -441,7 +460,28 @@ Page({
   },
   // 确认录入
   confirminput:function(){
-
+        var This = this;
+        console.log(This.data.barCode)
+        getApp().snPost('/item/sampleItemInput',{
+          token:This.data.token,
+          sampleId: This.data.code.sampleId,
+          barCode: This.data.code.barCode,
+          applyItemId: This.data.applyItemId.join(","),
+          remark:""
+        },function(res){
+          console.log(res.data.data)
+              if (res.data.success){
+                  getApp().hnToast("录入成功");
+                  This.setData({
+                    isitem:true
+                  });
+                  wx.setNavigationBarTitle({
+                    title: '扫描标本',                 
+                  })
+              }else{
+                getApp().hnToast(res.data.message);
+              }
+        })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
