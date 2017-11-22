@@ -1,8 +1,8 @@
 
 Page({
   data: {
-    userName: "",
-    pwd: "",
+    userName: "audit",
+    pwd: "123456",
     remeberPwd: false
   },
   //事件处理函数
