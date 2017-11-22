@@ -1,5 +1,5 @@
 <!--pages/index/myTask/receiveSamples/scan/scan.wxml-->
-<view class="" catchtap='cancel'>
+<view  catchtap='cancel' wx:if="{{isitem}}">
   <view class="total">
     <block wx:if="{{bagNum==0}}">
       标本袋<text>{{bag}}</text>共扫描<text class="yellow">{{bagNum}}</text>个标本
@@ -12,7 +12,7 @@
   
     <input placeholder-style="font-size:32rpx" 
     confirm-type="done" bindconfirm="scanSimple" placeholder="扫描或手动输入条形码" 
-    value="{{code}}" id="code"/>
+     id="code"/>
     <text class='iconfont icon-saoma'  bindtap="scanCode"></text>
   </view>
   
@@ -23,7 +23,6 @@
     bindtouchmove="mymove" bindtouchend='myend'>
     
       <text class="codeL">标本条码：<text class="barcode">{{item.barCode}}</text></text>     
-      <!-- <text class="codeL">{{item.deviceName}}</text> -->
       <text class="iconfont icon-xiangji icon1"
         data-sampleIdone="{{item.sampleId}}"  bindtap="takePhoto"></text>
       
@@ -37,5 +36,21 @@
 
    <view class="btn">
     <button bindtap="complete">返回</button>
+  </view> 
+</view>
+
+
+<view wx:else>
+    <view class="scanInput">  
+        <input placeholder-style="font-size:32rpx"  confirm-type="search" bindconfirm="search" placeholder="搜索项目" />    
+    </view>
+    <checkbox-group bindchange="selectApplyItems">
+      <label class="checkbox" wx:for="{{applyItems}}">
+        <view> <checkbox value="{{item.applyItemId}}" />{{item.applyItemName}}</view>       
+     </label>
+    </checkbox-group>
+  <view class="btn">
+    <button size='mini' bindtap='noinput'>暂不录入</button>
+    <button size='mini' bindtap="confirminput">确认录入</button>
   </view> 
 </view>

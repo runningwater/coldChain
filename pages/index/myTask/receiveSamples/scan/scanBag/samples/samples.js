@@ -11,21 +11,22 @@ Page({
     hospitalId: "",//医院id
     recordid: "",//标本箱记录id
     transportid: "",//运输表id
-    code: "",
     location: "",//经纬度
     bagNum: 0,
+    code:"",
     barCode: [],
     startPoint: [0, 0],//初始化touchstart坐标
-    flag: false
+    flag: false,
+    applyItems:[],//项目列表
+    isitem:true,   
+    applyItemId:[]//项目id
   },
   cancel: function () {
     this.setData({
       l: ""
     })
   },
-  mytouchstart: function (e) {
-   
-
+  mytouchstart: function (e) {  
     //开始触摸，获取触摸点坐标并放入数组中
     this.setData({
       startPoint: [e.touches[0].pageX, e.touches[0].pageY],
@@ -33,8 +34,7 @@ Page({
     });
   },
   //触摸点移动 
-  mymove: function (e) {
-   
+  mymove: function (e) {   
     var This = this;
     var curPoint = [e.touches[0].pageX, e.touches[0].pageY];
     var startPoint = This.data.startPoint;
@@ -45,10 +45,8 @@ Page({
         This.setData({
           flag: true
         })
-
       }
     }
-
 
   },
   myend: function (e) {
@@ -184,7 +182,7 @@ Page({
                 success: function (msg) {
                   // console.log(msg)
                   This.setData({
-                    barCode: msg.data.data
+                    code: msg.data.data
                   });
                   wx.getStorage({
                     key: 'token',
@@ -203,9 +201,20 @@ Page({
                           },
                           success: function (msg) {
                             // console.log(msg)
-                            This.setData({
-                              barCode: msg.data.data,
-                              bagNum: msg.data.data.length
+                            wx.getStorage({
+                              key: 'item',
+                              success: function(res) {
+                                This.setData({
+                                  barCode: msg.data.data,
+                                  bagNum: msg.data.data.length,
+                                  isitem: false,
+                                  applyItems: res.data
+                                })
+                              },
+                            })
+                            
+                            wx.setNavigationBarTitle({
+                              title: '项目录入',
                             })
                           },
                           fail: function (err) {
@@ -256,10 +265,11 @@ Page({
               transportId: This.data.transportid
             },
             success: function (msg) {
-
+              console.log(msg)
               if (msg.data.success) {
                 This.setData({
-                  barCode: msg.data.data
+                  code: msg.data.data
+                
                 });
                 wx.getStorage({
                   key: 'token',
@@ -277,10 +287,21 @@ Page({
                           hospitalId: This.data.hospitalId
                         },
                         success: function (msg) {
-                          // console.log(msg)
-                          This.setData({
-                            barCode: msg.data.data,
-                            bagNum: msg.data.data.length
+                          wx.getStorage({
+                            key: 'item',
+                            success: function (res) {
+                              This.setData({
+                                barCode: msg.data.data,
+                                bagNum: msg.data.data.length,
+                                isitem: false,
+                                applyItems: res.data
+                              })
+                            },
+                          })
+                        
+                          wx.setNavigationBarTitle({
+                          
+                            title: '项目录入',
                           })
                         },
                         fail: function (err) {
@@ -345,6 +366,17 @@ Page({
       },
     })
 
+    wx.getStorage({
+      key: 'item',
+      success: function(res) {
+        console.log(res)
+        This.setData({
+          applyItems: res.data
+        })
+        
+      },
+    })
+
   },
   init: function () {
     var This = this;
@@ -372,6 +404,84 @@ Page({
         console.log(err)
       }
     })
+  },
+  search:function(e){
+    var This = this;
+
+  wx.getStorage({
+      key: 'item',
+      success: function (res) {
+        if (e.detail.value == "") {
+          This.setData({
+            applyItems: res.data
+          })
+          return;
+        }
+
+        var arr = [];
+        for (let i in res.data) {
+          //console.log(this.data.hosList[i])
+          res.data[i].show = false;
+
+          if (res.data[i].search.indexOf(e.detail.value) >= 0) {
+
+            res.data[i].show = true;
+            arr.push(res.data[i])
+          }
+        }
+        if (arr.length == 0) {
+          This.setData({
+            applyItems: [{ show: true, applyItemName: '无相关数据' }]
+          })
+        } else {
+          This.setData({
+            applyItems: arr
+          })
+        }
+
+      },
+    })
+  },
+  selectApplyItems:function(e){
+    console.log(e.detail.value)
+    this.setData({
+      applyItemId: e.detail.value
+    })
+  },
+
+  // 暂不录入
+  noinput:function(){
+    this.setData({
+      isitem: true
+    })
+    wx.setNavigationBarTitle({
+      title: '扫描标本',
+    })
+  },
+  // 确认录入
+  confirminput:function(){
+        var This = this;
+        console.log(This.data.barCode)
+        getApp().snPost('/item/sampleItemInput',{
+          token:This.data.token,
+          sampleId: This.data.code.sampleId,
+          barCode: This.data.code.barCode,
+          applyItemId: This.data.applyItemId.join(","),
+          remark:""
+        },function(res){
+          console.log(res.data.data)
+              if (res.data.success){
+                  getApp().hnToast("录入成功");
+                  This.setData({
+                    isitem:true
+                  });
+                  wx.setNavigationBarTitle({
+                    title: '扫描标本',                 
+                  })
+              }else{
+                getApp().hnToast(res.data.message);
+              }
+        })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

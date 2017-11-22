@@ -22,7 +22,7 @@
   border-bottom:1px solid #ddd; 
 }
 .codeL{
-  float: left;
+  float: left; 
   color: #555;
 }
 .codeR{

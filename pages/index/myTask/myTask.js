@@ -270,12 +270,11 @@ Page({
   showMsg:function(e){
     var index = parseInt(e.currentTarget.dataset.index);
     var key = "auditTask[" + index + "].show";
-    var val = this.data.auditTask[index].show;
-    console.log(val);
+    var val = this.data.auditTask[index].show; 
     this.setData({
       [key]: !val
     })
-
+    console.log(this.data.auditTask)
   },
   hospitalChange:function(e){
     console.log(e)

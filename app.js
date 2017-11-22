@@ -1,14 +1,5 @@
 //app.js
 App({
-  
-    
- 
-  onLaunch: function() {
-  
-    
-  
-   
-  },
 
   getTime:function(){
     var nowDate = new Date();
@@ -40,6 +31,30 @@ App({
      wx.showToast({
          title: msg,
      })
+ },
+ snGet:function(url,data,successFun){
+   wx.request({
+     url: getApp().globalData.url + url,
+     data:data,
+     success:successFun,
+     fail:function(){
+       getApp().hnToast("无法获取数据，请检查网络");
+     }
+   })
+ },
+ snPost: function (url, data, successFun){
+    wx.request({
+      url: getApp().globalData.url + url,
+      data: data,
+      method:"POST",
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      success: successFun,
+      fail: function () {
+        getApp().hnToast("无法获取数据，请检查网络");
+      }
+    })
  },
 
   globalData: {
