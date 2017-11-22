@@ -1,14 +1,5 @@
 //app.js
 App({
-  
-    
- 
-  onLaunch: function() {
-  
-    
-  
-   
-  },
 
   getTime:function(){
     var nowDate = new Date();
