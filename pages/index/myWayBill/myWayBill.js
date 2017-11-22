@@ -8,17 +8,19 @@ Page({
       billList:[]
   },
   wayBill:function(e){
-    //console.log(e.currentTarget.dataset.bill)
-    var bill = e.currentTarget.dataset.bill;//?bill='+JSON.stringify(bill)
+    console.log(e)
+    // var bill = e.currentTarget.dataset.bill;//?bill='+JSON.stringify(bill)
     var oderId = e.currentTarget.dataset.oderid;
+    var barcode = e.currentTarget.dataset.barcode;
     wx.navigateTo({
-        url: 'wayBill/wayBill?oderId=' + oderId,
+        url: 'wayBill/wayBill?oderId=' + oderId+'&barcode='+barcode,
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
     var This = this;
         wx.getStorage({
           key: 'token',

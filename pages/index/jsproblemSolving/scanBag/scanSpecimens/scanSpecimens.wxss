@@ -2,31 +2,31 @@
 @import '../../../../../utils/icon.wxss';
 .header{
   background-color: #f3f3f3;
-  padding:0.8rem 0.53rem;
-  font-size:0.907rem;
+  padding:30rpx 20rpx;
+  font-size:34rpx;
   color:#333;
 }
 .scanInput{
   position: relative;
   border: 1px solid #bebebe;
-  border-radius: 5px;
+  border-radius: 10rpx;
   color:#888;
-  margin:1.33rem 0.53rem;  
-  padding: 7px 8px;
+  margin:50rpx 20rpx;  
+  padding: 14rpx 16rpx;
 }
 .icon-saoma{
   position: absolute;
   display: inline-block;
-  font-size:1.387rem;
-  line-height: 1rem;
-  right:0.53rem;
-  top:0.747rem;
+  font-size:52rpx;
+  line-height: 37.5rpx;
+  right:20rpx;
+  top:28rpx;
 }
 
 .codeList{ 
   overflow: hidden;
   color:#333;
-  margin:0 0.53rem 0.8rem;
+  margin:0 20rpx 30rpx;
   border-bottom:1px solid #bebebe; 
 }
 .codeL{
@@ -49,7 +49,7 @@
 }
 .overflow{
   overflow:hidden;
-  font-size: 16px;
+  font-size: 32rpx;
 }
 
 .center{
@@ -66,6 +66,6 @@
   color:#1ccaa3;
 }
 .del{
-  width: 40px;
-  height: 40px;
+  width: 80rpx;
+  height: 80rpx;
 }

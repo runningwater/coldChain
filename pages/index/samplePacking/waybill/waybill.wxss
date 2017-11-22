@@ -1,25 +1,53 @@
+@import '../../../../utils/icon.wxss';
 /*盖全局样式*/
 .container{
-  padding: 10px 15px;
+  padding: 0 20rpx;
 }
 /*按钮*/
 .btn{
-  margin-top:30px;
+  margin-top:50rpx;
   
 }
 .btn button{
-  background: #09c;
+  background: #009bec;
   color:#fff;
-  font-size: 16px;
+  font-size: 32rpx;
   font-weight: bold;
-  width: 40%;
 }
 
 .inputCss{
-  border:1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin: 20px 0;
+  border-bottom:1px solid #bebebe;
+  padding: 20rpx 0;
+  color:#333;
+  font-size:32rpx;
+}
+.remark{
+  border:1px solid #bebebe;
+  border-radius:10rpx;
+  margin-top:20rpx;
+  padding:10rpx 20rpx;
+  font-size:32rpx;
+}
+
+.inputCss picker{
+  display: inline-block;
+  text-align:right;
+  float:right;
+  width:400rpx;
+  color:#888;
+}
+.inputCss input{
+  display: inline-block;
+  line-height:52rpx;
+  height:52rpx;
+  margin-left:50rpx;
+  vertical-align:top;
+  margin-top:-3rpx;
+
+}
+.icon-zhankai{
+  transform: rotate(180deg);
+  color:#bebebe;
 }
 .gray{
   color:gray;

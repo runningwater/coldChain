@@ -2,14 +2,43 @@
 .container{
   padding: 10px 15px;
 }
-
-
-.inputCss{
-  border:1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin: 20px 0;
+.headerWrap{
+  background-color: #f3f3f3;
+  padding: 20rpx 30rpx;
 }
-.gray{
-  color:gray;
+.inputCss{
+  border-bottom:1px solid #bebebe;
+  padding: 20rpx 0;
+  color:#333;
+  font-size:32rpx;
+  margin: 0 30rpx;
+}
+.remark{
+  border:1px solid #bebebe;
+  border-radius:10rpx;
+  padding:10rpx 20rpx;
+  font-size:32rpx;
+  margin: 20rpx 30rpx;
+}
+.inputCss input{
+  display: inline-block;
+  line-height:52rpx;
+  height:52rpx;
+  margin-left:50rpx;
+  vertical-align:top;
+  margin-top:-3rpx;
+  color:#888;
+}
+.overflow{
+  overflow: hidden;
+}
+.left{
+  float:left;
+}
+.right{
+  float:right;
+  text-align: right;
+}
+.blue{
+  color:#009be2;
 }

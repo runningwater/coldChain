@@ -18,6 +18,7 @@ Page({
         addr: "",//接受地 receiveId
         expressCompany: "",//快递公司
         remark: "",//备注
+        barcode: ""
     },
 
     /**
@@ -27,6 +28,8 @@ Page({
         //console.log(options.oderId)
         var This = this;
         var oderId = options.oderId;
+        var barcode = options.barcode;
+        
         wx.getStorage({
             key: 'token',
             success: function (res) {
@@ -57,6 +60,7 @@ Page({
                                         flightSN: bill.flightSn,//航班号
                                         addr: bill.addressName, //接受地              
                                         remark: bill.remark,//备注
+                                        barcode: barcode
                                     });
                                 } else if (bill.transportType == "2") {
                                     This.setData({
@@ -70,6 +74,7 @@ Page({
                                         nowtime: bill.estimateTime,//预计达到时间estimateTime            
                                         expressCompany: bill.expressCompany,//快递公司
                                         remark: bill.remark,//备注
+                                        barcode: barcode
                                     });
                                 } else {
                                     This.setData({
@@ -83,6 +88,7 @@ Page({
                                         nowtime: bill.estimateTime,//预计达到时间estimateTime
                                         carSN: bill.carSn,//车牌号            
                                         remark: bill.remark,//备注
+                                        barcode: barcode
                                     });
                                 }
                             } else {

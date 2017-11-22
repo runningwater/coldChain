@@ -135,17 +135,17 @@
       </view>
       <view>通知公告</view>
     </view>
-    <view class="flex-item" bindtap="feedBack">
-      <view class="icon feedBack">
-         <text class="iconfont icon-fankui" style="font-size:60px;color:#fff"></text>
-      </view>
-      <view>意见反馈</view>
-    </view>
     <view class="flex-item" bindtap="serviceManual">
       <view class="icon serviceManual">
          <text class="iconfont icon-fuwushouce" style="font-size:60px;color:#fff"></text>
       </view>
       <view>服务手册</view>
+    </view>
+    <view class="flex-item" bindtap="feedBack">
+      <view class="icon feedBack">
+         <text class="iconfont icon-fankui" style="font-size:60px;color:#fff"></text>
+      </view>
+      <view>意见反馈</view>
     </view>
   </view>
 
@@ -170,17 +170,17 @@
       </view>
       <view>通知公告</view>
     </view>
-    <view class="flex-item" bindtap="feedBack">
-      <view class="icon feedBack">
-         <text class="iconfont icon-fankui" style="font-size:60px;color:#fff"></text>
-      </view>
-      <view>意见反馈</view>
-    </view>
     <view class="flex-item " bindtap="serviceManual">
       <view class="icon serviceManual">
          <text class="iconfont icon-fuwushouce" style="font-size:60px;color:#fff"></text>
       </view>
       <view>服务手册</view>
+    </view>
+    <view class="flex-item" bindtap="feedBack">
+      <view class="icon feedBack">
+         <text class="iconfont icon-fankui" style="font-size:60px;color:#fff"></text>
+      </view>
+      <view>意见反馈</view>
     </view>
     <view class="flex-item" bindtap="dbproblemSolving">
       <view class="icon myTask dbproblemSolving">

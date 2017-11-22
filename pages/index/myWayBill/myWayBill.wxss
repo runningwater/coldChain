@@ -1,36 +1,35 @@
 /* pages/index/myWayBill/myWayBill.wxss */
-
+@import '../../../utils/icon.wxss';
 .wrap {
   overflow: hidden;
-  border-bottom: 1px solid #ddd;
-  padding: 5px 0;
+  border-bottom: 1px solid #bebebe;
+  padding:20rpx;
 }
-
+.top{
+  overflow: hidden;
+  margin-bottom:30rpx;
+}
 .left {
   float: left;
-  width: 10%;
-  font-size: 30px;
-  color: #fff;
-  background:#FA940C;
-  padding: 5px;
-  text-align: center;
-  border-radius:50%;
-}
+  font-size:34rpx;
+  color:#333;
 
-.center {
-  float: left;
-  margin:0 5px;
-  font-size: 13px;
-  padding-top:8px; 
 }
-
 .right {
-  float: left;
-  width: 5%;
-  padding-left: 15px;
-  padding-top:8px; 
+  float: right;
+  padding-left: 30rpx;
+  font-size:26rpx;
+  color:#888; 
+}
+.bottom{
+  color:#666;
+  font-size:32rpx;
 }
 .arrow{
   display: inline-block;
   margin:0 30px;
+  color:#bebebe;
+}
+.blue{
+  color:#009be2;
 }

@@ -11,14 +11,14 @@ Page({
       receiveArr: [],//接受地id 数组
       receiveId:"",//接受地id
       addr:"接收地",
-      transportType:"运输方式",
+      transportType:"请选择",
       transport:[],//运输方式列表
       transportArr:[],
       transportId:"",//运输方式id
       flag1:false,//运输方式1
       flag2: false,//运输方式2
       flag3: false,//运输方式3,
-      nowtime:"09:00",//预计到达时间默认值，
+      nowtime:"请选择",//预计到达时间默认值，
       location:""
   },
   submit:function(e){

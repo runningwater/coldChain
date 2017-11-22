@@ -40,20 +40,25 @@
    background: linear-gradient(45deg,rgba(80,142,236,1),rgba(129,208,238,1));
 }
 .querySpecimens{
-   background: linear-gradient(45deg,rgba(70,203,126,1),rgba(95,218,193,1));
+  background: linear-gradient(45deg,rgba(70,203,126,1),rgba(95,218,193,1));
 }
 .jsproblemSolving{
-    background: linear-gradient(45deg,rgba(238,197,98,1),rgba(229,219,108,1));
+  background: linear-gradient(45deg,rgba(238,197,98,1),rgba(229,219,108,1));
 }
 .jobLog{
-    background: linear-gradient(45deg,rgba(90,170,238,1),rgba(117,221,233,1));
+  background: linear-gradient(45deg,rgba(90,170,238,1),rgba(117,221,233,1));
 }
 .announcements{
-   background: linear-gradient(45deg,rgba(235,121,164,1),rgba(240,143,234,1));
+  background: linear-gradient(45deg,rgba(235,121,164,1),rgba(240,143,234,1));
 }
 .feedBack{
-   background: linear-gradient(45deg,rgba(245,150,128,1),rgba(236,217,126,1));
+  background: linear-gradient(45deg,rgba(248,106,106,1),rgba(251,129,87,1));
 }
 .serviceManual{
-   background: linear-gradient(45deg,rgba(248,106,106,1),rgba(251,129,87,1));
-} 
+  background: linear-gradient(45deg,rgba(245,150,128,1),rgba(236,217,126,1));}
+.myWayBill{
+  background: linear-gradient(45deg,rgba(95,205,160,1),rgba(103,224,174,1));
+}
+.dbproblemSolving{
+  background: linear-gradient(45deg,rgba(238,197,98,1),rgba(229,219,108,1));
+}

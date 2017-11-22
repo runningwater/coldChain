@@ -2,46 +2,59 @@
 <form bindsubmit="submit">
 <!-- 运输方式transportType -->
 <view class="inputCss">  
-  <picker name="transportType" value="{{transportId}}" range="{{transport}}" bindchange="transportTypeChange">{{transportType}}</picker>
-</view>
-<view class="inputCss">
-  <input name="fromAddress" placeholder="出发地"/>
-</view>
-<view class="inputCss">
-  <input name="destiation" placeholder="到达地"/>
-</view>
-<view class="inputCss">
-  <input name="contact" placeholder="联系方式"/>
+  <text>运输方式</text>
+  <picker name="transportType" value="{{transportId}}" range="{{transport}}" bindchange="transportTypeChange">{{transportType}}
+    <text class="iconfont icon-zhankai"></text>
+  </picker>
 </view>
 <!-- 预计达到时间 -->
 <view class="inputCss">
- <picker class="gray" name="estimateTime" mode="time" bindchange="timeChange" value="{{nowtime}}" start="00:00" 
- end="24:00">
- {{nowtime}}
- </picker>
+  <text>预计到达时间</text>
+  <picker name="estimateTime" mode="time" bindchange="timeChange" value="{{nowtime}}" start="00:00" 
+  end="24:00">
+  {{nowtime}}
+  <text class="iconfont icon-zhankai"></text>  
+  </picker>
 </view>
+<view class="inputCss">
+  <text>出发地</text>
+  <input name="fromAddress" placeholder="请输入"/>
+</view>
+<view class="inputCss">
+  <text>到达地</text>
+  <input name="destiation" placeholder="请输入"/>
+</view>
+<view class="inputCss">
+  <text>联系方式</text>
+  <input name="contact" placeholder="请输入"/>
+</view>
+
 <!-- -->
 <view class="inputCss"  wx:if="{{flag1}}">
-  <input name="carSN" placeholder="车牌号"/>
+  <text>车牌号</text>
+  <input name="carSN" placeholder="请输入"/>
 </view>
   <!--  -->
 <view class="inputCss" wx:if="{{flag2}}">
-  <input name="flightSN" placeholder="航班号\火车班次"/>
+  <text>航班号\火车班次</text>
+  <input name="flightSN" placeholder="请输入"/>
 </view>
 <!-- 接收地 -->
 <!-- wx:if="{{flag2}}" -->
-<view class="inputCss" wx:if="{{flag2}}">  
-  <picker name="receiveId" value="{{receiveId}}" range="{{range}}" bindchange="addrChange">{{addr}}</picker>
+<view class="inputCss" wx:if="{{flag2}}"> 
+  <text>接收地</text>
+  <picker name="receiveId" value="{{receiveId}}" range="{{range}}" bindchange="addrChange">{{addr}}
+    <text class="iconfont icon-zhankai"></text>
+  </picker>
 </view>
 <!-- wx:if="{{flag3}}" -->
 <view class="inputCss" wx:if="{{flag3}}">
-  <input name="expressCompany" placeholder="快递公司"/>
+  <text>快递公司</text>
+  <input name="expressCompany" placeholder="请输入"/>
 </view>
-<!-- <view class="inputCss"> 
-  <textarea name="transportId"  placeholder="标本箱条码" value="{{boxCode}}" disabled/>
-</view> -->
-<view class="inputCss"> 
-  <textarea name="remark"  placeholder="备注"/>
+
+<view class="remark"> 
+  <textarea name="remark"  placeholder="请输入运单信息"/>
 </view>
 
 <view class="btn">

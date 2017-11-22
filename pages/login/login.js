@@ -1,8 +1,8 @@
 
 Page({
   data: {
-    userName: "cswork",
-    pwd: "123456",
+    userName: "",
+    pwd: "",
     remeberPwd: false
   
   },
