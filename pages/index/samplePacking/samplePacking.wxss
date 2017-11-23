@@ -1,6 +1,6 @@
 @import '../../../utils/icon.wxss';
 .scanInput{
-  border: 1px solid #3f89ec;
+  border: 1px solid #bebebe;
   border-radius: 10rpx;
   padding: 14rpx 16rpx;
   margin-bottom:40rpx;

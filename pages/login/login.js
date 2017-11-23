@@ -1,7 +1,7 @@
 
 Page({
   data: {
-    userName: "audit",
+    userName: "cslabuser",
     pwd: "123456",
     remeberPwd: false
   },

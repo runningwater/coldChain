@@ -22,9 +22,10 @@
             <text class="iconfont icon-xiangshang"></text>
         </view>
         <view class='msg' class="{{item.show?'shows':'hides'}}">
-            <view>申请人：{{item.nameCn==null?"":item.nameCn}}</view>
-            <view>申请时间：{{item.reqTime==null?"":item.reqTime}}</view>
-            <view>申请信息：{{item.remark==null?"":item.remark}}</view>
+          <view class='titleHospital'>{{item.hospitalName}}</view>
+          <view class='detail1'>申请人：{{item.nameCn==null?"":item.nameCn}}</view>
+          <view class='detail2'>申请时间：{{item.reqTime==null?"":item.reqTime}}</view>
+          <view class='detail3'>申请信息：{{item.remark==null?"":item.remark}}</view>
         </view>
     </view>
     <view wx:else>
@@ -42,9 +43,10 @@
           <text class="iconfont icon-xiangshang"></text>
         </view>
         <view class="{{item.show?'shows':'hides'}}">
-            <view>申请人：{{item.nameCn==null?"":item.nameCn}}</view>          
-            <view>申请时间：{{item.reqTime==null?"":item.reqTime}}</view>
-            <view>申请信息：{{item.remark==null?"":item.remark}}</view>
+          <view class='titleHospital'>{{item.hospitalName}}</view>
+          <view class='detail1'>申请人：{{item.nameCn==null?"":item.nameCn}}</view>          
+          <view class='detail2'>申请时间：{{item.reqTime==null?"":item.reqTime}}</view>
+          <view class='detail3'>申请信息：{{item.remark==null?"":item.remark}}</view>
         </view>
     </view>
        

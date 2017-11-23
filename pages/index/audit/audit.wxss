@@ -13,12 +13,15 @@
   overflow: hidden;
   text-overflow: ellipsis;
   color:#666;
+  font-size:32rpx;
 }
 .status{
   text-align:center;
   display: inline-block;
   width:157rpx;
   vertical-align: top;
+  color:#666;
+  font-size:32rpx;
 }
 
 .listContent{
@@ -103,20 +106,36 @@
 .inputCss{
   border:1px solid #ddd;
   border-radius: 5px;
-  padding: 10px 20px;
-  margin: 20px 0;
-}
-.gray{
-  color:gray;
+  padding: 20rpx;
 }
 .btn{
-  margin-top:30px;
-  
+  margin-top:50rpx;
 }
 .btn button{
-  background: #09c;
+  background: #009be2;
   color:#fff;
-  font-size: 16px;
-  font-weight: bold;
-  width: 40%;
+  font-size: 32rpx;
+}
+/* 展开详情部分 */
+.titleHospital{
+  font-size:34rpx;
+  color:#333;
+  padding-bottom:30rpx;
+  border-bottom:1px solid #bebebe;
+}
+.detail1,.detail2{
+  border-bottom:1px dotted #bebebe;
+  padding:20rpx 0;
+  font-size: 32rpx;
+  color:#434343;
+}
+.detail3{
+  padding-top:20rpx;
+  font-size: 32rpx;
+  color:#434343;
+}
+.detail1 text,
+.detail2 text,
+.detail3 text{
+  color:#666;
 }
