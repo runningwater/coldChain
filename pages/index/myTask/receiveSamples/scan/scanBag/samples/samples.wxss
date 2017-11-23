@@ -46,14 +46,30 @@
   color:#1ccaa3;
 }
 /*按钮*/
-.btn{
-  margin:50rpx 20rpx 0;
-  border-radius:5px;
-
+.btnGroup{
+  overflow: hidden;
+  margin-top:50rpx;
+  padding:0 100rpx;
 }
-.btn button{
+button{
   background: #009BE2;
   color:#fff;
   font-size: 16px;
   font-weight: bold;
+}
+.left{
+  float:left;
+}
+.right{
+  float:right;
+}
+/* 项目录入 */
+checkbox-group{
+  padding:0 20rpx;
+}
+.item{
+  width:720rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

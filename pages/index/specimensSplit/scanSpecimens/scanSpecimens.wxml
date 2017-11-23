@@ -2,7 +2,7 @@
 <view class="container">
     <view class="scanInput">
 
-        <input placeholder-style="font-size:12px" bindblur="scanBox" placeholder="请扫描条码或输入条码" id="code"/>
+        <input placeholder-style="font-size:32rpx" bindblur="scanBox" placeholder="扫描或手动输入条形码" id="code"/>
         <view class="img" bindtap="scanCode">
             <!-- <image src="../../../images/u477.png"></image> -->
         </view>

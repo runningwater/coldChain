@@ -4,7 +4,7 @@
 }
 .flex-wrap{
   flex-direction: row;
-  padding-bottom:1rem;
+  padding-bottom:37.5rpx;
   margin: 0 auto;
   /* width:320px; */
 }
@@ -17,8 +17,8 @@
 }
 
 .flex-item view{
-  font-size: 16px;
-  margin-top: 10px;
+  font-size: 32rpx;
+  margin-top: 20rpx;
 }
 
 .hidden{

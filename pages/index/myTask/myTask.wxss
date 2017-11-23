@@ -127,7 +127,7 @@
 }
 /* 新增任务模块 */
 .addTasks{
-  margin:0 0.53rem;
+  margin:0 20rpx;
 }
 .icon-zhankai{
   position:absolute;
@@ -166,13 +166,12 @@
   line-height:32rpx;
   font-size:32rpx;
   color:#666;
-  /* margin-bottom:0.533rem; */
 }
 .status{
   text-align:center;
   display: inline-block;
-  margin-left:3.06rem;
-  width:4.2rem;
+  margin-left:114.8rpx;
+  width:157.5rpx;
   vertical-align: top;
 }
 .hospitalName{

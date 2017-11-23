@@ -46,11 +46,11 @@
     </view>
     <checkbox-group bindchange="selectApplyItems">
       <label class="checkbox" wx:for="{{applyItems}}">
-        <view> <checkbox value="{{item.applyItemId}}" />{{item.applyItemName}}</view>       
+        <view class="item"> <checkbox value="{{item.applyItemId}}" />{{item.applyItemName}}</view>       
      </label>
     </checkbox-group>
-  <view class="btn">
-    <button size='mini' bindtap='noinput'>暂不录入</button>
-    <button size='mini' bindtap="confirminput">确认录入</button>
+  <view class="btnGroup">
+    <button class='left' size='mini' bindtap='noinput'>暂不录入</button>
+    <button class='right' size='mini' bindtap="confirminput">确认录入</button>
   </view> 
 </view>

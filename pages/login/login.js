@@ -1,8 +1,8 @@
 
 Page({
   data: {
-    userName: "cslabuser",
-    pwd: "123456",
+    userName: "",
+    pwd: "",
     remeberPwd: false
   },
   //事件处理函数

@@ -7,7 +7,7 @@
   </view>
     
   <view class="scanInput">
-    <input placeholder-style="font-size:0.853rem" confirm-type="done" bindconfirm="scanBag" placeholder="扫描或手动输入条形码" value="{{code}}" id="code" />
+    <input placeholder-style="font-size:32rpx" confirm-type="done" bindconfirm="scanBag" placeholder="扫描或手动输入条形码" value="{{code}}" id="code" />
     <text class='iconfont icon-saoma' bindtap="scanCode"></text>
   </view>
     
