@@ -1,8 +1,13 @@
 
 Page({
   data: {
+<<<<<<< HEAD
     userName: "",
     pwd: "",
+=======
+    userName: "cswork",
+    pwd: "123456",
+>>>>>>> 98e5c7dfe89712989269b0ae411be4cc18ff8df6
     remeberPwd: false
   },
   //事件处理函数

@@ -11,7 +11,8 @@ Page({
         listSp:[],//标本列表
         total:0,//所有标本数量
         num:0,//已选标本数量
-        sampleList:[]
+        sampleList:[],
+        barcode:""//标本箱条码
     },
     checkboxChange: function (e) {
       console.log('checkbox发生change事件，携带value值为：', e.detail.value)
@@ -21,7 +22,7 @@ Page({
       })
     },
     submit:function(e){
-      
+      var This = this;
       var data ={
         token:this.data.token,
         transportId:e.target.dataset.transportid,
@@ -40,7 +41,7 @@ Page({
           console.log(msg)
           if (msg.data.success) {
             getApp().hnToast(msg.data.message);
-          
+            This.scanSpecimens(This.data.barcode)
           } else {
             getApp().hnToast(msg.data.message);
           }
@@ -53,6 +54,9 @@ Page({
         wx.scanCode({
             success: function (msg) {
                 //console.log(msg.result)
+                This.setData({
+                  barcode:msg.result
+                })
                 This.scanSpecimens(msg.result)
             },
             fail: function (e) {
@@ -68,6 +72,9 @@ Page({
         //console.log(e.detail.value)
         var barcode = e.detail.value;
         var This = this;
+        This.setData({
+          barcode: barcode
+        })
         This.scanSpecimens(barcode)
        
     },
@@ -91,9 +98,7 @@ Page({
                     listSp:msg.data.data,
                     total:msg.data.data.length
                   })
-                    // wx.navigateTo({
-                    //     url: 'scanSpecimens/scanSpecimens?transportId=' + msg.data.data.transportId + "&barcode=" + barcode,
-                    // })
+           
                 } else {
                     getApp().hnToast(msg.data.message);
                 }

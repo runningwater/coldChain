@@ -11,5 +11,5 @@
   overflow: hidden;  
 }
 .keyAndTime text{
-  display: inline-block
+  display: inline-block;
 }
