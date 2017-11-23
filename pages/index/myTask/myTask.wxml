@@ -65,7 +65,7 @@
           <block wx:else>
               <text class="FAIL">{{item.statusName}}</text>
           </block>
-          <text class="iconfont icon-shrink"></text>
+          <text class="iconfont icon-xiangshang"></text>
         </view>
         <view  class="{{item.show?'shows':'hides'}}">
           <view class='titleHospital'><text>{{item.hospitalName}}</text></view>

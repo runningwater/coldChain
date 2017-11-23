@@ -1,9 +1,8 @@
-
+@import '../../../utils/icon.wxss';
 .listTitle{
-  margin-top:15px;
-  background: #eee;
-  padding:15px 10px;
-  font-size: 14px;
+  background: #f3f3f3;
+  padding:20rpx;
+  font-size: 28rpx;
 }
  text{
   display: inline-block;
@@ -12,26 +11,85 @@
   width:55%;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis
+  text-overflow: ellipsis;
+  color:#666;
+  font-size:32rpx;
 }
-.state{
-  width:15%;
+.status{
   text-align:center;
+  display: inline-block;
+  width:157rpx;
+  vertical-align: top;
+  color:#666;
+  font-size:32rpx;
 }
 
 .listContent{
-   font-size: 14px;
-   padding: 35rpx 10rpx;
-   border-bottom: 1px solid #ddd;
-   position: relative
+  padding: 35rpx 20rpx;
+  border-bottom: 1px solid #bebebe;
+  position: relative;
+  line-height:32rpx;
+  font-size: 32rpx;
+  color:#666;
+}
+.state{
+  width:25%;
+  text-align:center;
+  display: inline-block;
+  border-radius: 11.5px;
+  vertical-align: top;
+}
+.hospitalName{
+  font-size: 34rpx;
+  color:#333;
+  width:360rpx;
+  height:36rpx;
+  line-height:32rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.icon-xiangshang{
+  transform:rotate(180deg);
+  position:absolute;
+  right:20px;
+  color:#bebebe;
+  font-size:28rpx;
 }
 
-.icon{
-  position: absolute;
-  right:55rpx;
-  top:55rpx;
+.NOT{
+  width:140rpx;
+  margin:0 38rpx;
+  text-align:center;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 11.5px;
+  color:#ee750a;
+  background-color: #fdf0e4;
+  font-size:28rpx;
 }
-
+.YET{
+  width:108rpx;
+  margin:0 55rpx;
+  text-align:center;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 11.5px;
+  color:#1ccaa3;
+  background-color: #e8f8f7;
+  font-size:28rpx;
+}
+.END{
+  width:112rpx;
+  margin:0 50rpx;
+  text-align:center;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 11.5px;
+  color:#888;
+  background-color: #F3F3F3;
+  font-size:28rpx;
+}
 .hides{
   display: none
 }
@@ -48,20 +106,36 @@
 .inputCss{
   border:1px solid #ddd;
   border-radius: 5px;
-  padding: 10px 20px;
-  margin: 20px 0;
-}
-.gray{
-  color:gray;
+  padding: 20rpx;
 }
 .btn{
-  margin-top:30px;
-  
+  margin-top:50rpx;
 }
 .btn button{
-  background: #09c;
+  background: #009be2;
   color:#fff;
-  font-size: 16px;
-  font-weight: bold;
-  width: 40%;
+  font-size: 32rpx;
+}
+/* 展开详情部分 */
+.titleHospital{
+  font-size:34rpx;
+  color:#333;
+  padding-bottom:30rpx;
+  border-bottom:1px solid #bebebe;
+}
+.detail1,.detail2{
+  border-bottom:1px dotted #bebebe;
+  padding:20rpx 0;
+  font-size: 32rpx;
+  color:#434343;
+}
+.detail3{
+  padding-top:20rpx;
+  font-size: 32rpx;
+  color:#434343;
+}
+.detail1 text,
+.detail2 text,
+.detail3 text{
+  color:#666;
 }

@@ -4,8 +4,7 @@
 .scanInput{
   border: 1px solid #bebebe;
   border-radius: 10rpx;
-  color:#888;
-  margin:50rpx 20rpx;  
+  color:#888; 
   padding: 14rpx 16rpx;
 }
 .icon-saoma{
@@ -24,8 +23,7 @@
   border-bottom:1px solid #ddd; 
 }
 .codeL{
-  float: left;
-  color: #555;
+  color: #333;
 }
 .codeR{
   float: right

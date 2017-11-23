@@ -62,3 +62,12 @@
 .dbproblemSolving{
   background: linear-gradient(45deg,rgba(238,197,98,1),rgba(229,219,108,1));
 }
+.billOfLoding{
+  background: linear-gradient(45deg,rgba(80,195,228,1),rgba(114,206,232,1));
+}
+.specimensSplit{
+  background: linear-gradient(45deg,rgba(248,106,139,1),rgba(253,131,160,1));
+}
+.audit{
+  background: linear-gradient(45deg,rgba(105,129,215,1),rgba(126,149,236,1));
+}

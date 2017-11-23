@@ -1,40 +1,42 @@
-<view class="container">
+<view class="">
    
     <view class="tab">
-        <text bindtap="didnot" class="{{flag1?'':'c'}}">未提货</text>
-        <text bindtap="already" class="{{flag2?'':'c'}}">已提货</text>
+        <text bindtap="didnot" class="{{flag1?'selected':'not'}}">未提货</text>
+        <text bindtap="already" class="{{flag2?'selected':'not'}}">已提货</text>
     </view>
-    <view wx:if="{{flag1}}" class="wrap" wx:for="{{orderList1}}">
+    <view wx:if="{{flag1}}" class="wrap" wx:for="{{orderList1}}" >
        
-        <view class="center"  bindtap="wayBill" data-bill="{{item}}">
+        <view class="center"  bindtap="wayBill" data-bill="{{item}}" data-barcode='{{item.barCode}}'>
             <view class="top">
-                <text>{{item.fromAddress}}</text>
-                <text class="fa fa-long-arrow-right arrow"></text>
-                <text>{{item.destiation}}</text>
+              <text>{{item.fromAddress}}</text>
+              <text class="iconfont icon-qianjin"></text>
+              <text>{{item.destiation}}</text>
+              <view class='right'>预计到达时间：<text class='blue'>{{item.estimateTime}}</text></view>
             </view>
             <view class="bottom">
-                <text>标本箱：<text class="red">{{item.barCode}}</text></text>
-                <text>预计时间：{{item.estimateTime}}</text>
+              <text>标本箱：{{item.barCode}}</text>  
+              <view class="NOT">
+                <text class="receive" data-barcode="{{item.barCode}}" bindtap="receive">未接收</text>
+              </view>
             </view>
         </view>
-        <view class="right">
-            <text class="receive" data-barcode="{{item.barCode}}" bindtap="receive">接收</text>
-        </view>
+        
     </view>
 
      <view wx:if="{{flag2}}" class="wrap"  data-bill="{{item}}" bindtap="wayBill" wx:for="{{orderList2}}">
-        <!-- <view class="left">
-            <text class="fa fa-car"></text>
-        </view> -->
+        
         <view class="center">
             <view class="top">
-                <text>{{item.fromAddress}}</text>
-                <text class="fa fa-long-arrow-right arrow"></text>
-                <text>{{item.destiation}}</text>
+              <text>{{item.fromAddress}}</text>
+              <text class="iconfont icon-qianjin"></text>
+              <text>{{item.destiation}}</text>
+              <text class='right'>预计时间：{{item.estimateTime}}</text>
             </view>
             <view class="bottom">
-                <text>标本箱：<text class="red">{{item.barCode}}</text></text>
-                <text>预计时间：{{item.estimateTime}}</text>
+              <text>标本箱：{{item.barCode}}</text>
+              <view class="END">
+                <text class="receive" data-barcode="{{item.barCode}}">已接收</text>
+              </view>
             </view>
         </view>
         <!-- <view class="right">
