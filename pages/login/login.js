@@ -2,8 +2,8 @@
 Page({
   data: {
 
-    userName: "cswork",
-    pwd: "123456",
+    userName: "",
+    pwd: "",
 
   },
   //事件处理函数
