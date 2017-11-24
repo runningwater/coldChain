@@ -70,9 +70,12 @@ Page({
       },
       data: data,
       success: function (msg) {
-       // console.log(msg)
+       console.log(msg)
         if (msg.data.success) {
           getApp().hnToast(msg.data.message);
+          This.setData({
+            sampleList:[]
+          })
          
         } else {
           getApp().hnToast(msg.data.message);
