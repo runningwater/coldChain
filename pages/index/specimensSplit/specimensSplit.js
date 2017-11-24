@@ -7,47 +7,10 @@ Page({
     data: {
         token:"",
         location:"",
-        code:"",
-        listSp:[],//标本列表
-        total:0,//所有标本数量
-        num:0,//已选标本数量
-        sampleList:[],
+        code:"",    
         barcode:""//标本箱条码
     },
-    checkboxChange: function (e) {
-      console.log('checkbox发生change事件，携带value值为：', e.detail.value)
-      this.setData({
-        num: e.detail.value.length,
-        sampleList: e.detail.value        
-      })
-    },
-    submit:function(e){
-      var This = this;
-      var data ={
-        token:this.data.token,
-        transportId:e.target.dataset.transportid,
-        sampleList: this.data.sampleList.join(','),
-        location:this.data.location
-      }
-      console.log(data)
-      wx.request({
-        url: getApp().globalData.url + '/box/closeBox',
-        method: "POST",
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        data: data,
-        success: function (msg) {
-          console.log(msg)
-          if (msg.data.success) {
-            getApp().hnToast(msg.data.message);
-            This.scanSpecimens(This.data.barcode)
-          } else {
-            getApp().hnToast(msg.data.message);
-          }
-        }
-      })
-    },
+  
      //扫码
     scanCode: function () {
         var This = this;
@@ -93,11 +56,19 @@ Page({
             },
             success: function (msg) {
                 console.log(msg)
-                if (msg.data.success) {
-                  This.setData({
-                    listSp:msg.data.data,
-                    total:msg.data.data.length
-                  })
+                if (msg.data.success) {    
+                  if (msg.data.data.length==0){
+                    getApp().hnToast("暂无数据")
+                  }else{
+                    wx.setStorage({
+                      key: 'data',
+                      data: msg.data.data,
+                    })
+                    wx.navigateTo({
+                      url: 'splitSpecimen/splitSpecimen?barcode=' + barcode
+                    })
+                  }              
+               
            
                 } else {
                     getApp().hnToast(msg.data.message);
@@ -123,6 +94,10 @@ Page({
             success: function(res) {
                 This.setData({
                     location: res.longitude + "," + res.latitude
+                })
+                wx.setStorage({
+                  key: 'location',
+                  data: res.longitude + "," + res.latitude,
                 })
             },
         })

@@ -1,18 +1,6 @@
 <view class="container">
   <view class="scanInput">   
-    <input placeholder-style="font-size:32rpx" placeholder="扫描或手动输入条形码" bindblur="blurBox" id="code" value="{{code}}" />
+    <input placeholder-style="font-size:32rpx" placeholder="扫描或手动输入条形码" bindblur="blurBox" id="code" value='{{code}}' />
     <text class='iconfont icon-saoma' bindtap="scanCode"></text>
   </view>  
-  
-
-
-  <checkbox-group bindchange="checkboxChange">
-  <label class="checkbox" wx:for="{{listSp}}">
-    <view><checkbox value="{{item.sampleId}}" checked="{{item.status==1?true:false}}"/>{{item.barCode}}</view>
-  </label>
-</checkbox-group>
-<view>
-  此箱子共有<text class='red'>{{total}}</text>个标本，<button class='btn' data-transportid="{{listSp[0].transportId}}" bindtap='submit'>提交<text  class='red'>{{num}}</text></button>
-</view>
-
 </view>

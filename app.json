@@ -22,7 +22,7 @@
     "pages/index/samplePacking/scanBag/scanBag",
     "pages/index/jobLog/jobLog",
     "pages/index/specimensSplit/specimensSplit",
-   
+    "pages/index/specimensSplit/splitSpecimen/splitSpecimen",
     "pages/index/myWayBill/myWayBill",
     "pages/index/myWayBill/wayBill/wayBill",
     "pages/index/billOfLoding/billOfLoding",

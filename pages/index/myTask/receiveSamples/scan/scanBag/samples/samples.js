@@ -207,15 +207,15 @@ Page({
                                 This.setData({
                                   barCode: msg.data.data,
                                   bagNum: msg.data.data.length,
-                                  isitem: false,
+                                  isitem: true,
                                   applyItems: res.data
                                 })
                               },
                             })
                             
-                            wx.setNavigationBarTitle({
-                              title: '项目录入',
-                            })
+                            // wx.setNavigationBarTitle({
+                            //   title: '项目录入',
+                            // })
                           },
                           fail: function (err) {
                             console.log(err)
@@ -293,16 +293,16 @@ Page({
                               This.setData({
                                 barCode: msg.data.data,
                                 bagNum: msg.data.data.length,
-                                isitem: false,
+                                isitem: true,
                                 applyItems: res.data
                               })
                             },
                           })
                         
-                          wx.setNavigationBarTitle({
+                          // wx.setNavigationBarTitle({
                           
-                            title: '项目录入',
-                          })
+                          //   title: '项目录入',
+                          // })
                         },
                         fail: function (err) {
                           console.log(err)

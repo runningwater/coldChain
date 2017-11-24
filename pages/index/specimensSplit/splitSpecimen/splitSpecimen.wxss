@@ -1,0 +1,21 @@
+@import '../../../../utils/icon.wxss';
+.container{
+  padding:20rpx;
+}
+.scanInput{
+  border: 1px solid #bebebe;
+  border-radius: 10rpx;
+  padding: 14rpx 16rpx;
+  margin-bottom:50rpx;
+}
+.icon-saoma{
+  position: absolute;
+  display: inline-block;
+  font-size:52rpx;
+  line-height: 37.5rpx;
+  right:20rpx;
+  top:28rpx;
+}
+
+
+
