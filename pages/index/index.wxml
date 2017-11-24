@@ -224,7 +224,7 @@
       <view class="icon myTask audit">
          <text class="iconfont icon-shenhe" style="font-size:60px;color:#fff"></text>
       </view>
-      <view>标本审核</view>
+      <view>任务审核</view>
     </view>
     <view class="flex-item" bindtap="announcements">
       <view class="icon announcements">

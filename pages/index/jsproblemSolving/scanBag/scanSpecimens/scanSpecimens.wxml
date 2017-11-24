@@ -1,10 +1,10 @@
 <!--pages/index/jsproblemSolving/scanBag/scanSpecimens/scanSpecimens.wxml-->
 
 <view catchtap='cancel'>
-  <block wx:if="{{sampleCount==0}}">
+  <block wx:if="{{item.sampleCount==0}}">
     <view class="header">标本袋：{{code}} 共扫描<text class='yellow'>{{num}}</text>个标本</view>
   </block>
-  <block wx:if="{{sampleCount!=0}}">
+  <block wx:if="{{item.sampleCount!=0}}">
     <view class="header">标本袋：{{code}} 共扫描<text class='green'>{{num}}</text>个标本</view>
   </block> 
   <!-- <view class="header">标本袋：{{code}} 共扫描<text class='green'>{{num}}</text>个标本</view> -->
@@ -15,30 +15,29 @@
   </view>
     
   <block wx:for="{{codes}}">
-    <view class='codeList {{l==item.sampleId?"w801":"w800"}}'   bindtouchstart="mytouchstart" 
-    bindtouchmove="mymove" bindtouchend='myend' data-sampleId="{{item.sampleId}}"    bindtap="enterBag" >
-      <view class="codeL">
-        <view >
-            <text>标本：{{item.barCode}}</text>               
-        </view>           
-        <view>
-          <text class="scanDate">{{item.scanningDate}}</text>
-        </view>
-    </view>
-    <!-- <view class="codeR" data-sampleId="{{item.sampleId}}"  bindtap="delSpecimens">
-        <image class="del" src="../../../../images/u672.png"></image>
-    </view>   -->
-    <view class="codeR" data-sampleId="{{item.sampleId}}"  bindtap="takePic">
-      <text class="iconfont icon-xiangji icon1"
-        data-sampleIdone="{{item.sampleId}}"  bindtap="takePhoto"></text>
-        
-      <block wx:if="{{item.apply}}">
-        <text class="iconfont icon-photo icon1"
-        data-sampleIdone="{{item.sampleId}}"></text>
-      </block>
+    <view class=' list'>
+      <view class='codeList padding0 {{l==item.sampleId?"w801":"w800"}}' bindtouchstart="mytouchstart" 
+      bindtouchmove="mymove" bindtouchend='myend' data-sampleId="{{item.sampleId}}"    bindtap="enterBag" >
+        <view class='codeL'>
+          <view >
+              <text>标本：{{item.barCode}}</text>               
+          </view>           
+          <view>
+            <text class="scanDate">{{item.scanningDate}}</text>
+          </view>
 
-    </view>   
-       <view class='w20' wx:if="{{l==item.sampleId?true:false}}" bindtap='delSpecimens' data-sampleId="{{item.sampleId}}">删除</view> 
+        </view>
+        <view class="codeR" data-sampleId="{{item.sampleId}}"  bindtap="takePic">
+          <text class="iconfont icon-xiangji "
+            data-sampleIdone="{{item.sampleId}}"  bindtap="takePhoto"></text>
+          <block wx:if="{{item.apply}}">
+            <text class="iconfont icon-photo icon1"
+            data-sampleIdone="{{item.sampleId}}"></text>
+          </block>
+        </view>
+      </view>
+      <view class='w20' wx:if="{{l==item.sampleId?true:false}}" bindtap='delSpecimens' data-sampleId="{{item.sampleId}}">删除</view> 
     </view>
+    
   </block>
 </view>

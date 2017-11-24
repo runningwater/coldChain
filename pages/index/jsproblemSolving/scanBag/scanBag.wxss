@@ -36,12 +36,16 @@
 .green{
   color:#1ccaa3;
 }
+.list{
+  position:relative;
+  overflow: hidden;
+  border-bottom:1px solid #bebebe;
+  margin:0 20rpx 30rpx;
+}
 .codeList{ 
   position:relative;
   overflow: hidden;
   color:#333;
-  margin:0 20rpx 30rpx;
-  border-bottom:1px solid #bebebe; 
 }
 .scanBag{
   color:#333;
@@ -75,4 +79,7 @@
 .del{
   width: 80rpx;
   height: 80rpx;
+}
+.padding0{
+  padding:0;
 }

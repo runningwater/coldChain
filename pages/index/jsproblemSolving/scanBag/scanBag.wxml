@@ -11,22 +11,24 @@
   </view>
     
   <block wx:for="{{bagCodes}}">
-    <view class="codeList">
-      <view class='title {{l==item.bagId?"w801":"w800"}}'   bindtouchstart="mytouchstart" 
-    bindtouchmove="mymove" bindtouchend='myend' data-bagId="{{item.bagId}}" data-barcode="{{item.barCode}}"   data-num="{{item.sampleCount}}" bindtap="enterBag" >
-        <text class='scanBag'>标本袋：{{item.barCode}}</text>
-        <block wx:if="{{sampleCount==0}}">
-          <text class='codeR'>共扫描 <text class='yellow'>{{item.sampleCount}}</text>个标本</text>
-        </block>
-        <block wx:if="{{sampleCount!=0}}">
-          <text class='codeR'>共扫描 <text class='green'>{{item.sampleCount}}</text>个标本</text>
-        </block>               
-        
+    <view class='list'>
+      <view class="codeList">
+        <view class='title padding0 {{l==item.bagId?"w801":"w800"}}'   bindtouchstart="mytouchstart" 
+      bindtouchmove="mymove" bindtouchend='myend' data-bagId="{{item.bagId}}" data-barcode="{{item.barCode}}"   data-num="{{item.sampleCount}}" bindtap="enterBag" >
+          <text class='scanBag'>标本袋：{{item.barCode}}</text>
+          <block wx:if="{{item.sampleCount==0}}">
+            <text class='codeR'>共扫描 <text class='yellow'>{{item.sampleCount}}</text>个标本</text>
+          </block>
+          <block wx:if="{{item.sampleCount!=0}}">
+            <text class='codeR'>共扫描 <text class='green'>{{item.sampleCount}}</text>个标本</text>
+          </block>               
+          
+        </view>
+        <view class="inputDate">{{item.inputDate}}</view>
+          
       </view>
-      <view class="inputDate">{{item.inputDate}}</view>
-      <view class='w20' wx:if="{{l==item.bagId?true:false}}" bindtap='delBag' data-bagId="{{item.bagId}}">删除</view>  
+      <view class='w20' wx:if="{{l==item.bagId?true:false}}" bindtap='delBag' data-bagId="{{item.bagId}}">删除</view>
     </view>
-    <!-- <view class="codeR width15" data-bagId="{{item.bagId}}"  bindtap="delBag"></view>   -->
     
   </block>
 </view>

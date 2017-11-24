@@ -22,12 +22,16 @@
   right:20rpx;
   top:22rpx;
 }
-
+.list{
+  position:relative;
+  overflow: hidden;
+  border-bottom:1px solid #bebebe;
+  margin:0 20rpx 30rpx;
+}
 .codeList{ 
+  position:relative;
   overflow: hidden;
   color:#333;
-  margin:0 20rpx 30rpx;
-  border-bottom:1px solid #bebebe; 
 }
 .codeL{
   float: left;
@@ -35,7 +39,7 @@
 }
 .codeR{
   float: right;
-  position:relative;
+  /* position:relative; */
 }
 .scanDate{
   font-size:26rpx;
@@ -57,8 +61,12 @@
 }
 
 .icon-xiangji{
+  position:absolute;
   font-size: 52rpx;
   color:#009BE2;
+  right:22rpx;
+  top:0rpx;
+
 }
 .icon-photo {
   font-size: 52rpx;
@@ -68,4 +76,7 @@
 .del{
   width: 80rpx;
   height: 80rpx;
+}
+.padding0{
+  padding:0;
 }

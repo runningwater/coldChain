@@ -6,7 +6,7 @@
     </view>
     <view wx:if="{{flag1}}" class="wrap" wx:for="{{orderList1}}" >
        
-        <view class="center"  bindtap="wayBill" data-bill="{{item}}" data-barcode='{{item.barCode}}' bindtap="receive">
+        <view class="center"  bindtap="wayBill" data-bill="{{item}}">
             <view class="top">
               <text>{{item.fromAddress}}</text>
               <text class="iconfont icon-qianjin"></text>
@@ -16,7 +16,7 @@
             <view class="bottom">
               <text>标本箱：{{item.barCode}}</text>  
               <view class="NOT">
-                <text class="receive">未接收</text>
+                <text class="receive"  data-barcode='{{item.barCode}}' bindtap="receive">未接收</text>
               </view>
             </view>
         </view>
