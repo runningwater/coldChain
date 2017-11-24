@@ -1,6 +1,5 @@
-<!--pages/index/jsproblemSolving/jsproblemSolving.wxml-->
-<!--pages/index/myTask/receiveSamples/scan/scan.wxml-->
-<view class="">
+
+<view catchtap='cancel'>
   <view class='headerWrap'>
     <view class="hospitalName">{{hospitalName}}</view>
     <view class="">标本箱：<text class='blue'>{{boxCode}}</text></view>
@@ -13,7 +12,8 @@
     
   <block wx:for="{{bagCodes}}">
     <view class="codeList">
-      <view class="title" data-bagId="{{item.bagId}}" data-barcode="{{item.barCode}}"   data-num="{{item.sampleCount}}" bindtap="enterBag">
+      <view class='title {{l==item.bagId?"w801":"w800"}}'   bindtouchstart="mytouchstart" 
+    bindtouchmove="mymove" bindtouchend='myend' data-bagId="{{item.bagId}}" data-barcode="{{item.barCode}}"   data-num="{{item.sampleCount}}" bindtap="enterBag" >
         <text class='scanBag'>标本袋：{{item.barCode}}</text>
         <block wx:if="{{sampleCount==0}}">
           <text class='codeR'>共扫描 <text class='yellow'>{{item.sampleCount}}</text>个标本</text>
@@ -23,7 +23,10 @@
         </block>               
         
       </view>
+
       <view class="inputDate">{{item.inputDate}}</view>
+
+      <view class='w20' wx:if="{{l==item.bagId?true:false}}" bindtap='delBag' data-bagId="{{item.bagId}}">删除</view>  
     </view>
     <!-- <view class="codeR width15" data-bagId="{{item.bagId}}"  bindtap="delBag"></view>   -->
     
