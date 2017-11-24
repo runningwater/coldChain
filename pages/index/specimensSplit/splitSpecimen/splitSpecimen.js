@@ -22,6 +22,25 @@ Page({
       This.setData({
         btnName:!This.data.btnName
       })
+      var arr = This.data.listSp;
+      if (!This.data.btnName){
+        for(let i=0;i<arr.length;i++){
+          arr[i].status = 1;
+        }
+        This.setData({
+          num: arr.length
+        })
+      }else{
+        for (let i = 0; i < arr.length; i++) {
+          arr[i].status = 0;
+        }
+        This.setData({
+          num: 0
+        })
+      }
+      This.setData({
+        listSp:arr
+      })
   },
   checkboxChange: function (e) {
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
@@ -54,7 +73,9 @@ Page({
         } else {
           getApp().hnToast(msg.data.message);
         }
-
+        This.setData({
+          num:0
+        })
         This.scanSpecimens(This.data.boxBarCode)
       }
     })
