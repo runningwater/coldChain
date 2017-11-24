@@ -23,9 +23,16 @@ Page({
       success: function (msg) {
         //console.log(msg)
         if (msg.data.success) {
-          wx.navigateBack({
-            delta: 1
+   
+          wx.showToast({
+            title: msg.data.message,
+            success:function(){
+              wx.navigateBack({
+                delta: 1
+              })
+            }
           })
+          
         }
       }
     })

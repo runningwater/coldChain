@@ -1,6 +1,6 @@
 <!--pages/index/jsproblemSolving/scanBag/scanSpecimens/scanSpecimens.wxml-->
 
-<view class="">
+<view catchtap='cancel'>
   <block wx:if="{{sampleCount==0}}">
     <view class="header">标本袋：{{code}} 共扫描<text class='yellow'>{{num}}</text>个标本</view>
   </block>
@@ -15,7 +15,8 @@
   </view>
     
   <block wx:for="{{codes}}">
-    <view class="codeList">
+    <view class='codeList {{l==item.sampleId?"w801":"w800"}}'   bindtouchstart="mytouchstart" 
+    bindtouchmove="mymove" bindtouchend='myend' data-sampleId="{{item.sampleId}}"    bindtap="enterBag" >
       <view class="codeL">
         <view >
             <text>标本：{{item.barCode}}</text>               
@@ -37,7 +38,7 @@
       </block>
 
     </view>   
-      
+       <view class='w20' wx:if="{{l==item.sampleId?true:false}}" bindtap='delSpecimens' data-sampleId="{{item.sampleId}}">删除</view> 
     </view>
   </block>
 </view>

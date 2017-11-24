@@ -22,9 +22,28 @@ Page({
       This.setData({
         btnName:!This.data.btnName
       })
+      var arr = This.data.listSp;
+      if (!This.data.btnName){
+        for(let i=0;i<arr.length;i++){
+          arr[i].status = 1;
+        }
+        This.setData({
+          num: arr.length
+        })
+      }else{
+        for (let i = 0; i < arr.length; i++) {
+          arr[i].status = 0;
+        }
+        This.setData({
+          num: 0
+        })
+      }
+      This.setData({
+        listSp:arr
+      })
   },
   checkboxChange: function (e) {
-    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    //console.log('checkbox发生change事件，携带value值为：', e.detail.value)
     this.setData({
       num: e.detail.value.length,
       sampleList: e.detail.value
@@ -32,6 +51,10 @@ Page({
   },
   submit: function (e) {
     var This = this;
+    if (this.data.sampleList.length<=0){
+      getApp().hnToast("请选择标本");
+      return false;
+    }
     var data = {
       token: this.data.token,
       transportId: e.target.dataset.transportid,
@@ -47,14 +70,19 @@ Page({
       },
       data: data,
       success: function (msg) {
-        console.log(msg)
+       console.log(msg)
         if (msg.data.success) {
           getApp().hnToast(msg.data.message);
+          This.setData({
+            sampleList:[]
+          })
          
         } else {
           getApp().hnToast(msg.data.message);
         }
-
+        This.setData({
+          num:0
+        })
         This.scanSpecimens(This.data.boxBarCode)
       }
     })
@@ -74,7 +102,7 @@ Page({
         barCode: barcode
       },
       success: function (msg) {
-        console.log(msg)
+        //console.log(msg)
         if (msg.data.success) {
           if (msg.data.data.length == 0) {
             getApp().hnToast("暂无数据")
