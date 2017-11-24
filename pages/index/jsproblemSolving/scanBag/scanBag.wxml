@@ -23,9 +23,7 @@
         </block>               
         
       </view>
-
       <view class="inputDate">{{item.inputDate}}</view>
-
       <view class='w20' wx:if="{{l==item.bagId?true:false}}" bindtap='delBag' data-bagId="{{item.bagId}}">删除</view>  
     </view>
     <!-- <view class="codeR width15" data-bagId="{{item.bagId}}"  bindtap="delBag"></view>   -->

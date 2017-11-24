@@ -37,6 +37,7 @@
   color:#1ccaa3;
 }
 .codeList{ 
+  position:relative;
   overflow: hidden;
   color:#333;
   margin:0 20rpx 30rpx;
