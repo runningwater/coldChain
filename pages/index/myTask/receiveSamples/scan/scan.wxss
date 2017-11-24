@@ -22,7 +22,7 @@
   font-size:52rpx;
   line-height: 37.5rpx;
   right:20rpx;
-  top:28rpx;
+  top:22rpx;
 }
 .scanNumber{
   float: right;
@@ -41,6 +41,7 @@
   border-radius:5px;
 }
 .btn button{
+  overflow: visible;
   background: #009BE2;
   color:#fff;
   font-size: 16px;

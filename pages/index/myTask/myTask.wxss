@@ -131,7 +131,7 @@
 }
 .icon-zhankai{
   position:absolute;
-  right:24rpx;
+  right:18rpx;
   top:32.5rpx;
   color:#bebebe;
   font-size:28rpx;
