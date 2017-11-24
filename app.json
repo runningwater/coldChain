@@ -31,7 +31,7 @@
     "pages/index/announcements/detail/detail",
     "pages/index/feedBack/feedBack",
     "pages/index/serviceManual/serviceManual",
-    "pages/index/serviceManual/manualsList/manualsList",                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+    "pages/index/serviceManual/manualsList/manualsList",                                                                                                                                                
     "pages/index/serviceManual/manualsList/mauanlsDetail/mauanlsDetail",
     "pages/index/jsproblemSolving/jsproblemSolving",
     "pages/index/jsproblemSolving/scanBag/scanBag",

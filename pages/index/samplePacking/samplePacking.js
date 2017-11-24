@@ -104,6 +104,10 @@ Page({
   },
   waybill: function () {
     var boxCode = "";
+    if (this.data.select.length<=0){
+      getApp().hnToast("你没有选中任何运输箱");
+      return false;
+    }
     for (var i = 0; i < this.data.select.length; i++) {
       boxCode += this.data.select[i] + ",";
     }
