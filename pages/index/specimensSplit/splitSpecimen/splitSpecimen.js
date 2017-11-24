@@ -43,7 +43,7 @@ Page({
       })
   },
   checkboxChange: function (e) {
-    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    //console.log('checkbox发生change事件，携带value值为：', e.detail.value)
     this.setData({
       num: e.detail.value.length,
       sampleList: e.detail.value
@@ -51,6 +51,10 @@ Page({
   },
   submit: function (e) {
     var This = this;
+    if (this.data.sampleList.length<=0){
+      getApp().hnToast("请选择标本");
+      return false;
+    }
     var data = {
       token: this.data.token,
       transportId: e.target.dataset.transportid,
@@ -66,7 +70,7 @@ Page({
       },
       data: data,
       success: function (msg) {
-        console.log(msg)
+       // console.log(msg)
         if (msg.data.success) {
           getApp().hnToast(msg.data.message);
          
@@ -95,7 +99,7 @@ Page({
         barCode: barcode
       },
       success: function (msg) {
-        console.log(msg)
+        //console.log(msg)
         if (msg.data.success) {
           if (msg.data.data.length == 0) {
             getApp().hnToast("暂无数据")
