@@ -11,12 +11,12 @@
               <text>{{item.fromAddress}}</text>
               <text class="iconfont icon-qianjin"></text>
               <text>{{item.destiation}}</text>
-              <view class='right'>预计到达时间：<text class='blue'>{{item.estimateTime}}</text></view>
+              <view class='right'>预计到达时间：<text>{{item.estimateTime}}</text></view>
             </view>
             <view class="bottom">
               <text>标本箱：{{item.barCode}}</text>  
               <view class="NOT">
-                <text class="receive"  data-barcode='{{item.barCode}}' bindtap="receive">未接收</text>
+                <text class="receive"  data-barcode='{{item.barCode}}' catchtap="receive">未接收</text>
               </view>
             </view>
         </view>

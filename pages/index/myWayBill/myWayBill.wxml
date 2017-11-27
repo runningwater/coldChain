@@ -14,7 +14,7 @@
           <view class='right'>预计到达时间：<text class="blue">{{item.estimateTime}}</text></view>
         </view>
         <view class="bottom">
-          <text>标本箱：{{item.barCode}}</text>
+          <text>运输箱：{{item.barCode}}</text>
         </view>
       </view>
   
