@@ -2,8 +2,9 @@
 <view class="section">
   <view class="flex-wrap">
      <view class="flex-item"  bindtap="manualsList" wx:for="{{serverLists}}" data-type="{{item.type}}">
-       <view class="icon"><image src="{{item.imagepath}}"></image></view>
-       <text>{{item.typename}}</text>
-     </view>  
+      <view class="icon"><image src="{{item.imagepath}}"></image></view>
+      <text class='title'>{{item.typename}}<text class='iconfont icon-xiangshang'></text></text>
+    </view>    
+    
    </view>  
   </view>

@@ -1,10 +1,10 @@
 <!--pages/index/myTask/receiveSamples/scan/scan.wxml-->
 <view class="" catchtap='cancel'>
   <view class="total">
-    <block wx:if="{{sampleSum==0}}">
+    <block wx:if="{{item.sampleSum==0}}">
       标本箱<text>{{barcode}}</text>共扫描<text class="yellow">{{samplesum}}</text>个标本袋
     </block>
-    <block wx:if="{{sampleSum!=0}}">
+    <block wx:if="{{item.sampleSum!=0}}">
       标本箱<text>{{barcode}}</text>共扫描<text class="green">{{samplesum}}</text>个标本袋
     </block>
   </view>
