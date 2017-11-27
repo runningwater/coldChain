@@ -87,8 +87,10 @@
 }
 .receive{
   text-align: center;
+
   font-size: 34rpx;
 }
+
 
 
 
