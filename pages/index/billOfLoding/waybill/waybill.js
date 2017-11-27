@@ -17,7 +17,7 @@ Page({
         flightSN: "",//航班号
         addr: "",//接受地 receiveId
         expressCompany: "",//快递公司
-        remark: "",//备注
+        remark: "无",//备注
         barcode:""
     },
 

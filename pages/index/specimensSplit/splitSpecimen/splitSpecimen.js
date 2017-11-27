@@ -23,27 +23,32 @@ Page({
         btnName:!This.data.btnName
       })
       var arr = This.data.listSp;
+      var arrsampleId = [];
       if (!This.data.btnName){
         for(let i=0;i<arr.length;i++){
           arr[i].status = 1;
+          arrsampleId.push(arr[i].sampleId)
         }
         This.setData({
-          num: arr.length
+          num: arr.length,
+          sampleList: arrsampleId
         })
       }else{
         for (let i = 0; i < arr.length; i++) {
           arr[i].status = 0;
         }
         This.setData({
-          num: 0
+          num: 0,
+        sampleList:[]
         })
       }
       This.setData({
         listSp:arr
+      
       })
   },
   checkboxChange: function (e) {
-    //console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
     this.setData({
       num: e.detail.value.length,
       sampleList: e.detail.value
@@ -61,7 +66,7 @@ Page({
       sampleList: this.data.sampleList.join(','),
       location: this.data.location
     }
-    
+   // console.log(this.data.sampleList)
     wx.request({
       url: getApp().globalData.url + '/box/closeBox',
       method: "POST",
