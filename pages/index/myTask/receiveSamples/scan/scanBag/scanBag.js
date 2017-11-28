@@ -304,14 +304,29 @@ Page({
   },
   samples1: function (e) {
     // console.log(e);
+    var This = this;
     var bagid = e.currentTarget.dataset.id;
     var recordid = e.currentTarget.dataset.recordid;
     var hospitalId = this.data.hospitalId;
     var bag = e.currentTarget.dataset.bag;
-    wx.navigateTo({
-      url: 'samples/samples?bagid=' + bagid + "&recordid=" + recordid
-      + "&hospitalId=" + hospitalId + "&bag=" + bag + "&transportid=" + this.data.transportid,
+    wx.getStorage({
+      key: 'isApplyItem',
+      success: function(res) {
+        console.log(res.data)
+        if (res.data=="1"){
+          wx.navigateTo({
+            url: 'samplesForItem/samplesForItem?bagid=' + bagid + "&recordid=" + recordid
+            + "&hospitalId=" + hospitalId + "&bag=" + bag + "&transportid=" + This.data.transportid,
+          })
+        }else{
+          wx.navigateTo({
+            url: 'samples/samples?bagid=' + bagid + "&recordid=" + recordid
+            + "&hospitalId=" + hospitalId + "&bag=" + bag + "&transportid=" + This.data.transportid,
+          })
+        }
+      },
     })
+   
   },
   complete: function () {
     wx.navigateBack({

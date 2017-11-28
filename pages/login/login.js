@@ -2,8 +2,8 @@
 Page({
   data: {
 
-    userName: "",
-    pwd: "",
+    userName: "cswork",
+    pwd: "123456",
 
   },
   //事件处理函数
@@ -37,11 +37,23 @@ Page({
               function (e) {
                 //登录成功的回调            
                 if (e.data.success) {
-                  getApp().snGet('/item/getApplyItem', { token: e.data.data.token }, function (res) {
+                 
+                  getApp().snGet('/wxApp/itemConfig', { token: e.data.data.token},function(res){
+                   // console.log(res.data.data.value);
                     wx.setStorage({
-                      key: 'item',
-                      data: res.data.data,
+                      key: 'isApplyItem',
+                      data: res.data.data.value,
                     })
+                    if (res.data.data.value=="1"){//录项目
+                         getApp().snGet('/item/getApplyItem', { token: e.data.data.token }, function (res) {
+                            wx.setStorage({
+                              key: 'item',
+                              data: res.data.data,
+                            })
+                        });
+                    }else{
+
+                    }
                   });
                   wx.setStorage({
                     key: 'token',

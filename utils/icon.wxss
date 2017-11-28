@@ -1,11 +1,10 @@
-
 @font-face {
   font-family: 'iconfont';  /* project id 467457 */
-  src: url('//at.alicdn.com/t/font_467457_0inpvkzirkep14i.eot');
-  src: url('//at.alicdn.com/t/font_467457_0inpvkzirkep14i.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_467457_0inpvkzirkep14i.woff') format('woff'),
-  url('//at.alicdn.com/t/font_467457_0inpvkzirkep14i.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_467457_0inpvkzirkep14i.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_467457_xmjwh3wkhh1zia4i.eot');
+  src: url('//at.alicdn.com/t/font_467457_xmjwh3wkhh1zia4i.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_467457_xmjwh3wkhh1zia4i.woff') format('woff'),
+  url('//at.alicdn.com/t/font_467457_xmjwh3wkhh1zia4i.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_467457_xmjwh3wkhh1zia4i.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -75,4 +74,8 @@
 .icon-biaobenchaxun:before { content: "\e629"; }
 
 .icon-woderenwu1:before { content: "\e62a"; }
+
+.icon-xiangmu:before { content: "\e62b"; }
+
+.icon-xiangmu1:before { content: "\e62c"; }
 

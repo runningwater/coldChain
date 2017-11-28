@@ -36,6 +36,9 @@
 .green{
   color:#1ccaa3;
 }
+.icon1{
+  top:16rpx;
+}
 .icon-xiangji{
   font-size: 52rpx;
   color:#009BE2;
@@ -61,5 +64,32 @@ button{
   float:left;
 }
 .right{
-  float:right;
+  position: absolute;
+  bottom:20rpx;
+  right:20rpx;
+}
+checkbox-group{
+  height: 880rpx;
+  overflow-y: scroll;
+
+}
+/* 项目录入 */
+checkbox-group{
+  padding:0 20rpx;
+}
+.item{
+  width:700rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.icon-xiangmu1{
+  font-size: 52rpx;
+  right: 18%;
+  color:#e7b710;
+}
+.submitItems,.complete{
+  display: inline-block;
+  width:36%;
+  margin:30rpx 50rpx 0;
 }

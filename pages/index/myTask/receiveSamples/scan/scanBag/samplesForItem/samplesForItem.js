@@ -13,18 +13,22 @@ Page({
     transportid: "",//运输表id
     location: "",//经纬度
     bagNum: 0,
-    code:"",
+    code: "",
     barCode: [],
     startPoint: [0, 0],//初始化touchstart坐标
     flag: false,
-   
+    applyItems: [],//项目列表
+    isitem: true,
+    applyItemId: [],//项目id
+    itemAndPhoto:true,//录项目 拍照容器
+    sampleId:"",//标本ID
   },
   cancel: function () {
     this.setData({
       l: ""
     })
   },
-  mytouchstart: function (e) {  
+  mytouchstart: function (e) {
     //开始触摸，获取触摸点坐标并放入数组中
     this.setData({
       startPoint: [e.touches[0].pageX, e.touches[0].pageY],
@@ -32,7 +36,7 @@ Page({
     });
   },
   //触摸点移动 
-  mymove: function (e) {   
+  mymove: function (e) {
     var This = this;
     var curPoint = [e.touches[0].pageX, e.touches[0].pageY];
     var startPoint = This.data.startPoint;
@@ -48,7 +52,7 @@ Page({
 
   },
   myend: function (e) {
-   
+
     var This = this;
     if (This.data.flag) {
       This.setData({
@@ -58,64 +62,77 @@ Page({
     }
 
   },
-  delSample:function(e){
+  delSample: function (e) {
     var This = this;
-   
-      var sampleId = e.currentTarget.dataset.sampleid;
-      wx.showModal({
-        title: '确认删除？',
-        content: '确定要移除此标本吗？',
-        success: function (confirm) {
-          if (confirm.confirm) {
-            wx.request({
-              url: getApp().globalData.url + '/sample/removeSample',
-              method: "POST",
-              header: {
-                "Content-Type": "application/x-www-form-urlencoded"
-              },
-              data: {
-                token: This.data.token,
-                sampleId: sampleId
-              },
-              success: function (msg) {
-                if (msg.data.success) {
-                  wx.showToast({
-                    title: msg.data.message,
-                  })
 
-                  wx.request({
-                    url: getApp().globalData.url + '/sample/getSample',
-                    data: {
-                      token: This.data.token,
-                      bagId: This.data.bagid,
-                      recordId: This.data.recordid,
-                      hospitalId: This.data.hospitalId
-                    },
-                    success: function (msg) {
-                      //console.log(msg)
-                      This.setData({
-                        barCode: msg.data.data,
-                        bagNum: msg.data.data.length
-                      })
-                    },
-                    fail: function (err) {
-                      console.log(err)
-                    }
-                  })
-                }
+    var sampleId = e.currentTarget.dataset.sampleid;
+    wx.showModal({
+      title: '确认删除？',
+      content: '确定要移除此标本吗？',
+      success: function (confirm) {
+        if (confirm.confirm) {
+          wx.request({
+            url: getApp().globalData.url + '/sample/removeSample',
+            method: "POST",
+            header: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data: {
+              token: This.data.token,
+              sampleId: sampleId
+            },
+            success: function (msg) {
+              if (msg.data.success) {
+                wx.showToast({
+                  title: msg.data.message,
+                })
+
+                wx.request({
+                  url: getApp().globalData.url + '/sample/getSample',
+                  data: {
+                    token: This.data.token,
+                    bagId: This.data.bagid,
+                    recordId: This.data.recordid,
+                    hospitalId: This.data.hospitalId
+                  },
+                  success: function (msg) {
+                    //console.log(msg)
+                    This.setData({
+                      barCode: msg.data.data,
+                      bagNum: msg.data.data.length
+                    })
+                  },
+                  fail: function (err) {
+                    console.log(err)
+                  }
+                })
               }
-            })
+            }
+          })
 
-          }
         }
-      })
+      }
+    })
 
   },
 
   takePhoto: function (e) {
-
     var This = this;
-    var sampleId = e.currentTarget.dataset.sampleidone;
+    This.setData({
+      isitem:false,
+      itemAndPhoto: false
+    });
+    wx.setNavigationBarTitle({
+      title: '上传申请单',
+    })
+    if (e.currentTarget.dataset.sampleidone == "" || e.currentTarget.dataset.sampleidone == null || e.currentTarget.dataset.sampleidone == undefined) { var sampleId = This.data.sampleId}else{
+      var sampleId = e.currentTarget.dataset.sampleidone;
+      This.setData({
+        sampleId: sampleId
+      })
+    }
+     
+  
     wx.chooseImage({
       count: 1,
       sizeType: ["original", "compressed"],
@@ -131,6 +148,7 @@ Page({
             sampleId: sampleId
           },
           success: function (msg) {
+            console.log(msg)
             var data = JSON.parse(msg.data);
             if (data.success) {
               wx.showToast({
@@ -156,69 +174,8 @@ Page({
         console.log(msg)
 
         var sampleCode = msg.result;
-
-        wx.getStorage({
-          key: 'token',
-          success: function (res) {
-            if (res.data) {
-              wx.request({
-                url: getApp().globalData.url + '/sample/scanSample',
-                method: "POST",
-                header: {
-                  "Content-Type": "application/x-www-form-urlencoded"
-                },
-                data: {
-                  token: res.data,
-                  bagId: This.data.bagid,
-                  // scanTime: scanTime,
-                  recordId: This.data.recordid,
-                  hospitalId: This.data.hospitalId,
-                  barCode: sampleCode,
-                  location: This.data.location,
-                  transportId: This.data.transportid
-                },
-                success: function (msg) {
-                  // console.log(msg)
-                  This.setData({
-                    code: msg.data.data
-                  });
-                  wx.getStorage({
-                    key: 'token',
-                    success: function (res) {
-                      if (res.data) {
-                        This.setData({
-                          token: res.data
-                        })
-                        wx.request({
-                          url: getApp().globalData.url + '/sample/getSample',
-                          data: {
-                            token: This.data.token,
-                            bagId: This.data.bagid,
-                            recordId: This.data.recordid,
-                            hospitalId: This.data.hospitalId
-                          },
-                          success: function (msg) {
-                            This.setData({
-                              barCode: msg.data.data,
-                              bagNum: msg.data.data.length
-
-                            })
-                          },
-                          fail: function (err) {
-                            console.log(err)
-                          }
-                        })
-                      }
-                    },
-                  })
-                },
-                fail: function (err) {
-                  console.log(err);
-                }
-              })
-            }
-          },
-        })
+        This.scanCode(sampleCode);
+     
       },
       fail: function (e) {
         console.log(e)
@@ -229,8 +186,11 @@ Page({
   scanSimple: function (e) {
     var This = this;
     var sampleCode = e.detail.value;
-    var scanTime = getApp().getTime();
-
+    This.scanCode(sampleCode);
+  
+  },
+  scanCode: function (sampleCode){
+    var This = this;
     wx.getStorage({
       key: 'token',
       success: function (res) {
@@ -255,8 +215,8 @@ Page({
               console.log(msg)
               if (msg.data.success) {
                 This.setData({
-                  code: msg.data.data
-                
+                  code: msg.data.data,
+                  sampleId: msg.data.data.sampleId
                 });
                 wx.getStorage({
                   key: 'token',
@@ -274,16 +234,22 @@ Page({
                           hospitalId: This.data.hospitalId
                         },
                         success: function (msg) {
-                          This.setData({
-                            barCode: msg.data.data,
-                            bagNum: msg.data.data.length                         
-                           
+                          wx.getStorage({
+                            key: 'item',
+                            success: function (res) {
+                              This.setData({
+                                barCode: msg.data.data,
+                                bagNum: msg.data.data.length,
+                                isitem: false,
+                                applyItems: res.data
+                              })
+                            },
                           })
-                        
-                          // wx.setNavigationBarTitle({
-                          
-                          //   title: '项目录入',
-                          // })
+
+                          wx.setNavigationBarTitle({
+
+                            title: '项目录入',
+                          })
                         },
                         fail: function (err) {
                           console.log(err)
@@ -307,14 +273,7 @@ Page({
       },
     })
   },
-  //完成
-  complete: function () {
-
-    wx.navigateBack({
-      delta: 1
-    })
-
-  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -349,12 +308,12 @@ Page({
 
     wx.getStorage({
       key: 'item',
-      success: function(res) {
+      success: function (res) {
         console.log(res)
         This.setData({
           applyItems: res.data
         })
-        
+
       },
     })
 
@@ -386,10 +345,10 @@ Page({
       }
     })
   },
-  search:function(e){
+  search: function (e) {
     var This = this;
 
-  wx.getStorage({
+    wx.getStorage({
       key: 'item',
       success: function (res) {
         if (e.detail.value == "") {
@@ -423,46 +382,45 @@ Page({
       },
     })
   },
-  selectApplyItems:function(e){
+  selectApplyItems: function (e) {
     console.log(e.detail.value)
     this.setData({
       applyItemId: e.detail.value
     })
   },
-
-  // 暂不录入
-  noinput:function(){
+  // 确认录入（下一步）
+  confirminput: function () {
+    var This = this;
+    console.log(This.data.barCode)
+    getApp().snPost('/item/sampleItemInput', {
+      token: This.data.token,
+      sampleId: This.data.code.sampleId,
+      barCode: This.data.code.barCode,
+      applyItemId: This.data.applyItemId.join(","),
+      remark: ""
+    }, function (res) {
+      console.log(res.data.data)
+      if (res.data.success) {
+        getApp().hnToast("录入成功");
+        This.setData({
+          itemAndPhoto: false
+        });
+        wx.setNavigationBarTitle({
+          title: '上传申请单',
+        })
+      } else {
+        getApp().hnToast("请选择项目");
+      }
+    })
+  },
+  complate:function(){
     this.setData({
-      isitem: true
+      isitem:true,
+      itemAndPhoto:true
     })
     wx.setNavigationBarTitle({
       title: '扫描标本',
     })
-  },
-  // 确认录入
-  confirminput:function(){
-        var This = this;
-        console.log(This.data.barCode)
-        getApp().snPost('/item/sampleItemInput',{
-          token:This.data.token,
-          sampleId: This.data.code.sampleId,
-          barCode: This.data.code.barCode,
-          applyItemId: This.data.applyItemId.join(","),
-          remark:""
-        },function(res){
-          console.log(res.data.data)
-              if (res.data.success){
-                  getApp().hnToast("录入成功");
-                  This.setData({
-                    isitem:true
-                  });
-                  wx.setNavigationBarTitle({
-                    title: '扫描标本',                 
-                  })
-              }else{
-                getApp().hnToast(res.data.message);
-              }
-        })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
