@@ -214,7 +214,8 @@ Page({
       display2: "none",//新增任务 是否显示
       display3: "block",//已提交任务列表是否显示
       active:'already',
-      transform1:false
+      transform1:false,
+      showOrNot:false
     })
     wx.setNavigationBarTitle({
       title: '已提交任务'
