@@ -20,7 +20,8 @@ Page({
     hospitalName:"",//医院名称
     auditTask:[],//提交后的任务列表
     active:'my',
-    transform1: false
+    transform1: false,//中间按钮动画
+    showOrNot:false//中间按钮
   },
   receiveSamples: function (event) {
     var This = this;
@@ -179,14 +180,32 @@ Page({
   },
   addTask: function () {
     this.setData({
-      display1: "none",//我的任务列表是否显示
-      display2: "block",//新增任务 是否显示
-      display3: "none",//已提交任务列表是否显示
-      transform1: true
+      showOrNot:!this.data.showOrNot
     })
-    wx.setNavigationBarTitle({
-      title: '新建任务'
-    })
+    if (this.data.showOrNot){
+      this.setData({
+        display1: "none",//我的任务列表是否显示
+        display2: "block",//新增任务 是否显示
+        display3: "none",//已提交任务列表是否显示
+        transform1: true
+      })
+      wx.setNavigationBarTitle({
+        title: '新建任务'
+      })
+    }else{
+      this.setData({
+        display1: "block",//我的任务列表是否显示
+        display2: "none",//新增任务 是否显示
+        display3: "none",//已提交任务列表是否显示
+        active: 'my',
+        transform1: false
+      })
+      wx.setNavigationBarTitle({
+        title: '我的任务'
+      })
+    }
+   
+   
 
   },
   submitTask:function(){

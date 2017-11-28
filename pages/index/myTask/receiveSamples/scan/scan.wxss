@@ -4,7 +4,6 @@
   padding:30rpx 20rpx;
 }
 .hospitalName{
-  padding-bottom: 20rpx;
   color:#333;
   font-size: 34rpx;
 }
