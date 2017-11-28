@@ -13,8 +13,7 @@ Page({
     nowtime:"09:00",
     display1:"block",//我的任务列表是否显示
     display2: "none",//新增任务 是否显示
-    display3: "none",//已提交任务列表是否显示
-    
+    display3: "none",//已提交任务列表是否显示    
     hospitalID:"",//医院ID
     hospitalIDList:[],
     hospitalList:[],//医院列表
