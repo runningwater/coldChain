@@ -28,7 +28,7 @@
           <view class="">标本申请单</view>
       </view>
       <view class="iconButton"  data-sampleId="{{barCode.sampleId}}" 
-      bindtap="applicationFormPhotos">
+      bindtap="viewItem">
         <text class="iconfont icon-xiangmu"></text>
           <view class="">项目</view>
       </view>

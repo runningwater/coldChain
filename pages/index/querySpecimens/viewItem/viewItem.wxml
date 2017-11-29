@@ -1,0 +1,11 @@
+<!--pages/index/querySpecimens/viewItem/viewItem.wxml-->
+<view class="container">
+  
+  <view class="itemList">
+    <view class="item" wx:for="{{itemArr}}">
+      <text class='iconfont icon-xiangmu1'></text>
+      {{item.applyItemName}}
+    </view>
+  </view>
+  
+</view>

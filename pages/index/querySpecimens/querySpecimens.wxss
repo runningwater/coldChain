@@ -38,8 +38,8 @@
   line-height:80rpx;
   text-align: center;
   height:190rpx;
-  margin:20rpx 30rpx 0;
-  width:24.4%;
+  margin:20rpx 50rpx 0;
+  width:35%;
 }
 .iconButton .iconfont{
   font-size:136rpx;

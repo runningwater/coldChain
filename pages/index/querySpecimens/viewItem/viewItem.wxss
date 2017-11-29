@@ -1,0 +1,15 @@
+/* pages/index/querySpecimens/viewItem/viewItem.wxss */
+@import '../../../../utils/icon.wxss';
+.item{
+  font-size: 30rpx;
+  color:#666;
+  line-height:50rpx;
+  margin-bottom:10rpx;
+}
+.icon-xiangmu1{
+  display: inline-block;
+  color:#e7b710;
+  font-size:52rpx;
+  vertical-align:bottom;
+
+}

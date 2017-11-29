@@ -47,6 +47,7 @@ Page({
       }
     })
   },
+  
   //申请单照片
   applicationFormPhotos: function (e) {
     var sampleid = e.currentTarget.dataset.sampleid;
@@ -66,6 +67,12 @@ Page({
     var sampleid = e.currentTarget.dataset.sampleid;
     wx.navigateTo({
       url: 'temperatureChange/temperatureChange?sampleid=' + sampleid,
+    })
+  },
+  viewItem:function(e){
+    var sampleid = e.currentTarget.dataset.sampleid;
+    wx.navigateTo({
+      url: 'viewItem/viewItem?sampleid=' + sampleid,
     })
   },
   /**

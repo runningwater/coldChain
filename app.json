@@ -17,6 +17,7 @@
     "pages/index/querySpecimens/applicationFormPhotos/applicationFormPhotos",
     "pages/index/querySpecimens/specimenOperationTrack/specimenOperationTrack",
     "pages/index/querySpecimens/temperatureChange/temperatureChange",
+    "pages/index/querySpecimens/viewItem/viewItem",
     "pages/index/samplePacking/samplePacking",
     "pages/index/samplePacking/waybill/waybill",
     "pages/index/samplePacking/bindDevice/bindDevice",
