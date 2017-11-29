@@ -309,10 +309,17 @@ Page({
     var recordid = e.currentTarget.dataset.recordid;
     var hospitalId = this.data.hospitalId;
     var bag = e.currentTarget.dataset.bag;
+    var batch = "";
+    wx.getStorage({
+      key: 'isBatch',
+      success: function(res) {
+        batch = res.data;
+      },
+    })
     wx.getStorage({
       key: 'isApplyItem',
       success: function(res) {
-        console.log(res.data)
+        console.log(batch)
         if (res.data=="1"){
           wx.navigateTo({
             url: 'samplesForItem/samplesForItem?bagid=' + bagid + "&recordid=" + recordid

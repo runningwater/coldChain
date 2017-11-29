@@ -14,10 +14,25 @@ Page({
   },
   //申请标本
   applySamples:function(){
-    wx.navigateTo({
-      url: 'scan/scan?hospitalId=' + this.data.hospitalId + 
-      "&workId=" + this.data.workId + "&hosName=" + this.data.hosName,
+    var This = this;
+    wx.showActionSheet({
+            itemList: ['常规录入', '批量录入'],
+            success: function (res) {
+              console.log(res.tapIndex)
+              wx.setStorage({
+                key: 'isBatch',
+                data: res.tapIndex,
+              })
+              wx.navigateTo({
+                url: 'scan/scan?hospitalId=' + This.data.hospitalId +
+                "&workId=" + This.data.workId + "&hosName=" + This.data.hosName,
+              })
+            },
+            fail: function (res) {
+              console.log(res.errMsg)
+            }
     })
+   
   },
   //扫描交接单
   scanReceipt:function(){
