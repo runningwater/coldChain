@@ -88,8 +88,22 @@ checkbox-group{
   right: 18%;
   color:#e7b710;
 }
+.btns{
+  position: absolute;
+  bottom:20rpx;
+}
 .submitItems,.complete{
   display: inline-block;
-  width:36%;
-  margin:30rpx 50rpx 0;
+  width:250rpx; 
+  margin:30rpx 60rpx 0; 
+}
+.wrap{
+  padding:30rpx 20rpx;
+  background-color: #f3f3f3;
+  color:#333;
+  font-size: 32rpx;
+}
+.wrap text{
+  color:#888;
+  font-size: 28rpx;
 }

@@ -22,6 +22,11 @@ Page({
     applyItemId: [],//项目id
     itemAndPhoto:true,//录项目 拍照容器
     sampleId:"",//标本ID
+    isAlreadyItem:false,//已选项目
+    alreadyItem:"",//已选项目（项目名称字符串）
+    photos: [],
+    x: "",
+    lock: false
   },
   cancel: function () {
     this.setData({
@@ -115,7 +120,115 @@ Page({
     })
 
   },
+  //预览图片
+  prePic: function (e) {
+    if (this.data.lock) {
+      return false;
+    }
+    //console.log(e.currentTarget.dataset.file);
+    var picArr = e.currentTarget.dataset.file;
+    var current = e.currentTarget.dataset.current;
+    var urls = [];
+    for (var i = 0; i < picArr.length; i++) {
+      urls.push(picArr[i].url)
+    }
+    wx.previewImage({
+      current: current,
+      urls: urls
+    })
+  },
+  end1: function () {
+    if (this.data.lock) {
+      //开锁
+      setTimeout(() => {
+        this.setData({ lock: false });
+      }, 100);
+    }
 
+  },
+  delSampleApply: function (e) {
+    var This = this;
+    This.setData({
+      lock: true//加锁
+    })
+    var attachId = e.currentTarget.dataset.attachid;
+    wx.showModal({
+      title: '删除申请单',
+      content: '确认要删除此张申请单图片么？',
+      success: function (confirm) {
+        if (confirm.confirm) {
+          wx.request({
+            url: getApp().globalData.url + '/sample/deleteSampleApply',
+            method: "POST",
+            header: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data: {
+              token: This.data.token,
+              attachId: attachId,
+              sampleId: This.data.sampleId
+            },
+            success: function (msg) {
+
+              if (msg.data.success) {
+                wx.showToast({
+                  title: '删除成功',
+                })
+                wx.request({
+                  url: getApp().globalData.url + '/sample/getApplySample',
+
+                  data: {
+                    token: This.data.token,
+                    sampleId: This.data.sampleId
+                  },
+                  success: function (msg) {
+                    //console.log(msg)
+                    if (msg.data.success) {
+                      This.setData({
+                        photos: msg.data.data
+                      })
+                    } else {
+                      wx.showToast({
+                        title: msg.data.message,
+                      })
+                    }
+                  }
+                })
+              } else {
+                wx.showToast({
+                  title: '删除失败',
+                })
+              }
+            }
+          })
+        }
+      }
+    })
+  },
+  // 获取申请单图片
+  getPhoto: function (token, sampleid){
+    var This = this;
+    wx.request({
+      url: getApp().globalData.url + '/sample/getApplySample',
+
+      data: {
+        token: token,
+        sampleId: sampleid
+      },
+      success: function (msg) {
+        //console.log(msg)
+        if (msg.data.success) {
+          This.setData({
+            photos: msg.data.data
+          })
+        } else {
+          wx.showToast({
+            title: msg.data.message,
+          })
+        }
+      }
+    })
+  },
   takePhoto: function (e) {
     var This = this;
     This.setData({
@@ -130,6 +243,7 @@ Page({
       This.setData({
         sampleId: sampleId
       })
+      This.getPhoto(This.data.token, sampleId);
     }
      
   
@@ -154,6 +268,7 @@ Page({
               wx.showToast({
                 title: '图片上传成功',
               })
+              This.getPhoto(This.data.token, sampleId);
               This.init();
             } else {
               wx.showToast({
@@ -241,7 +356,8 @@ Page({
                                 barCode: msg.data.data,
                                 bagNum: msg.data.data.length,
                                 isitem: false,
-                                applyItems: res.data
+                                applyItems: res.data,
+                                isAlreadyItem:false
                               })
                             },
                           })
@@ -279,6 +395,15 @@ Page({
    */
   onLoad: function (options) {
     var This = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        var width = parseInt(res.screenWidth);
+        console.log(width)
+        This.setData({
+          x: (width - 32) / 4
+        })
+      },
+    })
     wx.getLocation({
       success: function (res) {
         This.setData({
@@ -391,7 +516,7 @@ Page({
   // 确认录入（下一步）
   confirminput: function () {
     var This = this;
-    console.log(This.data.barCode)
+    console.log(This.data.code)
     getApp().snPost('/item/sampleItemInput', {
       token: This.data.token,
       sampleId: This.data.code.sampleId,
@@ -399,9 +524,10 @@ Page({
       applyItemId: This.data.applyItemId.join(","),
       remark: ""
     }, function (res) {
-      console.log(res.data.data)
+      console.log(res.data)
       if (res.data.success) {
         getApp().hnToast("录入成功");
+        This.init();
         This.setData({
           itemAndPhoto: false
         });
@@ -413,6 +539,46 @@ Page({
       }
     })
   },
+  inputItem:function(e){
+    var This=this;
+    This.setData({
+      isAlreadyItem:true,
+      code:{
+        sampleId: e.target.dataset.sampleid,
+        barCode: e.target.dataset.barcode
+      }
+    })
+    console.log(e.target.dataset.sampleid)
+    getApp().snGet('/item/getSampleApplyItem',{
+      token: This.data.token,
+      sampleId: e.target.dataset.sampleid,  
+    },
+    function(msg){
+      console.log(msg.data.data)
+      var alreadyItem = "";//临时已选项目 字符串
+      for (let i = 0; i < msg.data.data.length;i++){
+        alreadyItem += msg.data.data[i].applyItemName+",";
+      }
+      alreadyItem = alreadyItem.substr(0, alreadyItem.length-1);
+      console.log(alreadyItem)
+      wx.getStorage({
+        key: 'item',
+        success: function (res) {
+          This.setData({
+            itemAndPhoto: true,
+            isitem: false,
+            applyItems: res.data,
+            alreadyItem: alreadyItem
+          })
+        },
+      })
+      wx.setNavigationBarTitle({
+        title: '重新选择项目',
+      })
+    })
+
+
+  },
   complate:function(){
     this.setData({
       isitem:true,
@@ -420,6 +586,12 @@ Page({
     })
     wx.setNavigationBarTitle({
       title: '扫描标本',
+    })
+  },
+  complete: function () {
+   
+    wx.navigateBack({
+      delta: 1
     })
   },
   /**

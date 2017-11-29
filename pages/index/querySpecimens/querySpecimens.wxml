@@ -30,7 +30,7 @@
       <view class="iconButton"  data-sampleId="{{barCode.sampleId}}" 
       bindtap="applicationFormPhotos">
         <text class="iconfont icon-xiangmu"></text>
-          <view class="">标本申请单</view>
+          <view class="">项目</view>
       </view>
     </view>
   </view>

@@ -2,7 +2,6 @@
 <view class="container">
   <block wx:for="{{photos}}">
   <image bindtap="prePic"
-  bindlongtap="delSampleApply" 
   bindtouchend="end1" data-file="{{photos}}"
   data-current="{{item.url}}"
   data-attachId="{{item.attachId}}"    
