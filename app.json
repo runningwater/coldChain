@@ -11,6 +11,7 @@
     "pages/index/myTask/receiveSamples/scan/scanBag/scanBag",
     "pages/index/myTask/receiveSamples/scan/scanBag/samples/samples",
     "pages/index/myTask/receiveSamples/scan/scanBag/samplesForItem/samplesForItem",
+    "pages/index/myTask/receiveSamples/scan/scanBag/batchEntry/batchEntry",
     "pages/index/sampleBox/sampleBox",
     "pages/index/sampleBox/bindDevice/bindDevice",
     "pages/index/querySpecimens/querySpecimens",

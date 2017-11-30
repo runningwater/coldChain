@@ -1,0 +1,117 @@
+<!--pages/index/myTask/receiveSamples/scan/scanBag/batchEntry/batchEntry.wxml-->
+<view  catchtap='cancel' wx:if="{{isitem}}">
+  <view class="total">
+    <block wx:if="{{bagNum==0}}">
+      标本袋<text>{{bag}}</text>共扫描<text class="yellow">{{bagNum}}</text>个标本
+    </block>
+    <block wx:if="{{bagNum!=0}}">
+      标本袋<text>{{bag}}</text>共扫描<text class="green">{{bagNum}}</text>个标本
+    </block>
+  </view>
+  <!-- <view class="scanInput">
+  
+    <input placeholder-style="font-size:32rpx" 
+    confirm-type="done" bindconfirm="scanSimple" placeholder="扫描或手动输入条形码" 
+     id="code"/>
+    <text class='iconfont icon-saoma'  bindtap="scanCode"></text>
+  </view> -->
+  
+  <view >
+    <view class='scanInput'>
+      <input  placeholder-style="font-size:32rpx" 
+    confirm-type="done" bindconfirm="scanSimple" placeholder="扫描或手动输入第一个条码" 
+     id="code"/>
+    <text class='iconfont icon-saoma'  bindtap="scanCode"></text>
+    </view>
+    <view class='scanInput'>
+      <input placeholder-style="font-size:32rpx" 
+    confirm-type="done" bindconfirm="scanSimple" placeholder="扫描或手动输入最后一个条码" 
+     id="code"/>
+    <text class='iconfont icon-saoma'  bindtap="scanCode"></text>
+    </view>
+    
+  </view>
+  <block wx:for="{{barCode}}">
+
+    <view class='hang scanLists'>
+      <!-- <view class='{{l==item.sampleId?"w801":"w800"}}'  data-sampleId="{{item.sampleId}}"  bindtouchstart="mytouchstart" 
+      bindtouchmove="mymove" bindtouchend='myend'>
+      
+        <text class="codeL">标本条码：<text class="barcode">{{item.barCode}}</text></text>     
+        <text class="iconfont icon-xiangji icon1"
+          data-sampleIdone="{{item.sampleId}}"  bindtap="takePhoto"></text>
+        
+        <block wx:if="{{item.apply}}">
+          <text class="iconfont icon-xiangce icon1"
+          data-sampleIdone="{{item.sampleId}}"></text>
+        </block> 
+      </view>
+      <view class='w20' wx:if="{{l==item.sampleId?true:false}}" bindtap='delSample' data-sampleId="{{item.sampleId}}">删除</view>     -->
+    </view>  
+  </block>
+
+   <view class="btnGroup">
+    <view class='superscript'>20</view>
+    <button class='examine left' bindtap='examineBatch'>查看</button>
+    <button class='confirm left'>确定</button>
+    <button class='right' bindtap='confirmBatch'>下一步</button>
+  </view> 
+</view>
+
+<view wx:elif='{{isExamine}}'>
+  <view class="listContentBox" bindtap='showMsg' data-index="{{index}}">
+    <text class="batchName">批次号</text>
+    <text class="iconfont icon-xiangshang"></text>
+    <text class="iconfont icon-xiangji"
+      data-sampleIdone="{{item.sampleId}}"  bindtap="takePhoto"></text>
+    
+    <block wx:if="{{item.apply}}"> 
+      <text class="iconfont icon-xiangce"
+      data-sampleIdone="{{item.sampleId}}"></text>
+    </block>
+    <block wx:if="{{item.item}}"> 
+      <text class="iconfont icon-xiangmu1"  bindtap='inputItem' data-sampleId="{{item.sampleId}}" data-barcode="{{item.barCode}}"></text>
+    </block>  
+  </view>
+  <view  class="{{item.show?'shows':'hides'}}">
+    <view class='titleHospital codeName'><text>115115113010</text></view>
+  </view>
+  <view class='examineBtn'>
+    <button class='examineEnd' bindtap='examineEnd'>完成</button>
+  </view>
+</view>
+
+
+   <!-- 录项目 -->
+  <view wx:elif="{{itemAndPhoto}}">
+      <!-- 已选项目 -->
+      <view class='wrap' wx:if="{{isAlreadyItem}}">已选项目：<text>{{alreadyItem}}</text></view>
+      <view class="scanInput">  
+          <input placeholder-style="font-size:32rpx"  confirm-type="search" bindconfirm="search" placeholder="搜索项目" />    
+      </view>
+      <checkbox-group bindchange="selectApplyItems">
+        <label class="checkbox" wx:for="{{applyItems}}">
+          <view class="item"> <checkbox value="{{item.applyItemId}}" />{{item.applyItemName}}</view>       
+      </label>
+      </checkbox-group>
+      <view class="entryBtn">
+        
+        <button class='entryNext' size='mini' bindtap="confirminput">下一步</button>
+      </view> 
+  </view>
+  <!-- 拍照（申请单） -->
+  <view wx:else>
+    <block wx:for="{{photos}}">
+      <image bindtap="prePic"
+      bindlongtap="delSampleApply" 
+      bindtouchend="end1" data-file="{{photos}}"
+      data-current="{{item.url}}"
+      data-attachId="{{item.attachId}}"    
+      style="width:{{x}}px;height:{{x}}px;margin:2px"  src="{{item.thumbUrl}}"></image>
+      
+    </block>
+    <view class='btns'>
+      <button class='submitItems' bindtap='takePhoto'>申请单上传</button>
+      <button class='complete' bindtap='complate'>完成</button>
+    </view> 
+  </view>

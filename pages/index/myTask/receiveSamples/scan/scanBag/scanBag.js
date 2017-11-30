@@ -314,6 +314,18 @@ Page({
       key: 'isBatch',
       success: function(res) {
         batch = res.data;
+        console.log(batch);
+        if(batch=="1"){
+          wx.navigateTo({
+            url: 'batchEntry/batchEntry?bagid=' + bagid + "&recordid=" + recordid
+            + "&hospitalId=" + hospitalId + "&bag=" + bag + "&transportid=" + This.data.transportid,
+          })
+        }else{
+          wx.navigateTo({
+            url: 'samplesForItem/samplesForItem?bagid=' + bagid + "&recordid=" + recordid
+            + "&hospitalId=" + hospitalId + "&bag=" + bag + "&transportid=" + This.data.transportid,
+          })
+        }
       },
     })
     wx.getStorage({
