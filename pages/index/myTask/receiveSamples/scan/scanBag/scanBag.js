@@ -319,7 +319,8 @@ Page({
     wx.getStorage({
       key: 'isApplyItem',
       success: function(res) {
-        console.log(batch)
+        console.log("是否录入项目："+res.data)
+        console.log("是否批量录入：" + batch)
         if (res.data=="1"){
           wx.navigateTo({
             url: 'samplesForItem/samplesForItem?bagid=' + bagid + "&recordid=" + recordid
