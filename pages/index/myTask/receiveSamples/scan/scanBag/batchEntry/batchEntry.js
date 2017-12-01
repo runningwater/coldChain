@@ -17,6 +17,7 @@ Page({
     barCode: [],
     startPoint: [0, 0],//初始化touchstart坐标
     flag: false,
+    show:false,
     isitem: true,
     isExamine:true,//查看批次详情
     itemAndPhoto: true,//录项目 拍照容器
@@ -434,6 +435,7 @@ Page({
       applyItemId: e.detail.value
     })
   },
+
   // 确认批次录入（下一步）
   confirmBatch: function () {
     var This = this;
@@ -464,6 +466,12 @@ Page({
     })
     wx.setNavigationBarTitle({
       title: '查看批次',
+    })
+  },
+  showMsg: function () {
+    var v=this.data.show;
+    this.setData({
+      show:!v
     })
   },
   examineEnd:function(){
