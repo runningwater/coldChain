@@ -24,6 +24,7 @@
 
 .scanLists{
   margin:0 20rpx;
+  line-height:20rpx;
 }
 .scanNumber{
   float: right;
@@ -73,6 +74,16 @@ button{
   float:right;
 }
 /* 录入项目  */
+.batchWrap{
+  height:1080rpx;
+  overflow-y: scroll;
+}
+.batchWrap .icon-xiangji{
+  right:20rpx;
+}
+.batchWrap .icon-xiangce{
+  right:80rpx;
+}
 .batchInput{
   position: relative;
   text-align:center;
@@ -84,6 +95,9 @@ button{
 }
 .batchInput .icon-xiangshang{
   top:30rpx;
+}
+.batchWrap .icon-xiangmu1{
+  right:140rpx;
 }
 #continuous{
   margin-top:20rpx;
