@@ -13,22 +13,22 @@
     <view class='batchInput' bindtap='showMsg'>
       <text class="batchName">连续录入条码</text>
       <text class="iconfont icon-xiangshang"></text>
-      <view  class="{{show?'shows':'hides'}}">
-        <view class='scanInput'>
-        <input  placeholder-style="font-size:32rpx;text-align:left" 
-        confirm-type="done" bindconfirm="startCode" placeholder="扫描或手动输入第一个条码" 
-        id="code"/>
-        <text class='iconfont icon-saoma'  bindtap="scanCode"></text>
+    
+    </view>
+    <view id='continuous' class="{{show?'shows':'hides'}}">
+      <view class='scanInput'>
+      <input  placeholder-style="font-size:32rpx" 
+      confirm-type="done" bindconfirm="startCode" placeholder="扫描或手动输入第一个条码" 
+      id="code"/>
+      <text class='iconfont icon-saoma'  bindtap="scanCode"></text>
       </view>
       <view class='scanInput'>
-        <input placeholder-style="font-size:32rpx;text-align:left" 
+        <input placeholder-style="font-size:32rpx" 
         confirm-type="done" bindconfirm="endCode" placeholder="扫描或手动输入最后一个条码" 
         id="code"/>
         <text class='iconfont icon-saoma'  bindtap="scanCode"></text>
       </view>
       <button class='confirm' bindtap='generateBarcode'>生成条码</button>
-      </view>
-      
     </view>
     <view class='scanInput'>
       <input  placeholder-style="font-size:32rpx;text-align:left" 

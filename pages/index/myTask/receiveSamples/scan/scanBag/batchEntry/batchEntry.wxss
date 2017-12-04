@@ -56,7 +56,6 @@ button{
   padding:0 10rpx;
   background-color: red;
   color:#fff;
-  text-align: center;
   border-radius: 50%;
   position: absolute;
   left:150rpx;
@@ -86,9 +85,14 @@ button{
 .batchInput .icon-xiangshang{
   top:30rpx;
 }
-.batchInput .shows{
+#continuous{
   margin-top:20rpx;
   padding:20rpx;
+  text-align: center;
+}
+#continuous input,
+#continuous scanInput{
+  text-align: left;
 }
 checkbox-group{
   padding:0 20rpx;
