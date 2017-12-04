@@ -24,6 +24,11 @@ Page({
     applyItems: [],//项目列表
     sampleId: "",//标本ID
     applyItemId: [],//项目id
+    startCode:"",//第一个条码
+    endCode:"",//最后一个条码
+    barcodeArr:[],
+    psnNum:0,//批次号个数
+    psnArr:[],//批次号数组
   },
   cancel: function () {
     this.setData({
@@ -120,199 +125,11 @@ Page({
 
   takePhoto: function (e) {
 
-    var This = this;
-    var sampleId = e.currentTarget.dataset.sampleidone;
-    wx.chooseImage({
-      count: 1,
-      sizeType: ["original", "compressed"],
-      sourceType: ["album", "camera"],
-      success: function (res) {
-        var tempPaths = res.tempFilePaths;
-        wx.uploadFile({
-          url: getApp().globalData.url + '/sample/uploadSampleApply',
-          filePath: tempPaths[0],
-          name: sampleId,
-          formData: {
-            token: This.data.token,
-            sampleId: sampleId
-          },
-          success: function (msg) {
-            var data = JSON.parse(msg.data);
-            if (data.success) {
-              wx.showToast({
-                title: '图片上传成功',
-              })
-              This.init();
-            } else {
-              wx.showToast({
-                title: '上传失败',
-              })
-            }
-          }
-        })
-      },
-    })
+ 
   },
-  //扫描标本
-  scanCode: function () {
-    var This = this;
-    wx.scanCode({
-
-      success: function (msg) {
-        console.log(msg)
-
-        var sampleCode = msg.result;
-
-        wx.getStorage({
-          key: 'token',
-          success: function (res) {
-            if (res.data) {
-              wx.request({
-                url: getApp().globalData.url + '/sample/scanSample',
-                method: "POST",
-                header: {
-                  "Content-Type": "application/x-www-form-urlencoded"
-                },
-                data: {
-                  token: res.data,
-                  bagId: This.data.bagid,
-                  // scanTime: scanTime,
-                  recordId: This.data.recordid,
-                  hospitalId: This.data.hospitalId,
-                  barCode: sampleCode,
-                  location: This.data.location,
-                  transportId: This.data.transportid
-                },
-                success: function (msg) {
-                  // console.log(msg)
-                  This.setData({
-                    code: msg.data.data
-                  });
-                  wx.getStorage({
-                    key: 'token',
-                    success: function (res) {
-                      if (res.data) {
-                        This.setData({
-                          token: res.data
-                        })
-                        wx.request({
-                          url: getApp().globalData.url + '/sample/getSample',
-                          data: {
-                            token: This.data.token,
-                            bagId: This.data.bagid,
-                            recordId: This.data.recordid,
-                            hospitalId: This.data.hospitalId
-                          },
-                          success: function (msg) {
-                            This.setData({
-                              barCode: msg.data.data,
-                              bagNum: msg.data.data.length
-
-                            })
-                          },
-                          fail: function (err) {
-                            console.log(err)
-                          }
-                        })
-                      }
-                    },
-                  })
-                },
-                fail: function (err) {
-                  console.log(err);
-                }
-              })
-            }
-          },
-        })
-      },
-      fail: function (e) {
-        console.log(e)
-      }
-    })
-  },
-  //录入标本号
-  scanSimple: function (e) {
-    var This = this;
-    var sampleCode = e.detail.value;
-    var scanTime = getApp().getTime();
-
-    wx.getStorage({
-      key: 'token',
-      success: function (res) {
-        if (res.data) {
-          wx.request({
-            url: getApp().globalData.url + '/sample/scanSample',
-            method: "POST",
-            header: {
-              "Content-Type": "application/x-www-form-urlencoded"
-            },
-            data: {
-              token: res.data,
-              bagId: This.data.bagid,
-              // scanTime: scanTime,
-              recordId: This.data.recordid,
-              hospitalId: This.data.hospitalId,
-              barCode: sampleCode,
-              location: This.data.location,
-              transportId: This.data.transportid
-            },
-            success: function (msg) {
-              console.log(msg)
-              if (msg.data.success) {
-                This.setData({
-                  code: msg.data.data
-
-                });
-                wx.getStorage({
-                  key: 'token',
-                  success: function (res) {
-                    if (res.data) {
-                      This.setData({
-                        token: res.data
-                      })
-                      wx.request({
-                        url: getApp().globalData.url + '/sample/getSample',
-                        data: {
-                          token: This.data.token,
-                          bagId: This.data.bagid,
-                          recordId: This.data.recordid,
-                          hospitalId: This.data.hospitalId
-                        },
-                        success: function (msg) {
-                          This.setData({
-                            barCode: msg.data.data,
-                            bagNum: msg.data.data.length
-
-                          })
-
-                          // wx.setNavigationBarTitle({
-
-                          //   title: '项目录入',
-                          // })
-                        },
-                        fail: function (err) {
-                          console.log(err)
-                        }
-                      })
-                    }
-                  },
-                })
-              } else {
-                wx.showToast({
-                  title: msg.data.message,
-                })
-              }
-
-            },
-            fail: function (err) {
-              console.log(err);
-            }
-          })
-        }
-      },
-    })
-  },
+  
+ 
+  
   //完成
   complete: function () {
 
@@ -321,11 +138,29 @@ Page({
     })
 
   },
+  // 单个录入
+  scanCodeForBatch:function(e){
+    var This = this;
+    
+    var data = {
+      token:This.data.token,
+      bagId: This.data.bagid,
+      recordId: This.data.recordid,
+      hospitalId: This.data.hospitalId,
+      barCodeStr: e.detail.value,
+      location: This.data.location,
+      transportId: This.data.transportid
+    }
+    getApp().snPost("/batch/postSamples",data,function(res){
+      console.log(res)
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var This = this;
+   
     wx.getLocation({
       success: function (res) {
         This.setData({
@@ -349,6 +184,7 @@ Page({
             token: res.data
           })
           This.init();
+          This.getPsn();
         }
       },
     })
@@ -364,6 +200,18 @@ Page({
       },
     })
 
+  },
+  getPsn:function(){
+    var This = this;
+    getApp().snGet("/batch/getBatchList",{
+      token:This.data.token,
+      bagId:This.data.bagid
+    },function(res){     
+      This.setData({
+        psnNum:res.data.data.length,
+        psnArr: res.data.data
+      })
+    })
   },
   init: function () {
     var This = this;
@@ -435,7 +283,51 @@ Page({
       applyItemId: e.detail.value
     })
   },
+  //确定生成连续条码
+  startCode: function (e) {
+    this.setData({
+      startCode: e.detail.value
+    });
+  },
+  endCode: function (e) {
+    this.setData({
+      endCode: e.detail.value
+    });
+  },
+  generateBarcode:function(e){
+    var This=this;
+    console.log(this.data.startCode)
+    wx.getStorage({
+      key: 'token',
+      success: function (res) {
+        if (res.data) {
+          wx.request({
+            url: getApp().globalData.url + '/batch/proBarCode',
+            method: "POST",
+            header: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data: {
+              token: res.data,
+              hospitalId: This.data.hospitalId,
+              startCode:This.data.startCode,
+              endCode: This.data.endCode
+            },
+            success:function(msg){
+              console.log(msg)
+              This.setData({
+                barcodeArr:msg.data.data
+              })
+              
+              
+            }
 
+
+          })
+        }
+      }
+    })
+  },
   // 确认批次录入（下一步）
   confirmBatch: function () {
     var This = this;
@@ -449,15 +341,7 @@ Page({
         })
       
   },
-  // 暂不录入
-  noinput: function () {
-    this.setData({
-      isitem: true
-    })
-    wx.setNavigationBarTitle({
-      title: '扫描标本',
-    })
-  },
+ 
   //查看批次详情
   examineBatch:function(){
     this.setData({

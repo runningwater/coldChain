@@ -8,41 +8,52 @@
       标本袋<text>{{bag}}</text>共扫描<text class="green">{{bagNum}}</text>个标本
     </block>
   </view>
-  <!-- <view class="scanInput">
-  
-    <input placeholder-style="font-size:32rpx" 
-    confirm-type="done" bindconfirm="scanSimple" placeholder="扫描或手动输入条形码" 
-     id="code"/>
-    <text class='iconfont icon-saoma'  bindtap="scanCode"></text>
-  </view> -->
-  
+
   <view >
-    <view class='scanInput'>
-      <input  placeholder-style="font-size:32rpx" 
-    confirm-type="done" bindconfirm="scanSimple" placeholder="扫描或手动输入第一个条码" 
-     id="code"/>
-    <text class='iconfont icon-saoma'  bindtap="scanCode"></text>
+    <view class='batchInput' bindtap='showMsg'>
+      <text class="batchName">连续录入条码</text>
+      <text class="iconfont icon-xiangshang"></text>
+      <view  class="{{show?'shows':'hides'}}">
+        <view class='scanInput'>
+        <input  placeholder-style="font-size:32rpx;text-align:left" 
+        confirm-type="done" bindconfirm="startCode" placeholder="扫描或手动输入第一个条码" 
+        id="code"/>
+        <text class='iconfont icon-saoma'  bindtap="scanCode"></text>
+      </view>
+      <view class='scanInput'>
+        <input placeholder-style="font-size:32rpx;text-align:left" 
+        confirm-type="done" bindconfirm="endCode" placeholder="扫描或手动输入最后一个条码" 
+        id="code"/>
+        <text class='iconfont icon-saoma'  bindtap="scanCode"></text>
+      </view>
+      <button class='confirm' bindtap='generateBarcode'>生成条码</button>
+      </view>
+      
     </view>
     <view class='scanInput'>
-      <input placeholder-style="font-size:32rpx" 
-    confirm-type="done" bindconfirm="scanSimple" placeholder="扫描或手动输入最后一个条码" 
-     id="code"/>
+      <input  placeholder-style="font-size:32rpx;text-align:left" 
+    confirm-type="done" bindconfirm="scanCodeForBatch" placeholder="扫描或手动输入条码" 
+     />
     <text class='iconfont icon-saoma'  bindtap="scanCode"></text>
     </view>
     
+    
   </view>
-  <block wx:for="{{barCode}}">
+  <block wx:for="{{barcodeArr}}">
 
     <view class='hang scanLists'>
       <view class='{{l==item.sampleId?"w801":"w800"}}'  data-sampleId="{{item.sampleId}}"  bindtouchstart="mytouchstart" 
       bindtouchmove="mymove" bindtouchend='myend'>
-      
-        <text class="codeL">标本条码：<text class="barcode">{{item.barCode}}</text></text>     
-        <text class="iconfont icon-xiangji icon1"
+        
+        <text class="codeL">
+     
+        标本条码：<text class="barcode">{{item.barCode}}</text>
+        </text>     
+        <text class="iconfont icon-xiangji"
           data-sampleIdone="{{item.sampleId}}"  bindtap="takePhoto"></text>
         
         <block wx:if="{{item.apply}}">
-          <text class="iconfont icon-xiangce icon1"
+          <text class="iconfont icon-xiangce"
           data-sampleIdone="{{item.sampleId}}"></text>
         </block> 
       </view>
@@ -51,9 +62,9 @@
   </block>
 
    <view class="btnGroup">
-    <view class='superscript'>20</view>
-    <button class='examine left' bindtap='examineBatch'>查看</button>
-    <button class='confirm left'>确定</button>
+    <view class='superscript'>{{psnNum}}</view>
+    <button class='examine left' bindtap='examineBatch'>查看批次</button>
+    
     <button class='right' bindtap='confirmBatch'>下一步</button>
   </view> 
 </view>

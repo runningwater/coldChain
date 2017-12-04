@@ -59,14 +59,13 @@ button{
   text-align: center;
   border-radius: 50%;
   position: absolute;
-  left:100rpx;
+  left:150rpx;
   top:-18rpx;
   z-index: 99;
   font-size: 28rpx;
 }
 .confirm{
   text-align: center;
-  margin-left:170rpx;
 }
 .left{
   float:left;
@@ -75,6 +74,22 @@ button{
   float:right;
 }
 /* 录入项目  */
+.batchInput{
+  position: relative;
+  text-align:center;
+  border:1px solid #cecece;
+  border-radius: 5px;
+  color:#888;
+  padding:20rpx 0;
+  margin:20rpx;
+}
+.batchInput .icon-xiangshang{
+  top:30rpx;
+}
+.batchInput .shows{
+  margin-top:20rpx;
+  padding:20rpx;
+}
 checkbox-group{
   padding:0 20rpx;
   height:800rpx;
