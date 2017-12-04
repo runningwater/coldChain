@@ -24,6 +24,7 @@ Page({
     applyItems: [],//项目列表
     sampleId: "",//标本ID
     applyItemId: [],//项目id
+    singleCode:'',//单个条码
     startCode:"",//第一个条码
     endCode:"",//最后一个条码
     barcodeArr:[],
@@ -141,7 +142,15 @@ Page({
   // 单个录入
   scanCodeForBatch:function(e){
     var This = this;
-    
+    this.setData({
+      singleCode:e.detail.value,
+    })
+    var barcodeArr=this.data.barcodeArr;
+    barcodeArr.push({oder:"9", barCode: e.detail.value});
+    console.log(barcodeArr);
+    this.setData({
+      barcodeArr:barcodeArr
+    })
     var data = {
       token:This.data.token,
       bagId: This.data.bagid,
@@ -151,7 +160,7 @@ Page({
       location: This.data.location,
       transportId: This.data.transportid
     }
-    getApp().snPost("/batch/postSamples",data,function(res){
+    getApp().snPost("",data,function(res){
       console.log(res)
     })
   },
@@ -317,21 +326,17 @@ Page({
               console.log(msg)
               This.setData({
                 barcodeArr:msg.data.data
-              })
-              
-              
+              })   
             }
-
-
           })
         }
       }
     })
   },
   // 确认批次录入（下一步）
-  confirmBatch: function () {
+  confirmBatch: function (e) {
     var This = this;
-    
+    console.log(this.data.barcodeArr)
         This.setData({
           isitem: false,
           isExamine:false
@@ -383,7 +388,7 @@ Page({
   },
   complate: function () {
     this.setData({
-      isExamine: true,
+      isitem: true,
       itemAndPhoto: true
     })
     wx.setNavigationBarTitle({
