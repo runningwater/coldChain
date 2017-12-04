@@ -91,7 +91,7 @@ button{
   text-align: center;
 }
 #continuous input,
-#continuous scanInput{
+#continuous .scanInput{
   text-align: left;
 }
 checkbox-group{
