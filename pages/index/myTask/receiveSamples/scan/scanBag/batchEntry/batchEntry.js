@@ -192,7 +192,7 @@ Page({
                     token: That.data.token,
                     psn: That.data.psn
                 },function(res){
-                  console.log(res.data.data.appApplySampleList)
+                  //console.log(res.data.data.appApplySampleList)
                   That.setData({
                     photos: res.data.data.appApplySampleList
                   })
@@ -297,7 +297,7 @@ Page({
       token: This.data.token,
       psn: e.currentTarget.dataset.psn
     }, function (res) {
-      console.log(res)
+      //console.log(res)
       This.setData({
         photos: res.data.data.appApplySampleList
       })
@@ -321,8 +321,10 @@ Page({
       singleCode:e.detail.value,
     })
     var barcodeArr=this.data.barcodeArr;
+
     barcodeArr.push({ barCode: e.detail.value});
-    console.log(barcodeArr);
+
+
     this.setData({
       barcodeArr:barcodeArr
     })
@@ -336,7 +338,7 @@ Page({
     wx.getSystemInfo({
       success: function (res) {
         var width = parseInt(res.screenWidth);
-        console.log(width)
+        //console.log(width)
         This.setData({
           x: (width - 32) / 4
         })
@@ -373,7 +375,7 @@ Page({
     wx.getStorage({
       key: 'item',
       success: function (res) {
-        console.log(res)
+        //console.log(res)
         This.setData({
           applyItems: res.data
         })
@@ -477,7 +479,7 @@ Page({
   },
   generateBarcode:function(e){
     var This=this;
-    console.log(this.data.startCode)
+    //console.log(this.data.startCode)
     wx.getStorage({
       key: 'token',
       success: function (res) {
@@ -495,7 +497,7 @@ Page({
               endCode: This.data.endCode
             },
             success:function(msg){
-              console.log(msg)
+             //console.log(msg)
               var barcodeArr = This.data.barcodeArr;
               for (let i = 0; i < msg.data.data.length;i++){
                 barcodeArr.push(msg.data.data[i])
@@ -543,7 +545,7 @@ Page({
           transportId: This.data.transportid
         }
         getApp().snPost("/batch/postSamples", data, function (res) {
-          console.log(res.data.data.psn)
+          //console.log(res.data.data.psn)
           This.setData({
             psn: res.data.data.psn
           })
@@ -551,7 +553,7 @@ Page({
             token: This.data.token,
             psn: res.data.data.psn
           }, function (res) {
-            console.log(res.data.data.appApplySampleList)
+           // console.log(res.data.data.appApplySampleList)
             This.setData({
               photos: res.data.data.appApplySampleList
             })
@@ -606,7 +608,7 @@ Page({
       token:This.data.token,
       psn: e.currentTarget.dataset.psn
     },function(res){
-      console.log(res)
+      //console.log(res)
       var str = "";
       for (let i = 0; i < res.data.data.appSampleItemList.length;i++){
         str += res.data.data.appSampleItemList[i].applyItemName+",";
@@ -650,14 +652,14 @@ Page({
         psn:This.data.psn,
         itemStr: This.data.applyItemId
       },function(res){
-        console.log(res)
+        //console.log(res)
         if(res.data.success){
           getApp().hnToast("录入成功")
           getApp().snGet("/batch/getApply", {
             token: This.data.token,
             psn: This.data.psn
           }, function (res) {
-            console.log(res.data.data.appApplySampleList)
+            //console.log(res.data.data.appApplySampleList)
             This.setData({
               photos: res.data.data.appApplySampleList
             })

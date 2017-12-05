@@ -22,7 +22,7 @@ Page({
       location:""
   },
   submit:function(e){
-     // consoleconsole.log(e.detail.value);
+    
       if (this.data.transportId==""){
           wx.showModal({
               title: '选择运输方式',

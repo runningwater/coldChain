@@ -29,7 +29,7 @@ Page({
         var This = this;     
     
          var bill = JSON.parse(options.bill);
-         console.log(bill)
+         //console.log(bill)
         if (bill.transportType == "1") {
             This.setData({
                 flag1: true,

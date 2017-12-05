@@ -118,7 +118,7 @@ Page({
         recordId: recordId
       },
       success:function(msg){
-        console.log(msg)
+        //console.log(msg)
         if(msg.data.success){
           This.setData({
             bagCodes:msg.data.data
@@ -134,7 +134,7 @@ Page({
     wx.showActionSheet({
       itemList: ["我要删除"],
       success:function(res){
-        console.log(res.tapIndex)
+        //console.log(res.tapIndex)
         if (res.tapIndex=="0"){
           wx.navigateTo({
             url: 'delBag/delBag?bagid=' + e.currentTarget.dataset.bagid,
@@ -147,7 +147,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
+    //console.log(options);
     var This = this;
     wx.getStorage({
       key: 'token',

@@ -8,7 +8,7 @@ Page({
       billList:[]
   },
   wayBill:function(e){
-    console.log(e)
+    
     // var bill = e.currentTarget.dataset.bill;//?bill='+JSON.stringify(bill)
     var oderId = e.currentTarget.dataset.oderid;
     var barcode = e.currentTarget.dataset.barcode;

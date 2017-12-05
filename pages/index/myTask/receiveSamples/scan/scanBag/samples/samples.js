@@ -153,7 +153,7 @@ Page({
     wx.scanCode({
 
       success: function (msg) {
-        console.log(msg)
+        //console.log(msg)
 
         var sampleCode = msg.result;
 
@@ -252,7 +252,7 @@ Page({
               transportId: This.data.transportid
             },
             success: function (msg) {
-              console.log(msg)
+              //console.log(msg)
               if (msg.data.success) {
                 This.setData({
                   code: msg.data.data
@@ -350,7 +350,7 @@ Page({
     wx.getStorage({
       key: 'item',
       success: function(res) {
-        console.log(res)
+        //console.log(res)
         This.setData({
           applyItems: res.data
         })
@@ -442,7 +442,7 @@ Page({
   // 确认录入
   confirminput:function(){
         var This = this;
-        console.log(This.data.barCode)
+       // console.log(This.data.barCode)
         getApp().snPost('/item/sampleItemInput',{
           token:This.data.token,
           sampleId: This.data.code.sampleId,
@@ -450,7 +450,7 @@ Page({
           applyItemId: This.data.applyItemId.join(","),
           remark:""
         },function(res){
-          console.log(res.data.data)
+         // console.log(res.data.data)
               if (res.data.success){
                   getApp().hnToast("录入成功");
                   This.setData({

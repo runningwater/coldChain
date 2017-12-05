@@ -286,7 +286,7 @@ Page({
     wx.scanCode({
 
       success: function (msg) {
-        console.log(msg)
+        //console.log(msg)
 
         var sampleCode = msg.result;
         This.scanCode(sampleCode);
@@ -327,7 +327,7 @@ Page({
               transportId: This.data.transportid
             },
             success: function (msg) {
-              console.log(msg)
+              //console.log(msg)
               if (msg.data.success) {
                 This.setData({
                   code: msg.data.data,
@@ -398,7 +398,7 @@ Page({
     wx.getSystemInfo({
       success: function (res) {
         var width = parseInt(res.screenWidth);
-        console.log(width)
+      
         This.setData({
           x: (width - 32) / 4
         })
@@ -434,7 +434,7 @@ Page({
     wx.getStorage({
       key: 'item',
       success: function (res) {
-        console.log(res)
+       
         This.setData({
           applyItems: res.data
         })
@@ -508,7 +508,7 @@ Page({
     })
   },
   selectApplyItems: function (e) {
-    console.log(e.detail.value)
+    //console.log(e.detail.value)
     this.setData({
       applyItemId: e.detail.value
     })
@@ -516,7 +516,7 @@ Page({
   // 确认录入（下一步）
   confirminput: function () {
     var This = this;
-    console.log(This.data.code)
+    //console.log(This.data.code)
     getApp().snPost('/item/sampleItemInput', {
       token: This.data.token,
       sampleId: This.data.code.sampleId,
@@ -524,7 +524,7 @@ Page({
       applyItemId: This.data.applyItemId.join(","),
       remark: ""
     }, function (res) {
-      console.log(res.data)
+      //console.log(res.data)
       if (res.data.success) {
         getApp().hnToast("录入成功");
         This.init();
@@ -548,19 +548,19 @@ Page({
         barCode: e.target.dataset.barcode
       }
     })
-    console.log(e.target.dataset.sampleid)
+   //console.log(e.target.dataset.sampleid)
     getApp().snGet('/item/getSampleApplyItem',{
       token: This.data.token,
       sampleId: e.target.dataset.sampleid,  
     },
     function(msg){
-      console.log(msg.data.data)
+      //console.log(msg.data.data)
       var alreadyItem = "";//临时已选项目 字符串
       for (let i = 0; i < msg.data.data.length;i++){
         alreadyItem += msg.data.data[i].applyItemName+",";
       }
       alreadyItem = alreadyItem.substr(0, alreadyItem.length-1);
-      console.log(alreadyItem)
+      //console.log(alreadyItem)
       wx.getStorage({
         key: 'item',
         success: function (res) {

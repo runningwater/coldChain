@@ -8,7 +8,7 @@ Page({
     token:""
   },
   formSubmit:function(e){
-    console.log(e.detail.value);
+    //console.log(e.detail.value);
     var This = this;
     if (e.detail.value.title==""){
       wx.showModal({

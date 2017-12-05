@@ -11,7 +11,7 @@ Page({
   },
   //输入条码
   scanBox:function(e){
-    console.log(e.detail.value)
+    //console.log(e.detail.value)
     var barcode = e.detail.value;
     this.initBox(barcode);
   },
@@ -23,7 +23,7 @@ Page({
         This.initBox(msg.result);
       },
       fail: function (e) {
-        console.log(e);
+        //console.log(e);
         wx.showToast({
           title: '扫码失败',
         })
@@ -39,7 +39,7 @@ Page({
         barCode: barcode
       },
       success:function(msg){
-        console.log(msg)
+       //console.log(msg)
         if(msg.data.success){
           This.setData({
             barCode:msg.data.data

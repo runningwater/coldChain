@@ -48,7 +48,7 @@ Page({
       })
   },
   checkboxChange: function (e) {
-    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
+    //console.log('checkbox发生change事件，携带value值为：', e.detail.value)
     this.setData({
       num: e.detail.value.length,
       sampleList: e.detail.value

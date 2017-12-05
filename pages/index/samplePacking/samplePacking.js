@@ -349,18 +349,7 @@ Page({
    */
   onShow: function () {
     var This = this;
-    // wx.request({
-    //     url: getApp().globalData.url + '/box/getTransportBoxList',
-    //     data: {
-    //         token: This.data.token
-    //     },
-    //     success: function (msg) {
-    //         console.log(msg)
-    //         This.setData({
-    //             barCode: msg.data.data
-    //         })
-    //     }
-    // })
+   
     This.onLoad();
   },
 

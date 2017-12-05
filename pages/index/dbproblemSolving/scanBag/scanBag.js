@@ -65,7 +65,7 @@ Page({
         This.scanBagCom(msg.result);
       },
       fail: function (e) {
-        console.log(e);
+       // console.log(e);
         wx.showToast({
           title: '扫码失败',
         })
@@ -100,7 +100,7 @@ Page({
    */
   onLoad: function (options) {
     var This = this;
-    console.log(JSON.parse(options.bags))
+   // console.log(JSON.parse(options.bags))
     wx.getStorage({
       key: 'token',
       success: function(res) {
@@ -142,7 +142,7 @@ initBag:function(){
     wx.showActionSheet({
       itemList: ["我要删除"],
       success: function (res) {
-        console.log(res.tapIndex)
+       // console.log(res.tapIndex)
         if (res.tapIndex == "0") {
           wx.navigateTo({
             url: 'delBag/delBag?bagid=' + e.currentTarget.dataset.bagid,

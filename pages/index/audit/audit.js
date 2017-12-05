@@ -96,7 +96,7 @@ Page({
       },
       data: data,
       success: function (msg) {
-        console.log(msg)
+       
         if (msg.data.success) {
           getApp().hnToast("提交成功");
           This.init();
@@ -111,7 +111,7 @@ Page({
   init:function(){
     var This =this;
     // 获取审核列表
-    console.log(This.data.token)
+ 
    this.setData({
      display1: "block",
      display2: "none"
@@ -124,7 +124,7 @@ Page({
       
       },
       success: function (res) {
-        console.log(res);
+        //console.log(res);
         var req = res.data.data;
         for (let i = 0; i < req.length; i++) {
           req[i].show = false;
@@ -140,7 +140,7 @@ Page({
     var index = parseInt(e.currentTarget.dataset.index);
     var key = "taskList[" + index + "].show";
     var val = this.data.taskList[index].show;
-    console.log(val);
+    //console.log(val);
     this.setData({
       [key]: !val
     })
@@ -154,7 +154,7 @@ Page({
       wx.getStorage({
         key: 'token',
         success: function(res) {
-          console.log(res)
+          //console.log(res)
           This.setData({
             token:res.data
           })
