@@ -259,6 +259,26 @@ Page({
       }
     })
   },
+  modifyPhoto:function(e){
+    var This=this;
+    this.setData({
+      itemAndPhoto: false,
+      isExamine: false,
+      psn: e.currentTarget.dataset.psn
+    })
+    getApp().snGet("/batch/getApply", {
+      token: This.data.token,
+      psn: e.currentTarget.dataset.psn
+    }, function (res) {
+      console.log(res)
+      This.setData({
+        photos: res.data.data.appApplySampleList
+      })
+    });
+    wx.setNavigationBarTitle({
+      title: '上传申请单',
+    })
+  },
   //完成
   complete: function () {
 

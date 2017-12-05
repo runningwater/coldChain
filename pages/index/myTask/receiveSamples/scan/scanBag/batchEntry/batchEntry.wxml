@@ -74,8 +74,8 @@
       <view class="listContentBox" >
         <text class="batchName">批次号:{{item.psn}}</text>
       
-        <text class="iconfont icon-xiangji"
-          bindtap=""></text>
+        <text class="iconfont icon-xiangji"  data-psn="{{item.psn}}"
+          bindtap="modifyPhoto"></text>
         
         <block> 
           <text class="iconfont icon-xiangmu1"  data-psn="{{item.psn}}"  bindtap='examineItem'></text>
