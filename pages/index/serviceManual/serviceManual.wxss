@@ -11,16 +11,13 @@
 }
 .flex-item{
   position: relative;
-  /* display: inline-block;
-  width:80px; 
-  width:48%; */
-  /* padding: 50rpx 30rpx; */
+  
   text-align: center;
-  /* background: #ddd; */
-  /* border-radius: 50%; */
   margin-top: 30rpx;
   border-top:1px solid #cecece;
-  border-bottom:1px solid #bebebe;
+  border-bottom:1px solid #cecece;
+  height:160rpx;
+
 }
 
 .flex-item text{

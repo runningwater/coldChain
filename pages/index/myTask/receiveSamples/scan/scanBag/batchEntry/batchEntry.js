@@ -34,6 +34,10 @@ Page({
     filePaths:[],//交接单
     sampleList:[],//批次号下对应的标本列表
     sample:"",//点击批次号显示其下面的标本
+    itemStr:"",//已录项目
+    photos:[],//申请单图片
+    x:"",
+    lock: false
   },
   cancel: function () {
     // this.setData({
@@ -156,12 +160,15 @@ Page({
                 wx.showToast({
                   title: '交接单上传成功',
                 })
-                console.log(That.data.filePaths)
+                //console.log(That.data.filePaths)
                 getApp().snGet("/batch/getApply",{
                     token: That.data.token,
                     psn: That.data.psn
                 },function(res){
-                  console.log(res)
+                  console.log(res.data.data.appApplySampleList)
+                  That.setData({
+                    photos: res.data.data.appApplySampleList
+                  })
                 });
               } else {
                 wx.showToast({
@@ -178,9 +185,80 @@ Page({
     })
  
   },
-  
- 
-  
+  end1: function () {
+    if (this.data.lock) {
+      //开锁
+      setTimeout(() => {
+        this.setData({ lock: false });
+      }, 100);
+    }
+
+  },
+  //预览图片
+  prePic: function (e) {
+    if (this.data.lock) {
+      return false;
+    }
+    //console.log(e.currentTarget.dataset.file);
+    var picArr = e.currentTarget.dataset.file;
+    var current = e.currentTarget.dataset.current;
+    var urls = [];
+    for (var i = 0; i < picArr.length; i++) {
+      urls.push(picArr[i].url)
+    }
+    wx.previewImage({
+      current: current,
+      urls: urls
+    })
+  },
+  delSampleApply: function (e) {
+    var This = this;
+    This.setData({
+      lock: true//加锁
+    })
+    var attachId = e.currentTarget.dataset.attachid;
+    wx.showModal({
+      title: '删除申请单',
+      content: '确认要删除此张申请单图片么？',
+      success: function (confirm) {
+        if (confirm.confirm) {
+          wx.request({
+            url: getApp().globalData.url + '/batch/deleteApply',
+            method: "POST",
+            header: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data: {
+              token: This.data.token,
+              attachId: attachId,
+              psn: This.data.psn
+            },
+            success: function (msg) {
+
+              if (msg.data.success) {
+                wx.showToast({
+                  title: '删除成功',
+                })
+                getApp().snGet("/batch/getApply", {
+                  token: This.data.token,
+                  psn: This.data.psn
+                }, function (res) {
+                 
+                  This.setData({
+                    photos: res.data.data.appApplySampleList
+                  })
+                });
+              } else {
+                wx.showToast({
+                  title: '删除失败',
+                })
+              }
+            }
+          })
+        }
+      }
+    })
+  },
   //完成
   complete: function () {
 
@@ -208,7 +286,15 @@ Page({
    */
   onLoad: function (options) {
     var This = this;
-   
+    wx.getSystemInfo({
+      success: function (res) {
+        var width = parseInt(res.screenWidth);
+        console.log(width)
+        This.setData({
+          x: (width - 32) / 4
+        })
+      },
+    })
     wx.getLocation({
       success: function (res) {
         This.setData({
@@ -414,6 +500,15 @@ Page({
           This.setData({
             psn: res.data.data.psn
           })
+          getApp().snGet("/batch/getApply", {
+            token: This.data.token,
+            psn: res.data.data.psn
+          }, function (res) {
+            console.log(res.data.data.appApplySampleList)
+            This.setData({
+              photos: res.data.data.appApplySampleList
+            })
+          });
         })
       
   },
@@ -444,10 +539,34 @@ Page({
       token:This.data.token,
       psn: e.currentTarget.dataset.psn
     },function(res){
-      console.log(res)
+     // console.log(res)
       This.setData({
         sampleList: res.data.data.appBatchCodeList,
         sample: e.currentTarget.dataset.psn
+      })
+    })
+  },
+  examineItem:function(e){
+    var This=this;
+    This.setData({
+      isitem: false,
+      isExamine: false,//查看批次详情
+      itemAndPhoto: true,//录项目 拍照容器
+      psn: e.currentTarget.dataset.psn
+    })
+
+    getApp().snGet("/batch/getItem",{
+      token:This.data.token,
+      psn: e.currentTarget.dataset.psn
+    },function(res){
+      console.log(res)
+      var str = "";
+      for (let i = 0; i < res.data.data.appSampleItemList.length;i++){
+        str += res.data.data.appSampleItemList[i].applyItemName+",";
+      }
+      str = str.substr(0,str.length-1);
+      This.setData({
+        itemStr:str
       })
     })
   },
@@ -473,7 +592,8 @@ Page({
     }
       This.setData({
         itemAndPhoto: false,
-        isExamine:false
+        isExamine:false,
+        itemStr:""
       });
       wx.setNavigationBarTitle({
         title: '上传申请单',
@@ -486,6 +606,15 @@ Page({
         console.log(res)
         if(res.data.success){
           getApp().hnToast("录入成功")
+          getApp().snGet("/batch/getApply", {
+            token: This.data.token,
+            psn: This.data.psn
+          }, function (res) {
+            console.log(res.data.data.appApplySampleList)
+            This.setData({
+              photos: res.data.data.appApplySampleList
+            })
+          });
         }else{
           getApp().hnToast(res.data.message);
           return false;

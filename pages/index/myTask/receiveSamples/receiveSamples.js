@@ -18,7 +18,7 @@ Page({
     wx.showActionSheet({
             itemList: ['常规录入', '批量录入'],
             success: function (res) {
-              console.log(res.tapIndex)
+             
               wx.setStorage({
                 key: 'isBatch',
                 data: res.tapIndex,

@@ -37,7 +37,14 @@
 .green{
   color:#1ccaa3;
 }
-
+.hides{
+  display: none
+}
+.shows{
+  display: block;
+  background: #f3f3f3;
+  padding: 30rpx 20rpx;
+}
 /*按钮*/
 .btnGroup{
   position: absolute;
@@ -131,6 +138,10 @@ checkbox-group{
   right:20rpx;
 }
 /* 查看批次  */
+.examineWrap{
+  height:1076rpx;
+  overflow-y: scroll;
+}
 .listContentBox{
   padding: 35rpx 20rpx;
   border-bottom: 1px solid #cecece;
@@ -148,6 +159,12 @@ checkbox-group{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.listContentBox .icon-xiangji{
+  right:40rpx;
+}
+.listContentBox .icon-xiangmu1{
+  right:110rpx;
 }
 .icon-xiangshang{
   transform:rotate(180deg);
@@ -180,13 +197,12 @@ checkbox-group{
   font-size: 32rpx;
   color:#434343;
 }
-.hides{
-  display: none
-}
-.shows{
+
+.showBarcode{
   display: block;
   background: #f3f3f3;
-  padding: 30rpx 20rpx;
+  padding:10rpx 20rpx;
+  font-size: 28rpx;
 }
 .examineBtn{
   position: absolute;
@@ -208,9 +224,12 @@ checkbox-group{
 }
 
 .hang1{
-
+  position: relative;
   border-bottom:1px solid #bebebe; 
   color:#333;
   /* padding:10px 8px; */
   font-size:32rpx;
+}
+.hang1 .w20{
+  top:40rpx;
 }

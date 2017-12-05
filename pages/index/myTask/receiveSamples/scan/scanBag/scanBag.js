@@ -314,35 +314,39 @@ Page({
       key: 'isBatch',
       success: function(res) {
         batch = res.data;
-        console.log(batch);
-        if(batch=="1"){
-          wx.navigateTo({
-            url: 'batchEntry/batchEntry?bagid=' + bagid + "&recordid=" + recordid
-            + "&hospitalId=" + hospitalId + "&bag=" + bag + "&transportid=" + This.data.transportid,
-          })
-        }else{
-          wx.navigateTo({
-            url: 'samplesForItem/samplesForItem?bagid=' + bagid + "&recordid=" + recordid
-            + "&hospitalId=" + hospitalId + "&bag=" + bag + "&transportid=" + This.data.transportid,
-          })
-        }
+  
       },
     })
     wx.getStorage({
       key: 'isApplyItem',
       success: function(res) {
-        console.log("是否录入项目："+res.data)
-        console.log("是否批量录入：" + batch)
+       
         if (res.data=="1"){
-          wx.navigateTo({
-            url: 'samplesForItem/samplesForItem?bagid=' + bagid + "&recordid=" + recordid
+          if (batch=="1"){
+            wx.navigateTo({
+            url: 'batchEntry/batchEntry?bagid=' + bagid + "&recordid=" + recordid
             + "&hospitalId=" + hospitalId + "&bag=" + bag + "&transportid=" + This.data.transportid,
           })
+          }else{
+            wx.navigateTo({
+              url: 'samplesForItem/samplesForItem?bagid=' + bagid + "&recordid=" + recordid
+              + "&hospitalId=" + hospitalId + "&bag=" + bag + "&transportid=" + This.data.transportid,
+            })
+          }
+          
         }else{
-          wx.navigateTo({
-            url: 'samples/samples?bagid=' + bagid + "&recordid=" + recordid
-            + "&hospitalId=" + hospitalId + "&bag=" + bag + "&transportid=" + This.data.transportid,
-          })
+          if (batch == "1"){
+            wx.navigateTo({
+              url: 'batchEntryNoItem/batchEntryNoItem?bagid=' + bagid + "&recordid=" + recordid
+              + "&hospitalId=" + hospitalId + "&bag=" + bag + "&transportid=" + This.data.transportid,
+            })
+          }else{
+            wx.navigateTo({
+              url: 'samples/samples?bagid=' + bagid + "&recordid=" + recordid
+              + "&hospitalId=" + hospitalId + "&bag=" + bag + "&transportid=" + This.data.transportid,
+            })
+          }
+         
         }
       },
     })
@@ -357,7 +361,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    
     var This = this;
     this.setData({
       barcode: options.barcode,

@@ -68,21 +68,27 @@
 </view>
 
 <view wx:elif='{{isExamine}}'>
-  <view class="listContentBox" bindtap='showSampleList' wx:for="{{psnArr}}" data-psn="{{item.psn}}">
-    <text class="batchName">批次号:{{item.psn}}</text>
-    <text class="iconfont icon-xiangshang"></text>
-    <text class="iconfont icon-xiangji"
-      bindtap="takePhoto"></text>
-    
-    <block> 
-      <text class="iconfont icon-xiangmu1"  bindtap='inputItem'></text>
-    </block>
-    <!-- 查看样本 -->
-    <view wx:for="{{sampleList}}" wx:for-item="s" wx:if="{{sample==item.psn}}">
-        <view>标本条码：{{s.barCode}}</view>
-    </view>  
-  </view>
   
+  <view class='examineWrap'>
+    <view bindtap='showSampleList' wx:for="{{psnArr}}" data-psn="{{item.psn}}">
+      <view class="listContentBox" >
+        <text class="batchName">批次号:{{item.psn}}</text>
+      
+        <text class="iconfont icon-xiangji"
+          bindtap=""></text>
+        
+        <block> 
+          <text class="iconfont icon-xiangmu1"  data-psn="{{item.psn}}"  bindtap='examineItem'></text>
+        </block>
+      </view>
+      
+      <!-- 查看样本 -->
+      <view class='showBarcode' wx:for="{{sampleList}}" wx:for-item="s" wx:if="{{sample==item.psn}}">
+          <view>标本条码：{{s.barCode}}</view>
+      </view>  
+    </view>
+    
+  </view>
   <view class='examineBtn'>
     <button class='examineEnd' bindtap='examineEnd'>完成</button>
   </view>
@@ -92,7 +98,7 @@
    <!-- 录项目 -->
   <view wx:elif="{{itemAndPhoto}}">
       <!-- 已选项目 -->
-      <view class='wrap' wx:if="{{isAlreadyItem}}">已选项目：<text>{{alreadyItem}}</text></view>
+      <view class='wrap' wx:if="{{itemStr.length>0}}">已选项目：<text>{{itemStr}}</text></view>
       <view class="scanInput">  
           <input placeholder-style="font-size:32rpx"  confirm-type="search" bindconfirm="search" placeholder="搜索项目" />    
       </view>
@@ -108,7 +114,7 @@
   </view>
   <!-- 拍照（申请单） -->
   <view wx:else>
-    <block wx:for="{{filePaths}}">
+    <block wx:for="{{photos}}">
       <image bindtap="prePic"
       bindlongtap="delSampleApply" 
       bindtouchend="end1" data-file="{{photos}}"

@@ -49,7 +49,7 @@ Page({
             location: This.data.location
           },
           success: function (msg) {
-            console.log(msg)
+            //console.log(msg)
             wx.redirectTo({
               url: 'receiveSamples/receiveSamples?hosName='
               + hosName + "&workId=" + workId + "&hospitalId=" + hospitalId,
@@ -235,7 +235,7 @@ Page({
             token: res.data
           },
           success: function (res) {
-            console.log(res);
+           // console.log(res);
             This.setData({
               lists: res.data.data
             });
@@ -271,12 +271,12 @@ Page({
             token: res.data
           },
           success: function (res) {
-            console.log(res);
+            //console.log(res);
             var req = res.data.data;
             for(let i=0;i<req.length;i++){
               req[i].show = false;
             }
-            console.log(req)
+            //console.log(req)
             This.setData({
               auditTask: req
             })
@@ -293,10 +293,10 @@ Page({
     this.setData({
       [key]: !val
     })
-    console.log(this.data.auditTask)
+    //console.log(this.data.auditTask)
   },
   hospitalChange:function(e){
-    console.log(e)
+    //console.log(e)
     this.setData({
       hospitalName: this.data.hospitalList[parseInt(e.detail.value)],
       hospitalID: this.data.hospitalIDList[parseInt(e.detail.value)],
@@ -308,7 +308,7 @@ Page({
     })
   },
   submit:function(e){  
-    console.log(e)
+    //console.log(e)
     var This = this;
     var data = {
       token: This.data.token,
