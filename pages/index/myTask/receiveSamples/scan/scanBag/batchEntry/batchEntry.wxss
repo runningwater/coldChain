@@ -212,6 +212,10 @@ checkbox-group{
   width:250rpx;
   margin-left:100%;
 }
+.wrap{
+  padding:20rpx;
+  background-color: #f3f3f3;
+}
 /* 上传申请单 */
 .btns{
   position: absolute;
@@ -231,5 +235,5 @@ checkbox-group{
   font-size:32rpx;
 }
 .hang1 .w20{
-  top:40rpx;
+  top:20rpx;
 }

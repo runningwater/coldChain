@@ -40,9 +40,9 @@ Page({
     lock: false
   },
   cancel: function () {
-    // this.setData({
-    //   l: ""
-    // })
+    this.setData({
+      l: ""
+    })
   },
   mytouchstart: function (e) {
     //开始触摸，获取触摸点坐标并放入数组中
@@ -50,6 +50,60 @@ Page({
       startPoint: [e.touches[0].pageX, e.touches[0].pageY],
       flag: false
     });
+  },
+  //扫描第一个条码
+  scanStartCode:function(){
+    var This=this;
+    wx.scanCode({
+      success: function (msg) {
+        this.setData({
+          startCode: msg.result
+        })
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '扫码失败',
+        })
+      }
+    })
+  },
+  //扫描最后一个条码
+  scanEndCode: function () {
+    var This = this;
+    wx.scanCode({
+      success: function (msg) {
+        this.setData({
+          endCode: msg.result
+        })
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '扫码失败',
+        })
+      }
+    })
+  },
+  //扫描单个条码
+  scanSingleCode:function(){
+    var This = this;
+    wx.scanCode({
+      success: function (msg) {
+        this.setData({
+          singleCode: msg.result,
+        })
+        var barcodeArr = This.data.barcodeArr;
+        barcodeArr.push({ barCode: e.detail.value });
+        console.log(barcodeArr);
+        this.setData({
+          barcodeArr: barcodeArr
+        })
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '扫码失败',
+        })
+      }
+    })
   },
   //触摸点移动 
   mymove: function (e) {
@@ -72,66 +126,39 @@ Page({
     var This = this;
     if (This.data.flag) {
       This.setData({
-        l: e.currentTarget.dataset.sampleid,
+        l: e.currentTarget.dataset.barcode,
         flag: false
       })
     }
 
   },
-  delSample: function (e) {
+  
+  deleteSample:function(e){
     var This = this;
-
-    var sampleId = e.currentTarget.dataset.sampleid;
+    var currentBarcode =e.currentTarget.dataset.barcode;
+    
     wx.showModal({
       title: '确认删除？',
       content: '确定要移除此标本吗？',
-      success: function (confirm) {
-        if (confirm.confirm) {
-          wx.request({
-            url: getApp().globalData.url + '/sample/removeSample',
-            method: "POST",
-            header: {
-              "Content-Type": "application/x-www-form-urlencoded"
-            },
-            data: {
-              token: This.data.token,
-              sampleId: sampleId
-            },
-            success: function (msg) {
-              if (msg.data.success) {
-                wx.showToast({
-                  title: msg.data.message,
-                })
+      success: function(yes){
 
-                wx.request({
-                  url: getApp().globalData.url + '/sample/getSample',
-                  data: {
-                    token: This.data.token,
-                    bagId: This.data.bagid,
-                    recordId: This.data.recordid,
-                    hospitalId: This.data.hospitalId
-                  },
-                  success: function (msg) {
-                    //console.log(msg)
-                    This.setData({
-                      barCode: msg.data.data,
-                      bagNum: msg.data.data.length
-                    })
-                  },
-                  fail: function (err) {
-                    console.log(err)
-                  }
-                })
-              }
+        if(yes.confirm){
+         
+          var arr = This.data.barcodeArr;
+          for (var i = 0; i < arr.length;i++){
+           
+            if (arr[i].barCode == currentBarcode){
+              arr.splice(i,1);
             }
+          }
+          
+          This.setData({
+            barcodeArr:arr 
           })
-
         }
-      }
+      } 
     })
-
   },
-
   takePhoto: function (e) {
     var That = this;
     wx.chooseImage({
@@ -294,7 +321,7 @@ Page({
       singleCode:e.detail.value,
     })
     var barcodeArr=this.data.barcodeArr;
-    barcodeArr.push({oder:"9", barCode: e.detail.value});
+    barcodeArr.push({ barCode: e.detail.value});
     console.log(barcodeArr);
     this.setData({
       barcodeArr:barcodeArr
@@ -643,6 +670,7 @@ Page({
       
   },
   complate: function () {
+    this.getPsn();
     this.setData({
       isitem: true,
       itemAndPhoto: true,
