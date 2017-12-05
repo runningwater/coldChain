@@ -39,7 +39,7 @@
   
     <block wx:for="{{barcodeArr}}">
 
-      <view class='hang scanLists'>
+      <view class='hang1 scanLists'>
         <view class='{{l==item.sampleId?"w801":"w800"}}'  data-sampleId="{{item.sampleId}}"  bindtouchstart="mytouchstart" 
         bindtouchmove="mymove" bindtouchend='myend'>
           
@@ -68,23 +68,21 @@
 </view>
 
 <view wx:elif='{{isExamine}}'>
-  <view class="listContentBox" bindtap='showMsg' data-index="{{index}}">
-    <text class="batchName">批次号</text>
+  <view class="listContentBox" bindtap='showSampleList' wx:for="{{psnArr}}" data-psn="{{item.psn}}">
+    <text class="batchName">批次号:{{item.psn}}</text>
     <text class="iconfont icon-xiangshang"></text>
     <text class="iconfont icon-xiangji"
-      data-sampleIdone="{{item.sampleId}}"  bindtap="takePhoto"></text>
+      bindtap="takePhoto"></text>
     
-    <block wx:if="{{item.apply}}"> 
-      <text class="iconfont icon-xiangce"
-      data-sampleIdone="{{item.sampleId}}"></text>
+    <block> 
+      <text class="iconfont icon-xiangmu1"  bindtap='inputItem'></text>
     </block>
-    <block wx:if="{{item.item}}"> 
-      <text class="iconfont icon-xiangmu1"  bindtap='inputItem' data-sampleId="{{item.sampleId}}" data-barcode="{{item.barCode}}"></text>
-    </block>  
+    <!-- 查看样本 -->
+    <view wx:for="{{sampleList}}" wx:for-item="s" wx:if="{{sample==item.psn}}">
+        <view>标本条码：{{s.barCode}}</view>
+    </view>  
   </view>
-  <view  class="{{show?'shows':'hides'}}">
-    <view class='codeName'><text>115115113010</text></view>
-  </view>
+  
   <view class='examineBtn'>
     <button class='examineEnd' bindtap='examineEnd'>完成</button>
   </view>
@@ -110,7 +108,7 @@
   </view>
   <!-- 拍照（申请单） -->
   <view wx:else>
-    <block wx:for="{{photos}}">
+    <block wx:for="{{filePaths}}">
       <image bindtap="prePic"
       bindlongtap="delSampleApply" 
       bindtouchend="end1" data-file="{{photos}}"

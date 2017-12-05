@@ -206,3 +206,11 @@ checkbox-group{
   width:250rpx; 
   margin:30rpx 60rpx 0; 
 }
+
+.hang1{
+
+  border-bottom:1px solid #bebebe; 
+  color:#333;
+  /* padding:10px 8px; */
+  font-size:32rpx;
+}

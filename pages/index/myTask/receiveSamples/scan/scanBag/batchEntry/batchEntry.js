@@ -19,8 +19,8 @@ Page({
     flag: false,
     show:false,
     isitem: true,
-    isExamine:true,//查看批次详情
-    itemAndPhoto: true,//录项目 拍照容器
+    isExamine:false,//查看批次详情
+    itemAndPhoto: false,//录项目 拍照容器
     applyItems: [],//项目列表
     sampleId: "",//标本ID
     applyItemId: [],//项目id
@@ -30,11 +30,15 @@ Page({
     barcodeArr:[],
     psnNum:0,//批次号个数
     psnArr:[],//批次号数组
+    psn:"",//当前录入生成的批次号
+    filePaths:[],//交接单
+    sampleList:[],//批次号下对应的标本列表
+    sample:"",//点击批次号显示其下面的标本
   },
   cancel: function () {
-    this.setData({
-      l: ""
-    })
+    // this.setData({
+    //   l: ""
+    // })
   },
   mytouchstart: function (e) {
     //开始触摸，获取触摸点坐标并放入数组中
@@ -125,7 +129,53 @@ Page({
   },
 
   takePhoto: function (e) {
+    var That = this;
+    wx.chooseImage({
+      count: 9,
+      sizeType: ["original", "compressed"],
+      sourceType: ["album", "camera"],
+      success: function (res) {
 
+        That.setData({
+          filePaths: res.tempFilePaths
+        })
+        //console.log(That.data.filePaths)
+        for (var i = 0; i < That.data.filePaths.length; i++) {
+          wx.uploadFile({
+            url: getApp().globalData.url + '/batch/uploadApply',
+            filePath: That.data.filePaths[i],
+            name: 'pic' + i,
+            formData: {
+              token: That.data.token,
+              psn:That.data.psn
+            },
+            success: function (msg) {
+
+              var data = JSON.parse(msg.data);
+              if (data.success) {
+                wx.showToast({
+                  title: '交接单上传成功',
+                })
+                console.log(That.data.filePaths)
+                getApp().snGet("/batch/getApply",{
+                    token: That.data.token,
+                    psn: That.data.psn
+                },function(res){
+                  console.log(res)
+                });
+              } else {
+                wx.showToast({
+                  title: '交接单上传失败',
+                })
+              }
+            },
+            fail: function (err) {
+              console.log(err)
+            }
+          })
+        }
+      },
+    })
  
   },
   
@@ -151,18 +201,7 @@ Page({
     this.setData({
       barcodeArr:barcodeArr
     })
-    var data = {
-      token:This.data.token,
-      bagId: This.data.bagid,
-      recordId: This.data.recordid,
-      hospitalId: This.data.hospitalId,
-      barCodeStr: e.detail.value,
-      location: This.data.location,
-      transportId: This.data.transportid
-    }
-    getApp().snPost("",data,function(res){
-      console.log(res)
-    })
+  
   },
   /**
    * 生命周期函数--监听页面加载
@@ -287,7 +326,7 @@ Page({
     })
   },
   selectApplyItems: function (e) {
-    console.log(e.detail.value)
+    //console.log(e.detail.value)
     this.setData({
       applyItemId: e.detail.value
     })
@@ -324,8 +363,12 @@ Page({
             },
             success:function(msg){
               console.log(msg)
+              var barcodeArr = This.data.barcodeArr;
+              for (let i = 0; i < msg.data.data.length;i++){
+                barcodeArr.push(msg.data.data[i])
+              }
               This.setData({
-                barcodeArr:msg.data.data
+                barcodeArr: barcodeArr
               })   
             }
           })
@@ -336,38 +379,83 @@ Page({
   // 确认批次录入（下一步）
   confirmBatch: function (e) {
     var This = this;
-    console.log(this.data.barcodeArr)
+    if (This.data.barcodeArr.length<=0){
+      wx.showModal({
+        title: '请输入条码',
+        content: '你没有输入条码',
+      })
+      return false;
+    }
+   
+    var barCodeStr = "";
+    for(let i=0;i<This.data.barcodeArr.length;i++){
+      barCodeStr += This.data.barcodeArr[i].barCode+",";
+    }
+    barCodeStr = barCodeStr.substr(0,barCodeStr.length-1);
         This.setData({
           isitem: false,
+          itemAndPhoto:true,
           isExamine:false
         });
         wx.setNavigationBarTitle({
           title: '录入项目',
+        })
+        var data = {
+          token: This.data.token,
+          bagId: This.data.bagid,
+          recordId: This.data.recordid,
+          hospitalId: This.data.hospitalId,
+          barCodeStr: barCodeStr,
+          location: This.data.location,
+          transportId: This.data.transportid
+        }
+        getApp().snPost("/batch/postSamples", data, function (res) {
+          console.log(res.data.data.psn)
+          This.setData({
+            psn: res.data.data.psn
+          })
         })
       
   },
  
   //查看批次详情
   examineBatch:function(){
+    var This =this;
     this.setData({
       isitem: false,
+      isExamine:true,
       itemAndPhoto: false
     })
     wx.setNavigationBarTitle({
       title: '查看批次',
     })
+  
   },
-  showMsg: function () {
+  showMsg: function (e) {
     var v=this.data.show;
     this.setData({
       show:!v
+    })
+  },
+  showSampleList:function(e){
+   
+    var This = this;
+    getApp().snGet("/batch/getApply",{
+      token:This.data.token,
+      psn: e.currentTarget.dataset.psn
+    },function(res){
+      console.log(res)
+      This.setData({
+        sampleList: res.data.data.appBatchCodeList,
+        sample: e.currentTarget.dataset.psn
+      })
     })
   },
   examineEnd:function(){
     this.setData({
       isExamine: false,
       isitem:true,
-      itemAndPhoto: true
+      itemAndPhoto: false
     })
     wx.setNavigationBarTitle({
       title: '批量录入',
@@ -376,7 +464,13 @@ Page({
   
   confirminput: function () {
     var This = this;
-    
+    if (This.data.applyItemId.length<=0){
+      wx.showModal({
+        title: '请选择项目',
+        content: '项目不能为空，请选择项目',
+      })
+      return false;
+    }
       This.setData({
         itemAndPhoto: false,
         isExamine:false
@@ -384,12 +478,27 @@ Page({
       wx.setNavigationBarTitle({
         title: '上传申请单',
       })
+      getApp().snPost("/batch/itemInput",{
+        token:This.data.token,
+        psn:This.data.psn,
+        itemStr: This.data.applyItemId
+      },function(res){
+        console.log(res)
+        if(res.data.success){
+          getApp().hnToast("录入成功")
+        }else{
+          getApp().hnToast(res.data.message);
+          return false;
+        }
+      })
       
   },
   complate: function () {
     this.setData({
       isitem: true,
-      itemAndPhoto: true
+      itemAndPhoto: true,
+      barcodeArr:[],
+      psn: ""
     })
     wx.setNavigationBarTitle({
       title: '查看批次',
