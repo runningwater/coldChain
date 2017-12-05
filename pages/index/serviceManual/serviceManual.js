@@ -8,7 +8,7 @@ Page({
     serverLists:[],//服务手册列表
   },
   manualsList:function(e){
-    console.log(e.currentTarget.dataset.type);
+    //console.log(e.currentTarget.dataset.type);
     wx.navigateTo({
       url: 'manualsList/manualsList?type01=' + e.currentTarget.dataset.type,
     })

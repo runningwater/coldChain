@@ -2,99 +2,7 @@
 var wxCharts = require('../../../../utils/wxcharts.js');
 var app = getApp();
 var lineChart = null;
-// Page({
 
-//   /**
-//    * 页面的初始数据
-//    */
-//   data: {
-  
-//   },
-
-//   /**
-//    * 生命周期函数--监听页面加载
-//    */
-//   onLoad: function (options) {
-//     var sampleid = options.sampleid;
-//     wx.getStorage({
-//       key: 'token',
-//       success: function (res) {
-//         if (res.data) {
-//           wx.request({
-//             url: getApp().globalData.url + '/api/sample/getTrackSample',
-//             method: "POST",
-//             header: {
-//               "Content-Type": "application/x-www-form-urlencoded"
-//             },
-//             data: {
-//               token: res.data,
-//               sampleId: sampleid
-//             },
-//             success: function (msg) {
-//               console.log(msg)
-//               if (msg.data.data.length > 0) {
-
-//               } else {
-//                 wx.showToast({
-//                   title: "暂无数据",
-//                 })
-//               }
-//             }
-//           })
-//         }
-//       },
-//     })
-//   },
-
-//   /**
-//    * 生命周期函数--监听页面初次渲染完成
-//    */
-//   onReady: function () {
-  
-//   },
-
-//   /**
-//    * 生命周期函数--监听页面显示
-//    */
-//   onShow: function () {
-  
-//   },
-
-//   /**
-//    * 生命周期函数--监听页面隐藏
-//    */
-//   onHide: function () {
-  
-//   },
-
-//   /**
-//    * 生命周期函数--监听页面卸载
-//    */
-//   onUnload: function () {
-  
-//   },
-
-//   /**
-//    * 页面相关事件处理函数--监听用户下拉动作
-//    */
-//   onPullDownRefresh: function () {
-  
-//   },
-
-//   /**
-//    * 页面上拉触底事件的处理函数
-//    */
-//   onReachBottom: function () {
-  
-//   },
-
-//   /**
-//    * 用户点击右上角分享
-//    */
-//   onShareAppMessage: function () {
-  
-//   }
-// })
 
 Page({
   data: {
@@ -113,7 +21,7 @@ Page({
     var data2 = [];//湿度
     
     for (var i = 0; i < this.data.lists.length; i++) {
-      console.log(this.data.lists[i]);
+     // console.log(this.data.lists[i]);
       categories.push(this.data.lists[i].createTime);
       data1.push(this.data.lists[i].temperature);
       data2.push(this.data.lists[i].humidity);
@@ -202,7 +110,7 @@ Page({
                   //   lineStyle: 'curve'
                   // }
                 });
-                console.log(This.data.lists)
+                //console.log(This.data.lists)
               } else {
                 wx.showToast({
                   title: "暂无数据",

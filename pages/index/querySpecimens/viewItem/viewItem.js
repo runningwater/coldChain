@@ -26,7 +26,7 @@ Page({
           token: res.data
         })
         if (res.data) {
-          console.log(res.data)
+         // console.log(res.data)
           wx.request({
             url: getApp().globalData.url + '/item/getSampleApplyItem',
 
@@ -35,14 +35,14 @@ Page({
               sampleId: sampleid
             },
             success: function (msg) {
-              console.log(msg)
+              //console.log(msg)
               if (msg.data.success) {
                 
                 This.setData({
                   itemArr: msg.data.data
                 })
                 
-                console.log(msg.data.data)
+                //console.log(msg.data.data)
               }
             }
           })
@@ -50,23 +50,7 @@ Page({
       },
     })
   },
-  // viewItem: function (e) {
-  //   var This=this;
-  //   getApp().snGet('/item/getSampleApplyItem', {
-  //     token: This.data.token,
-  //     sampleId: e.target.dataset.sampleid,
-  //   },
-  //     function (msg) {
-  //       console.log(msg.data.data)
-  //       var alreadyItem = "";//临时已选项目 字符串
-  //       for (let i = 0; i < msg.data.data.length; i++) {
-  //         alreadyItem += msg.data.data[i].applyItemName + ",";
-  //       }
-  //       alreadyItem = alreadyItem.substr(0, alreadyItem.length - 1);
-  //       console.log(alreadyItem)
-
-  //     })
-  // },
+ 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -48,7 +48,7 @@ Page({
 
 
   myend: function (e) {
-    console.log(e.currentTarget.dataset.sampleid)
+    //console.log(e.currentTarget.dataset.sampleid)
     var This = this;
     if (This.data.flag) {
       This.setData({
@@ -128,7 +128,7 @@ Page({
     wx.showActionSheet({
       itemList: ["我要删除"],
       success: function (res) {
-        console.log(res.tapIndex)
+        //console.log(res.tapIndex)
         if (res.tapIndex == "0") {
           wx.navigateTo({
             url: 'delSpecimens/delSpecimens?sampleId=' + e.currentTarget.dataset.sampleid,

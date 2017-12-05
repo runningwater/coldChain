@@ -46,7 +46,7 @@ Page({
 
   },
   myend: function (e) {
-    console.log(e.currentTarget.dataset.id)
+    
     var This = this;
     if (This.data.flag) {
       This.setData({
@@ -143,7 +143,7 @@ Page({
                   transportId: e.currentTarget.dataset.transportid
                 },
                 success: function (msg) {
-                  console.log(msg)
+               
                   if (msg.data.success) {
                     wx.showToast({
                       title: '移除成功',
@@ -295,7 +295,7 @@ Page({
     wx.getStorage({
       key: 'token',
       success: function (res) {
-        console.log(res.data)
+     
         if (res.data) {
           This.setData({
             token:res.data
@@ -341,7 +341,7 @@ Page({
       wx.getStorage({
           key: 'token',
           success: function (res) {
-              console.log(res.data)
+            
               if (res.data) {
 
                   wx.request({

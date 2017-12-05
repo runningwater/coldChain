@@ -11,7 +11,7 @@ Page({
   delBag: function (e) {
    
     var This = this;
-    console.log(This.data.bagId)
+    //console.log(This.data.bagId)
     wx.request({
       url: getApp().globalData.url + '/problem/removeSampleBag',
       method: "POST",
@@ -24,7 +24,7 @@ Page({
         remark: e.detail.value.del
       },
       success: function (msg) {
-        console.log(msg)
+        //console.log(msg)
         if (msg.data.success) {
           getApp().hnToast("删除成功")
           wx.navigateBack({
@@ -38,7 +38,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+   // console.log(options)
     var This = this;
     wx.getStorage({
       key: 'token',

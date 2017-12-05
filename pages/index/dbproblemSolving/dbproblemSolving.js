@@ -43,7 +43,7 @@ Page({
         barCode: barcode
       },
       success:function(msg){
-        console.log(msg)
+       // console.log(msg)
         if(msg.data.success){
           if (msg.data.data.length!=0){
            wx.navigateTo({

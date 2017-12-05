@@ -105,7 +105,7 @@ Page({
               attachId: attachId
             },
             success: function (msg) {
-              console.log(msg)
+              //console.log(msg)
               if (msg.data.success) {
                 wx.showToast({
                   title: '删除成功',
@@ -120,7 +120,7 @@ Page({
                     hospitalId: This.data.hospitalId
                   },
                   success: function (msg) {
-                    console.log(msg)
+                    //console.log(msg)
                     This.setData({
                       filePaths: msg.data.data
                     })
@@ -156,7 +156,7 @@ Page({
     if (this.data.lock) {
       return;
     }
-    console.log(e.currentTarget.dataset.file);
+    //console.log(e.currentTarget.dataset.file);
     var picArr = e.currentTarget.dataset.file;
     var current = e.currentTarget.dataset.current;
     var urls = [];
@@ -176,7 +176,7 @@ Page({
     wx.getSystemInfo({
       success: function (res) {
         var width = parseInt(res.screenWidth);
-        console.log(width)
+       
         This.setData({
           x: (width - 32) / 4
         })
@@ -203,7 +203,7 @@ Page({
             hospitalId: This.data.hospitalId
           },
           success: function (msg) {
-            console.log(msg)
+           
             This.setData({
               filePaths: msg.data.data
             })
@@ -259,7 +259,7 @@ Page({
         hospitalId: This.data.hospitalId
       },
       success: function (msg) {
-        console.log(msg)
+        
         This.setData({
           filePaths: msg.data.data
         })
