@@ -468,6 +468,71 @@ Page({
     })
 
   },
+  //预览图片
+  prePic: function (e) {
+    if (this.data.lock) {
+      return false;
+    }
+    //console.log(e.currentTarget.dataset.file);
+    var picArr = e.currentTarget.dataset.file;
+    var current = e.currentTarget.dataset.current;
+    var urls = [];
+    for (var i = 0; i < picArr.length; i++) {
+      urls.push(picArr[i].url)
+    }
+    wx.previewImage({
+      current: current,
+      urls: urls
+    })
+  },
+  delSampleApply: function (e) {
+    var This = this;
+    This.setData({
+      lock: true//加锁
+    })
+    var attachId = e.currentTarget.dataset.attachid;
+    wx.showModal({
+      title: '删除申请单',
+      content: '确认要删除此张申请单图片么？',
+      success: function (confirm) {
+        if (confirm.confirm) {
+          wx.request({
+            url: getApp().globalData.url + '/batch/deleteApply',
+            method: "POST",
+            header: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data: {
+              token: This.data.token,
+              attachId: attachId,
+              psn: This.data.psn
+            },
+            success: function (msg) {
+
+              if (msg.data.success) {
+                wx.showToast({
+                  title: '删除成功',
+                })
+                getApp().snGet("/batch/getApply", {
+                  token: This.data.token,
+                  psn: This.data.psn
+                }, function (res) {
+
+                  This.setData({
+                    photos: res.data.data.appApplySampleList
+                  })
+                });
+              } else {
+                wx.showToast({
+                  title: '删除失败',
+                })
+              }
+            }
+          })
+        }
+      }
+    })
+  },
   finish:function(){
     this.getPsn();
     this.setData({
