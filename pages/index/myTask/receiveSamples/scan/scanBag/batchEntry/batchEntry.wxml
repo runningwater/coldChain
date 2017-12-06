@@ -95,7 +95,7 @@
       </view>
       <checkbox-group bindchange="selectApplyItems">
         <label class="checkbox" wx:for="{{applyItems}}">
-          <view class="item"> <checkbox value="{{item.applyItemId}}" />{{item.applyItemName}}</view>       
+          <view class="item"> <checkbox value="{{item.applyItemId}}" checked='{{item.checked}}'/>{{item.applyItemName}}</view>       
       </label>
       </checkbox-group>
       <view class="entryBtn">
