@@ -1,0 +1,98 @@
+<!--pages/index/myTask/receiveSamples/scan/scanBag/batchEntryNoItem/batchEntryNoItem.wxml-->
+<view  catchtap='cancel' wx:if="{{isitem}}">
+  <view class='batchWrap'>
+    <view class="total">
+      <block wx:if="{{bagNum==0}}">
+        标本袋<text>{{bag}}</text>共扫描<text class="yellow">{{bagNum}}</text>个标本
+      </block>
+      <block wx:if="{{bagNum!=0}}">
+        标本袋<text>{{bag}}</text>共扫描<text class="green">{{bagNum}}</text>个标本
+      </block>
+    </view>
+
+    <view class='batchInput' bindtap='showMsg'>
+      <text class="batchName">连续录入条码</text>
+      <text class="iconfont icon-xiangshang"></text>
+    </view>
+    <view id='continuous' class="{{show?'shows':'hides'}}">
+      <view class='scanInput'>
+      <input  placeholder-style="font-size:32rpx" 
+      confirm-type="done" bindconfirm="startCode" placeholder="扫描或手动输入第一个条码" 
+      class="code"/>
+      <text class='iconfont icon-saoma'  bindtap="scanStartCode"></text>
+      </view>
+      <view class='scanInput'>
+        <input placeholder-style="font-size:32rpx" 
+        confirm-type="done" bindconfirm="endCode" placeholder="扫描或手动输入最后一个条码" 
+        class="code"/>
+        <text class='iconfont icon-saoma'  bindtap="scanEndCode"></text>
+      </view>
+      <button class='confirm' bindtap='generateBarcode'>生成条码</button>
+    </view>
+
+    <view class='scanInput'>
+      <input  placeholder-style="font-size:32rpx;text-align:left" class="code"
+    confirm-type="done" bindconfirm="scanCodeForBatch" placeholder="扫描或手动输入条码" 
+     />
+    <text class='iconfont icon-saoma'  bindtap="scanSingleCode"></text>
+    </view>
+  
+    <block wx:for="{{barcodeArr}}">
+
+      <view class='hang1 scanLists'>
+        <view class='{{l==item.barCode?"w801":"w800"}}'   bindtouchstart="mytouchstart" 
+        bindtouchmove="mymove" bindtouchend='myend' data-barcode="{{item.barCode}}">
+          <text class="codeL">
+            标本条码：<text class="barcode">{{item.barCode}}</text>
+          </text> 
+        </view>
+        <view class='w20' wx:if="{{l==item.barCode?true:false}}" bindtap='deleteSample' data-barcode="{{item.barCode}}">删除</view>     
+      </view>  
+    </block>
+  </view>
+  <view class="btnGroup">
+    <view class='superscript'>{{psnNum}}</view>
+    <button class='examine left' bindtap='examineBatch'>查看批次</button>
+    
+    <button class='right' bindtap='confirminput'>下一步</button>
+  </view> 
+</view>
+<!-- 查看批次 -->
+<view wx:elif='{{isExamine}}'>
+  
+  <view class='examineWrap'>
+    <view bindtap='showSampleList' wx:for="{{psnArr}}" data-psn="{{item.psn}}">
+      <view class="listContentBox" >
+        <text class="batchName">批次号:{{item.psn}}</text>
+      
+        <text class="iconfont icon-xiangji"  data-psn="{{item.psn}}"
+          bindtap="modifyPhoto"></text>
+      </view>
+      
+      <!-- 查看样本 -->
+      <view class='showBarcode'>
+          <view>标本条码：{{s.barCode}}</view>
+      </view>  
+    </view>
+    
+  </view>
+  <view class='examineBtn'>
+    <button class='examineEnd' bindtap='examineEnd'>完成</button>
+  </view>
+</view>
+<!-- 拍照上传申请单 -->
+<view wx:else>
+  <block wx:for="{{photos}}">
+      <image bindtap="prePic"
+      bindlongtap="delSampleApply" 
+      bindtouchend="end1" data-file="{{photos}}"
+      data-current="{{item.url}}"
+      data-attachId="{{item.attachId}}"    
+      style="width:{{x}}px;height:{{x}}px;margin:2px"  src="{{item.thumbUrl}}"></image>
+      
+    </block>
+    <view class='btns'>
+      <button class='submitItems' bindtap='takePhoto'>申请单上传</button>
+      <button class='complete' bindtap='finish'>完成</button>
+    </view> 
+</view>
