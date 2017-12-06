@@ -45,6 +45,10 @@
   background: #f3f3f3;
   padding: 30rpx 20rpx;
 }
+.code{
+  display:inline-block;
+  width:88%;
+}
 /*按钮*/
 .btnGroup{
   position: absolute;
@@ -215,6 +219,12 @@ checkbox-group{
 .wrap{
   padding:20rpx;
   background-color: #f3f3f3;
+  color:#333;
+  font-size: 32rpx;
+}
+.wrap text{
+  color:#888;
+  font-size: 28rpx;
 }
 /* 上传申请单 */
 .btns{

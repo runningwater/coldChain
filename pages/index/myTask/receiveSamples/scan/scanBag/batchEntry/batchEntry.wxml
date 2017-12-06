@@ -18,20 +18,20 @@
       <view class='scanInput'>
       <input  placeholder-style="font-size:32rpx" 
       confirm-type="done" bindconfirm="startCode" placeholder="扫描或手动输入第一个条码" 
-      id="code"/>
+      class="code"/>
       <text class='iconfont icon-saoma'  bindtap="scanStartCode"></text>
       </view>
       <view class='scanInput'>
         <input placeholder-style="font-size:32rpx" 
         confirm-type="done" bindconfirm="endCode" placeholder="扫描或手动输入最后一个条码" 
-        id="code"/>
+        class="code"/>
         <text class='iconfont icon-saoma'  bindtap="scanEndCode"></text>
       </view>
       <button class='confirm' bindtap='generateBarcode'>生成条码</button>
     </view>
 
     <view class='scanInput'>
-      <input  placeholder-style="font-size:32rpx;text-align:left" id="code"
+      <input  placeholder-style="font-size:32rpx;text-align:left" class="code"
     confirm-type="done" bindconfirm="scanCodeForBatch" placeholder="扫描或手动输入条码" 
      />
     <text class='iconfont icon-saoma'  bindtap="scanSingleCode"></text>
