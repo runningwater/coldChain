@@ -70,7 +70,7 @@
       </view>
       
       <!-- 查看样本 -->
-      <view class='showBarcode'>
+      <view class='showBarcode' wx:for="{{sampleList}}" wx:for-item="s" wx:if="{{sample==item.psn}}">
           <view>标本条码：{{s.barCode}}</view>
       </view>  
     </view>

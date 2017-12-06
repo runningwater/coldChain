@@ -169,6 +169,20 @@ Page({
       show: !v
     })
   },
+  showSampleList: function (e) {
+
+    var This = this;
+    getApp().snGet("/batch/getApply", {
+      token: This.data.token,
+      psn: e.currentTarget.dataset.psn
+    }, function (res) {
+      // console.log(res)
+      This.setData({
+        sampleList: res.data.data.appBatchCodeList,
+        sample: e.currentTarget.dataset.psn
+      })
+    })
+  },
   //确定生成连续条码
   startCode: function (e) {
     this.setData({
