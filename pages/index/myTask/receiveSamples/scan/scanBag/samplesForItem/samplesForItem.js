@@ -13,7 +13,7 @@ Page({
     transportid: "",//运输表id
     location: "",//经纬度
     bagNum: 0,
-   
+    isItem: "0",//新增
     barCode: [],
     startPoint: [0, 0],//初始化touchstart坐标
     flag: false,
@@ -338,7 +338,8 @@ Page({
               hospitalId: This.data.hospitalId,
               barCode: sampleCode,
               location: This.data.location,
-              transportId: This.data.transportid
+              transportId: This.data.transportid,
+              isitem:This.data.isItem
             },
             success: function (msg) {
               //console.log(msg)
@@ -508,12 +509,12 @@ Page({
     wx.getStorage({
       key: 'item',
       success: function (res) {
-        if (e.detail.value == "") {
-          This.setData({
-            applyItems: res.data
-          })
-          return;
-        }
+        // if (e.detail.value == "") {
+        //   This.setData({
+        //     applyItems: res.data
+        //   })
+        //   return;
+        // }
 
         var arr = [];
         var arrForSelect = [];
@@ -542,7 +543,15 @@ Page({
         } else {
           //var ss = [];
           for (let i = 0; i < arrForSelect.length;i++){
-           
+            // for(let j=0;j<arr.length;j++){
+            //   if (arr[j].applyItemId == arrForSelect[i].arrForSelect){
+            //     console.log(arr[j])
+            //     arr[j].checked = true;
+            //   }else{
+            //     arrForSelect[i].check =true;
+            //     arr.unshift(arrForSelect[i])  
+            //   }
+            // }
             arr.push(arrForSelect[i])
            }//arr是个新数组 包含搜索的和已选的
 
@@ -552,7 +561,6 @@ Page({
             for(let j=0;j<newarr.length;j++){
               if (newarr[j].applyItemId == selectArr[i]){
                 newarr[j].checked = true;
-                break;
               }
             }
           }
@@ -592,6 +600,7 @@ Page({
     var This = this;
    
     This.scanCode(This.data.barcode);
+
     //This.getPhoto(This.data.token, This.data.sampleId);
     This.setData({
       photos:[]
@@ -602,7 +611,7 @@ Page({
     This.setData({
       isAlreadyItem:true,
       sampleId: e.target.dataset.sampleid,
-      barCode: e.target.dataset.barcode
+      barcode: e.target.dataset.barcode
       
     })
    //console.log(e.target.dataset.sampleid)
@@ -613,6 +622,11 @@ Page({
     function(msg){
       //console.log(msg.data.data)
       var alreadyItem = "";//临时已选项目 字符串
+      if (msg.data.data.length!=0){
+        This.setData({
+          isItem:"1"//修改
+        })
+      }
       for (let i = 0; i < msg.data.data.length;i++){
         alreadyItem += msg.data.data[i].applyItemName+",";
       }

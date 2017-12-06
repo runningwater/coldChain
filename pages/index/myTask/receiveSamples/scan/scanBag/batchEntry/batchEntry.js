@@ -429,12 +429,12 @@ Page({
     wx.getStorage({
       key: 'item',
       success: function (res) {
-        if (e.detail.value == "") {
-          This.setData({
-            applyItems: res.data
-          })
-          return;
-        }
+        // if (e.detail.value == "") {
+        //   This.setData({
+        //     applyItems: res.data
+        //   })
+        //   return;
+        // }
 
         var arr = [];
         var arrForSelect = [];
