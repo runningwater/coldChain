@@ -437,14 +437,21 @@ Page({
         }
 
         var arr = [];
+        var arrForSelect = [];
+        var selectArr = This.data.applyItemId;
         for (let i in res.data) {
           //console.log(this.data.hosList[i])
           res.data[i].show = false;
 
           if (res.data[i].search.indexOf(e.detail.value) >= 0) {
 
-            res.data[i].show = true;
+            //res.data[i].show = true;
             arr.push(res.data[i])
+          }
+          for (let j = 0; j < selectArr.length; j++) {
+            if (selectArr[j] == res.data[i].applyItemId) {
+              arrForSelect.push(res.data[i]);
+            }
           }
         }
         if (arr.length == 0) {
@@ -452,13 +459,43 @@ Page({
             applyItems: [{ show: true, applyItemName: '无相关数据' }]
           })
         } else {
+          for (let i = 0; i < arrForSelect.length; i++) {
+
+            arr.push(arrForSelect[i])
+          }//arr是个新数组 包含搜索的和已选的
+
+
+          var newarr = This.getNewObjArr(arr);//新数组去掉重复的        
+          for (let i = 0; i < selectArr.length; i++) {
+            for (let j = 0; j < newarr.length; j++) {
+              if (newarr[j].applyItemId == selectArr[i]) {
+                newarr[j].checked = true;
+                break;
+              }
+            }
+          }
+
           This.setData({
-            applyItems: arr
+            applyItems: newarr
           })
         }
 
       },
     })
+  },
+  getNewObjArr: function (data) {
+    var newData = [];
+    for (var i = 0, len = data.length; i < len; i++) {
+      var flag = 1;
+      for (var j = 0, len2 = newData.length; j < len2; j++) {
+        if (newData[j].applyItemId === data[i].applyItemId) {
+          flag = 0;
+          break;
+        }
+      }
+      flag === 1 ? newData.push(data[i]) : false;
+    }
+    return newData;
   },
   selectApplyItems: function (e) {
     //console.log(e.detail.value)

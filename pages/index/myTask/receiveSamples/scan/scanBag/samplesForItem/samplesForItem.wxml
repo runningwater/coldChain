@@ -13,7 +13,7 @@
     <input placeholder-style="font-size:32rpx" 
     confirm-type="done" bindconfirm="scanSimple" placeholder="扫描或手动输入条形码" 
      id="code"/>
-    <text class='iconfont icon-saoma'  bindtap="scanCode"></text>
+    <text class='iconfont icon-saoma'  bindtap="scanCode1"></text>
   </view>
   
   <block wx:for="{{barCode}}">
@@ -53,7 +53,7 @@
         </view>
         <checkbox-group bindchange="selectApplyItems">
           <label class="checkbox" wx:for="{{applyItems}}">
-            <view class="item"> <checkbox value="{{item.applyItemId}}" />{{item.applyItemName}}</view>       
+            <view class="item"> <checkbox value="{{item.applyItemId}}"  checked='{{item.checked}}'/>{{item.applyItemName}}</view>       
         </label>
         </checkbox-group>
         <view class="btnGroup">

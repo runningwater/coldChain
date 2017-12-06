@@ -13,7 +13,7 @@ Page({
     transportid: "",//运输表id
     location: "",//经纬度
     bagNum: 0,
-    code: "",
+   
     barCode: [],
     startPoint: [0, 0],//初始化touchstart坐标
     flag: false,
@@ -26,7 +26,13 @@ Page({
     alreadyItem:"",//已选项目（项目名称字符串）
     photos: [],
     x: "",
-    lock: false
+    lock: false,
+    barcode:"",//标本条码
+    arr1:[],//数组1
+    arr2: [],//数组2
+    arr3: [],//数组3
+    arr4: [],//数组4
+    arr5: [],//数组5
   },
   cancel: function () {
     this.setData({
@@ -281,16 +287,20 @@ Page({
     })
   },
   //扫描标本
-  scanCode: function () {
+  scanCode1: function () {
     var This = this;
     wx.scanCode({
 
       success: function (msg) {
-        //console.log(msg)
 
-        var sampleCode = msg.result;
-        This.scanCode(sampleCode);
-     
+        This.setData({
+          barcode: msg.result, 
+          isitem: false,
+          isAlreadyItem: false
+        })
+        wx.setNavigationBarTitle({
+          title: '项目录入',
+        })
       },
       fail: function (e) {
         console.log(e)
@@ -298,11 +308,15 @@ Page({
     })
   },
   //录入标本号
-  scanSimple: function (e) {
-    var This = this;
-    var sampleCode = e.detail.value;
-    This.scanCode(sampleCode);
-  
+  scanSimple: function (e) {   
+    this.setData({
+      barcode: e.detail.value,
+      isitem: false,    
+      isAlreadyItem: false
+    })   
+    wx.setNavigationBarTitle({
+      title: '项目录入',
+    })
   },
   scanCode: function (sampleCode){
     var This = this;
@@ -330,7 +344,7 @@ Page({
               //console.log(msg)
               if (msg.data.success) {
                 This.setData({
-                  code: msg.data.data,
+                 // code: msg.data.data,
                   sampleId: msg.data.data.sampleId
                 });
                 wx.getStorage({
@@ -339,6 +353,27 @@ Page({
                     if (res.data) {
                       This.setData({
                         token: res.data
+                      })
+                      getApp().snPost('/item/sampleItemInput', {
+                        token: This.data.token,
+                        sampleId: This.data.sampleId,
+                        barCode: This.data.barcode,
+                        applyItemId: This.data.applyItemId.join(","),
+                        remark: ""
+                      }, function (res) {
+                        //console.log(res.data)
+                        if (res.data.success) {
+                          getApp().hnToast("录入成功");
+                          This.init();
+                          This.setData({
+                            itemAndPhoto: false
+                          });
+                          wx.setNavigationBarTitle({
+                            title: '上传申请单',
+                          })
+                        } else {
+                          getApp().hnToast("请选择项目");
+                        }
                       })
                       wx.request({
                         url: getApp().globalData.url + '/sample/getSample',
@@ -362,10 +397,7 @@ Page({
                             },
                           })
 
-                          wx.setNavigationBarTitle({
-
-                            title: '项目录入',
-                          })
+                        
                         },
                         fail: function (err) {
                           console.log(err)
@@ -484,69 +516,94 @@ Page({
         }
 
         var arr = [];
+        var arrForSelect = [];
+        var selectArr = This.data.applyItemId;//select item
         for (let i in res.data) {
           //console.log(this.data.hosList[i])
           res.data[i].show = false;
 
           if (res.data[i].search.indexOf(e.detail.value) >= 0) {
 
-            res.data[i].show = true;
+            // res.data[i].show = true;
             arr.push(res.data[i])
           }
+          for (let j=0;j<selectArr.length;j++){
+            if (selectArr[j] == res.data[i].applyItemId){
+              arrForSelect.push(res.data[i]);
+            }
+           }
         }
+        // console.log(arr);
+        // console.log(arrForSelect)//选择的数组
         if (arr.length == 0) {
           This.setData({
             applyItems: [{ show: true, applyItemName: '无相关数据' }]
           })
         } else {
+          //var ss = [];
+          for (let i = 0; i < arrForSelect.length;i++){
+           
+            arr.push(arrForSelect[i])
+           }//arr是个新数组 包含搜索的和已选的
+
+    
+          var newarr = This.getNewObjArr(arr);//新数组去掉重复的        
+          for (let i = 0; i < selectArr.length;i++){
+            for(let j=0;j<newarr.length;j++){
+              if (newarr[j].applyItemId == selectArr[i]){
+                newarr[j].checked = true;
+                break;
+              }
+            }
+          }
+         
           This.setData({
-            applyItems: arr
+            applyItems: newarr           
           })
+          
         }
 
       },
     })
   },
+  getNewObjArr:function(data) {
+    var newData = [];
+    for(var i = 0, len = data.length; i<len; i++) {
+  var flag = 1;
+  for (var j = 0, len2 = newData.length; j < len2; j++) {
+    if (newData[j].applyItemId === data[i].applyItemId) {
+      flag = 0;
+      break;
+      }
+    }
+        flag === 1 ? newData.push(data[i]) : false;
+    }
+    return newData;
+ },
   selectApplyItems: function (e) {
-    //console.log(e.detail.value)
+    console.log(e.detail.value)
     this.setData({
-      applyItemId: e.detail.value
+      applyItemId: e.detail.value,
+    
     })
   },
   // 确认录入（下一步）
   confirminput: function () {
     var This = this;
-    //console.log(This.data.code)
-    getApp().snPost('/item/sampleItemInput', {
-      token: This.data.token,
-      sampleId: This.data.code.sampleId,
-      barCode: This.data.code.barCode,
-      applyItemId: This.data.applyItemId.join(","),
-      remark: ""
-    }, function (res) {
-      //console.log(res.data)
-      if (res.data.success) {
-        getApp().hnToast("录入成功");
-        This.init();
-        This.setData({
-          itemAndPhoto: false
-        });
-        wx.setNavigationBarTitle({
-          title: '上传申请单',
-        })
-      } else {
-        getApp().hnToast("请选择项目");
-      }
+   
+    This.scanCode(This.data.barcode);
+    //This.getPhoto(This.data.token, This.data.sampleId);
+    This.setData({
+      photos:[]
     })
   },
   inputItem:function(e){
     var This=this;
     This.setData({
       isAlreadyItem:true,
-      code:{
-        sampleId: e.target.dataset.sampleid,
-        barCode: e.target.dataset.barcode
-      }
+      sampleId: e.target.dataset.sampleid,
+      barCode: e.target.dataset.barcode
+      
     })
    //console.log(e.target.dataset.sampleid)
     getApp().snGet('/item/getSampleApplyItem',{
