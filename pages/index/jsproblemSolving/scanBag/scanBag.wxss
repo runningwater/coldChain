@@ -61,7 +61,7 @@
 .inputDate{
   color:#888;
   font-size: 26rpx;
-  margin:30rpx 0;
+  margin:20rpx 0;
 }
 .title{
   width:100%;

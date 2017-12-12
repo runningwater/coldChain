@@ -1,4 +1,13 @@
-<view class="container"  catchtap='cancel'>
+<view class=""  catchtap='cancel'>
+  <view class="total">
+    <block wx:if="{{item.sampleSum==0}}">
+      标本箱<text>{{barcode}}</text>共扫描<text class="yellow">{{samplesum}}</text>个标本袋
+    </block>
+    <block wx:if="{{item.sampleSum!=0}}">
+      标本箱<text>{{barcode}}</text>共扫描<text class="green">{{samplesum}}</text>个标本袋
+    </block>
+  </view>
+  
   <view class="scanInput">
     <input placeholder-style="font-size:32rpx" confirm-type="done" bindconfirm="scanBag" placeholder="扫描或手动输入条形码" value="{{code}}" id="code" />
     <text class='iconfont icon-saoma' bindtap="scanCode"></text>
@@ -10,15 +19,25 @@
     </view>
 
   <block wx:for="{{barCode}}">
-    <view class='hang'>
-    <view class='{{l==item.bagId?"w801":"w800"}}' data-bagid="{{item.bagId}}"  bindtouchstart="mytouchstart" 
-    bindtouchmove="mymove" bindtouchend='myend'>
-     <text class="fa fa-medkit X2"></text> 
-      <text class="codeL box">{{item.barCode}}</text>     
-      <text class="codeL">{{item.deviceName}}</text>
-       <text class="fR">共<text class="red">{{item.sampleCount}}</text>个标本</text>
-    </view><view class='w20' wx:if="{{l==item.bagId?true:false}}" bindtap='delBag' data-bagid="{{item.bagId}}">删除</view>    
-</view> 
+    <view class='hang scanLists'>
+        <view class='{{l==item.bagId?"w801":"w800"}}' data-bagid="{{item.bagId}}"  bindtouchstart="mytouchstart" 
+        bindtouchmove="mymove" bindtouchend='myend'>
+
+        <text class="codeL">标本袋：<text class="barcode">{{item.barCode}}</text></text>     
+        <block wx:if="{{item.sampleCount==0}}">
+          <text class='scanNumber'>共扫描 <text class='yellow'>{{item.sampleCount}}</text>个标本</text>
+        </block>
+        <block wx:if="{{item.sampleCount!=0}}">
+          <text class='scanNumber'>共扫描 <text class='green'>{{item.sampleCount}}</text>个标本</text>
+        </block>
+    </view>
+        <!-- <text class="fa fa-medkit X2"></text> 
+          <text class="codeL box">{{item.barCode}}</text>     
+          <text class="codeL">{{item.deviceName}}</text>
+          <text class="fR">共<text class="red">{{item.sampleCount}}</text>个标本</text>
+        </view> -->
+        <view class='w20' wx:if="{{l==item.bagId?true:false}}" bindtap='delBag' data-bagid="{{item.bagId}}">删除</view>    
+    </view> 
   </block>
 
   <view class="btn">

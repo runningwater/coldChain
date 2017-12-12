@@ -286,9 +286,13 @@ Page({
   },
   //扫描标本袋 点击标本箱列表进入
   scanBag: function (e) {
-    //console.log(e.currentTarget.dataset.transportid)
+    console.log(e.currentTarget.dataset)
+    var barcode = e.currentTarget.dataset.barcode;
+    var transportid = e.currentTarget.dataset.transportid;
+    //var sampleCount = e.currentTarget.dataset.samplecount;
     wx.navigateTo({
-      url: 'scanBag/scanBag?transportid=' + e.currentTarget.dataset.transportid,
+      url: 'scanBag/scanBag?transportid=' + transportid + 
+      "&barcode=" + barcode ,
     })
   },
   checkboxChange: function (e) {

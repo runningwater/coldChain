@@ -10,6 +10,8 @@ Page({
       token:"",
       location: "", 
       transportid:"",
+      samplesum: "",//含有几个标本袋
+      barcode: "",//标本箱条码
       startPoint: [0, 0],//初始化touchstart坐标
       flag: false
   },
@@ -86,7 +88,8 @@ Page({
                       //   console.log(msg)                                         
                       if (msg.data.success) {
                         This.setData({
-                          barCode: msg.data.data
+                          barCode: msg.data.data,
+                          samplesum: msg.data.data.length
                         })
                       } else {
                         getApp().hnToast(msg.data.message)
@@ -140,7 +143,8 @@ Page({
                                   //console.log(msg)
                                   if (msg.data.success) {
                                       This.setData({
-                                          barCode: msg.data.data
+                                          barCode: msg.data.data,
+                                          samplesum: msg.data.data.length
                                       })
                                   } else {
                                       getApp().hnToast(msg.data.message)
@@ -192,7 +196,8 @@ Page({
                            
                             if (msg.data.success) {
                                 This.setData({
-                                    barCode: msg.data.data
+                                  barCode: msg.data.data, 
+                                  samplesum: msg.data.data.length
                                 })
                             } else {
                                 getApp().hnToast(msg.data.message)
@@ -212,6 +217,11 @@ Page({
   onLoad: function (options) {
     
     var This = this;
+    this.setData({
+      barcode: options.barcode,
+      transportid: options.transportid,
+      samplesum: options.samplesum
+    })
     wx.getStorage({
         key: 'token',
         success: function (res) {
@@ -230,7 +240,8 @@ Page({
                           
                             if(msg.data.success){
                                 This.setData({
-                                    barCode: msg.data.data
+                                    barCode: msg.data.data,
+                                    samplesum: msg.data.data.length
                                 })
                             }else{
                                 getApp().hnToast(msg.data.message)

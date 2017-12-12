@@ -5,7 +5,7 @@
   </view>
   <checkbox-group bindchange="checkboxChange">
     <view class='hang' wx:for="{{barCode}}">
-      <view class='{{l==item.transportId?"w801":"w800"}}'  data-transportId="{{item.transportId}}"  bindtouchstart="mytouchstart"           data-transportId="{{item.transportId}}" bindtouchmove="mymove" bindtouchend='myend'>
+      <view class='{{l==item.transportId?"w801":"w800"}}'  data-barcode="{{item.barCode}}" data-sampleCount="{{item.sampleCount}}" bindtouchstart="mytouchstart"  data-transportId="{{item.transportId}}" bindtouchmove="mymove" bindtouchend='myend'>
         <checkbox value="{{item.transportId}}" />
         <text class="barCode" bindtap="scanBag" data-transportId="{{item.transportId}}" data-barcode="{{item.barCode}}">{{item.barCode}}</text>
         

@@ -1,12 +1,20 @@
 /* pages/index/samplePacking/scanBag/scanBag.wxss */
 @import '../../../../utils/icon.wxss';
-.scanInput{
-  border: 1px solid #bebebe;
-  border-radius: 10px;
-  padding: 14rpx 16rpx;
-  margin-bottom:20px;
+.total{
+  font-size: 17px;
+  color:#333;
+  background-color: #f3f3f3;
+  padding:30rpx 20rpx;
 }
 
+.scanInput{
+  position: relative;
+  border: 1px solid #bebebe;
+  border-radius: 5px;
+  color:#888;
+  margin:50rpx 20rpx;  
+  padding: 7px 8px;
+}
 .icon-saoma{
   position: absolute;
   display: inline-block;
@@ -15,29 +23,30 @@
   right:20rpx;
   top:22rpx;
 }
+.scanLists{
+  margin:0 20rpx;
+}
+.scanNumber{
+  float: right;
+  font-size:28rpx;
+  color:#666;
+}
+.yellow{
+  color:#ee750a;
+}
+.green{
+  color:#1ccaa3;
+}
 
-
-.X2{
-  font-size: 24px;
-  position: relative;
-  top:4px;
-}
-.padding2{
-  padding:0 8px; 
-}
-.padding1{
-  padding:0 4px; 
-}
-
-.fR{
-  float:right;
-  font-size: 12px;
-  padding-top:9px;
-}
 /*按钮*/
+.btn{
+  margin:50rpx 20rpx 0;
+  border-radius:5px;
 
+}
 .btn button{
-  background: #009be2;
+  background: #009BE2;
   color:#fff;
-  font-size: 32rpx;
+  font-size: 16px;
+  font-weight: bold;
 }
