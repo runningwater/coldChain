@@ -56,7 +56,7 @@ Page({
     var This=this;
     wx.scanCode({
       success: function (msg) {
-        this.setData({
+        This.setData({
           startCode: msg.result
         })
       },
@@ -72,7 +72,7 @@ Page({
     var This = this;
     wx.scanCode({
       success: function (msg) {
-        this.setData({
+        This.setData({
           endCode: msg.result
         })
       },
@@ -88,13 +88,13 @@ Page({
     var This = this;
     wx.scanCode({
       success: function (msg) {
-        this.setData({
+        This.setData({
           singleCode: msg.result,
         })
         var barcodeArr = This.data.barcodeArr;
         barcodeArr.push({ barCode: e.detail.value });
         console.log(barcodeArr);
-        this.setData({
+        This.setData({
           barcodeArr: barcodeArr
         })
       },

@@ -17,13 +17,13 @@
     <view id='continuous' class="{{show?'shows':'hides'}}">
       <view class='scanInput'>
       <input  placeholder-style="font-size:32rpx" 
-      confirm-type="done" bindconfirm="startCode" placeholder="扫描或手动输入第一个条码" 
+      confirm-type="done" bindconfirm="startCode" value='{{startCode}}' placeholder="扫描或手动输入第一个条码" 
       class="code"/>
       <text class='iconfont icon-saoma'  bindtap="scanStartCode"></text>
       </view>
       <view class='scanInput'>
         <input placeholder-style="font-size:32rpx" 
-        confirm-type="done" bindconfirm="endCode" placeholder="扫描或手动输入最后一个条码" 
+        confirm-type="done" bindconfirm="endCode" value='{{endCode}}' placeholder="扫描或手动输入最后一个条码" 
         class="code"/>
         <text class='iconfont icon-saoma'  bindtap="scanEndCode"></text>
       </view>
