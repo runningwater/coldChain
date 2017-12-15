@@ -199,7 +199,7 @@ Page({
     var This = this;
     wx.scanCode({
       success: function (msg) {
-        this.setData({
+        This.setData({
           startCode: msg.result
         })
       },
@@ -215,7 +215,7 @@ Page({
     var This = this;
     wx.scanCode({
       success: function (msg) {
-        this.setData({
+        This.setData({
           endCode: msg.result
         })
       },
