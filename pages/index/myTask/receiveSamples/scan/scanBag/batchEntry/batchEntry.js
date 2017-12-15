@@ -92,7 +92,7 @@ Page({
           singleCode: msg.result,
         })
         var barcodeArr = This.data.barcodeArr;
-        barcodeArr.push({ barCode: e.detail.value });
+        barcodeArr.push({ barCode: msg.result });
         console.log(barcodeArr);
         This.setData({
           barcodeArr: barcodeArr
