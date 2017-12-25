@@ -128,11 +128,36 @@ Page({
   //扫码
   scanCode: function () {
     var This = this;
+    var arr = This.data.listSp;
+    var arrsampleId = [];
     wx.scanCode({
       success: function (msg) {
         //console.log(msg.result)
+        var barcode = msg.result;
+        for (var i = 0; i < arr.length; i++) {
+          if (arr[i].barCode === barcode) {
+            arr[i].status = 1;
+            arrsampleId.push(arr[i].sampleId);
+            break;
+          }
+        }
+        if (arrsampleId.length < 1) {
+          wx.showToast({
+            title: '条码错误'
+          });
+          return;
+        }
+        arrsampleId = [];
+        for (var i = 0; i < arr.length; i++) {
+          if (arr[i].status === 1) {
+            arrsampleId.push(arr[i].sampleId);
+          }
+        }
         This.setData({
-          barcode: msg.result
+          barcode: barcode,
+          listSp: arr,
+          sampleList: arrsampleId,
+          num: arrsampleId.length
         })
         // This.scanSpecimens(msg.result)
       },
@@ -149,11 +174,35 @@ Page({
     //console.log(e.detail.value)
     var barcode = e.detail.value;
     var This = this;
+    var arr = This.data.listSp;
+   
+    var arrsampleId = [];
+    for(var i=0;i<arr.length;i++){
+      if (arr[i].barCode === barcode ) {
+        arr[i].status = 1;
+        arrsampleId.push(arr[i].sampleId);
+        break;
+      }
+    }
+    if (arrsampleId.length < 1) {
+      wx.showToast({
+        title: '条码错误'
+      });
+      return;
+    }
+    arrsampleId = [];
+    for(var i = 0; i < arr.length; i++){
+      if(arr[i].status === 1) {
+        arrsampleId.push(arr[i].sampleId);
+      }
+    }
     This.setData({
-      barcode: barcode
+      barcode: barcode,
+      listSp: arr,
+      sampleList: arrsampleId,
+      num: arrsampleId.length
     })
-    
-
+    //console.log(This.data.listSp)
   },
  
 
