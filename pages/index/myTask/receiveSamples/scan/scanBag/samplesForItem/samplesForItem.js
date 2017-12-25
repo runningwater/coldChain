@@ -653,7 +653,8 @@ Page({
   complate:function(){
     this.setData({
       isitem:true,
-      itemAndPhoto:true
+      itemAndPhoto:true,
+      applyItemId:[]
     })
     wx.setNavigationBarTitle({
       title: '扫描标本',

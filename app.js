@@ -58,8 +58,8 @@ App({
  },
 
   globalData: {
-    //url: "https://wl.ailabcare.com/framework-web/api/v1" //正式库
-    url:"https://wx.ailabcare.com/framework-web/api/v1"//测试库
+    url: "https://wl.ailabcare.com/framework-web/api/v1" //正式库
+    //url:"https://wx.ailabcare.com/framework-web/api/v1"//测试库
   }
 })
 var app = getApp();

@@ -17,6 +17,7 @@ Page({
     barCode: [],
     startPoint: [0, 0],//初始化touchstart坐标
     flag: false,
+    applyItemId:[]
    
   },
   cancel: function () {
@@ -454,7 +455,8 @@ Page({
               if (res.data.success){
                   getApp().hnToast("录入成功");
                   This.setData({
-                    isitem:true
+                    isitem:true,
+                    applyItemId:[]
                   });
                   wx.setNavigationBarTitle({
                     title: '扫描标本',                 
