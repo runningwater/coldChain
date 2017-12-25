@@ -520,7 +520,8 @@ Page({
     wx.getStorage({
       key: 'token',
       success: function (res) {
-        if (res.data) {
+        if (res.data
+        ) {
           wx.request({
             url: getApp().globalData.url + '/batch/proBarCode',
             method: "POST",
@@ -535,13 +536,17 @@ Page({
             },
             success:function(msg){
              //console.log(msg)
-              var barcodeArr = This.data.barcodeArr;
-              for (let i = 0; i < msg.data.data.length;i++){
-                barcodeArr.push(msg.data.data[i])
-              }
-              This.setData({
-                barcodeArr: barcodeArr
-              })   
+             if(msg.data.success){
+               var barcodeArr = This.data.barcodeArr;
+               for (let i = 0; i < msg.data.data.length; i++) {
+                 barcodeArr.push(msg.data.data[i])
+               }
+               This.setData({
+                 barcodeArr: barcodeArr
+               }) 
+             } else{
+               getApp().hnToast(msg.data.message)
+             } 
             }
           })
         }
@@ -564,14 +569,7 @@ Page({
       barCodeStr += This.data.barcodeArr[i].barCode+",";
     }
     barCodeStr = barCodeStr.substr(0,barCodeStr.length-1);
-        This.setData({
-          isitem: false,
-          itemAndPhoto:true,
-          isExamine:false
-        });
-        wx.setNavigationBarTitle({
-          title: '录入项目',
-        })
+     
         var data = {
           token: This.data.token,
           bagId: This.data.bagid,
@@ -582,19 +580,32 @@ Page({
           transportId: This.data.transportid
         }
         getApp().snPost("/batch/postSamples", data, function (res) {
-          //console.log(res.data.data.psn)
-          This.setData({
-            psn: res.data.data.psn
-          })
-          getApp().snGet("/batch/getApply", {
-            token: This.data.token,
-            psn: res.data.data.psn
-          }, function (res) {
-           // console.log(res.data.data.appApplySampleList)
+          console.log(res.data)
+          if (!res.data.success){
+            getApp().hnToast(res.data.message);
+            return false;
+          }else{
             This.setData({
-              photos: res.data.data.appApplySampleList
+              isitem: false,
+              itemAndPhoto: true,
+              isExamine: false,
+              psn: res.data.data.psn
+            });
+            wx.setNavigationBarTitle({
+              title: '录入项目',
             })
-          });
+         
+            getApp().snGet("/batch/getApply", {
+              token: This.data.token,
+              psn: res.data.data.psn
+            }, function (res) {
+              // console.log(res.data.data.appApplySampleList)
+              This.setData({
+                photos: res.data.data.appApplySampleList
+              })
+            });
+          }       
+     
         })
       
   },
