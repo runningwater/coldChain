@@ -535,7 +535,7 @@ Page({
               endCode: This.data.endCode
             },
             success:function(msg){
-             //console.log(msg)
+              //console.log(msg.data)
              if(msg.data.success){
                var barcodeArr = This.data.barcodeArr;
                for (let i = 0; i < msg.data.data.length; i++) {

@@ -248,13 +248,17 @@ Page({
             success: function (msg) {
               //console.log(msg)
 
-              var barcodeArr = This.data.barcodeArr;
-              for (let i = 0; i < msg.data.data.length; i++) {
-                barcodeArr.push(msg.data.data[i])
+              if(msg.data.success){
+                var barcodeArr = This.data.barcodeArr;
+                for (let i = 0; i < msg.data.data.length; i++) {
+                  barcodeArr.push(msg.data.data[i])
+                }
+                This.setData({
+                  barcodeArr: barcodeArr
+                })
+              }else{
+                getApp().hnToast(msg.data.message)
               }
-              This.setData({
-                barcodeArr: barcodeArr
-              })
             }
           })
         }
@@ -377,11 +381,7 @@ Page({
       barCodeStr += This.data.barcodeArr[i].barCode + ",";
     }
     barCodeStr = barCodeStr.substr(0, barCodeStr.length - 1);
-    This.setData({
-      isitem: false,
-      
-      isExamine: false
-    });
+ 
   
     var data = {
       token: This.data.token,
@@ -394,18 +394,25 @@ Page({
     }
     getApp().snPost("/batch/postSamples", data, function (res) {
       //console.log(res.data.data.psn)
-      This.setData({
-        psn: res.data.data.psn
-      })
-      getApp().snGet("/batch/getApply", {
-        token: This.data.token,
-        psn: res.data.data.psn
-      }, function (res) {
-        // console.log(res.data.data.appApplySampleList)
-        This.setData({
-          photos: res.data.data.appApplySampleList
-        })
-      });
+        if(res.data.success){
+          This.setData({
+            psn: res.data.data.psn,
+            isitem: false,
+            isExamine: false
+          })
+        
+          getApp().snGet("/batch/getApply", {
+            token: This.data.token,
+            psn: res.data.data.psn
+          }, function (res) {
+            // console.log(res.data.data.appApplySampleList)
+            This.setData({
+              photos: res.data.data.appApplySampleList
+            })
+          });
+        }else{
+          getApp().hnToast(res.data.message)
+        }
     })
 
   

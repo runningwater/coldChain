@@ -74,6 +74,7 @@
   line-height:32rpx;
   font-size: 32rpx;
   color:#666; 
+ 
 }
 
 .icon{
@@ -243,4 +244,7 @@
 .detail2 text,
 .detail3 text{
   color:#666;
+}
+.contain{
+  padding-bottom:44px 
 }

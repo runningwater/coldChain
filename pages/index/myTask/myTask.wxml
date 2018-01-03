@@ -1,5 +1,5 @@
 <!--我的任务-->
-<view class="">
+<view class="contain">
   <view style="display:{{display1}}">
     <view class="listTitle">
       <text class="hosName">医院名称</text>
